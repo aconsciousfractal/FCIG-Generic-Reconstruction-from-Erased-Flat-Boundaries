@@ -1,0 +1,609 @@
+\documentclass[11pt]{amsart}
+\ifdefined\pdfinfoomitdate\pdfinfoomitdate=1\fi
+\ifdefined\pdftrailerid\pdftrailerid{}\fi
+\ifdefined\pdfsuppressptexinfo\pdfsuppressptexinfo=-1\fi
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[pdfusetitle,hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Generic Exact Reconstruction of Reflected-Cap Data from an Erased Flat Boundary},
+  pdfauthor={Oleksiy Babanskyy},
+  pdfsubject={Exact inverse reconstruction for proper-zero reflected-cap data},
+  pdfkeywords={convex polytopes, inverse geometry, Voronoi reconstruction, exact computation}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\conv}{\operatorname{conv}}
+\newcommand{\aff}{\operatorname{aff}}
+\newcommand{\relint}{\operatorname{relint}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\GammaM}{\Gamma(M_J)}
+
+\title[Reconstruction from an erased flat boundary]{Generic exact reconstruction of reflected-cap data\\from an erased flat boundary}
+\author{Oleksiy Babanskyy}
+\address{Independent researcher}
+\email{aconsciousfractal@users.noreply.github.com}
+\urladdr{https://orcid.org/0009-0001-6176-6208}
+\date{July 30, 2026}
+
+\begin{document}
+
+\begin{abstract}
+Let a convex three-polytope in a hyperplane of $\R^4$ carry one reflected
+pyramidal cap on each facet, with the caps independently rotated about their
+facets.  We study the proper-zero regime: at least one cap remains nonflat and
+at least one cap returns to the core hyperplane.  The flat caps then merge with
+the core and erase their internal source-layer boundaries.
+
+We define an intrinsic boundary-germ skeleton of the merged flat component.
+Its vertices satisfying a perpendicular-bisector neighbour test are exactly
+the hidden reflected apexes, provided no core vertex satisfies the same test.
+This yields exact reconstruction and uniqueness of every compatible
+decomposition.  For each fixed realized core and visible-facet mask, centres
+violating the hypothesis lie in a finite union of proper spheres and quadrics,
+and hence form a measure-zero set.  We also give an exact rational reference
+algorithm and report a complete 16,744-instance finite replay.  The finite
+replay supports the implementation; it is not used as the proof.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Inverse Voronoi and Dirichlet problems usually begin with a supplied
+tessellation, cell complex, embedded diagram, or collection of cell
+boundaries.  The input considered here is coarser.  Several reflected sites
+and their facet boundaries have been erased by a coplanar union before the
+inverse problem begins.
+
+The model is elementary.  A convex polytope $P$ lies in a three-dimensional
+hyperplane $H\subset\R^4$, an interior point $o$ is fixed, and the reflection
+of $o$ in each facet plane is used as the apex of a pyramid.  Each pyramid is
+then rotated through an independent angle about its base facet.  When an angle
+is zero, the corresponding pyramid is coplanar with $P$.  All such flat
+pyramids merge with $P$ into one three-dimensional subset $M_J\subset H$.
+Only the raw union is observed; cell labels and internal flat seams are not.
+
+The central issue is therefore not the forward reflection construction.  That
+construction is classical and appears explicitly in Ash and Bolker's
+Theorem~2~\cite{AshBolker1985}.  The issue is whether the hidden reflected
+sites can be identified from the exposed boundary after the internal seams
+have disappeared.
+
+A naive graph is insufficient.  Taking the polygonal one-skeleton after every
+coplanar merge can swallow a collinear point at which the local boundary germ
+changes.  Retaining the sides of the original pyramids repairs that example but
+illegitimately remembers the unknown decomposition.  We instead use the
+noncoplanar crease graph of the maximal exposed planar sheet germs.  It keeps a
+collinear point exactly when the local incident-sheet germ changes, and removes
+it when it is only a presentation subdivision.
+
+Our main result is conditional but size-uniform.
+
+\begin{theorem}[informal]
+In dimension three, suppose a reflected-cap datum is proper-zero and no core
+vertex passes the intrinsic bisector-neighbour test.  Then the passing vertices
+are precisely the hidden reflected apexes, the core is recovered by their
+bisector halfspaces together with the visible hinge halfspaces, and the datum
+is unique up to ambient Euclidean congruence.  For a fixed realized core and
+visible mask, the excluded centres form a measure-zero subset of the core.
+\end{theorem}
+
+The theorem does not assert uniqueness at excluded centres, a result in higher
+dimension, or novelty or priority relative to all possible prior art.  Those
+boundaries are repeated in Section~\ref{sec:limitations}.
+
+\section{The reflected-cap model and exact contacts}
+\label{sec:model}
+
+Let $H\cong\R^3$ be a fixed hyperplane in $\R^4$, and let $e$ be a unit normal
+to $H$.  Let $P\subset H$ be a full-dimensional convex polytope and
+$o\in\operatorname{int}P$.  Translate $o$ to the origin and write the
+irredundant unit-normal description
+\[
+ P=\{x\in H:n_i\cdot x\le h_i,\ i=1,\ldots,m\},
+ \qquad \|n_i\|=1,\quad h_i>0,
+\]
+with facets $F_i=P\cap\{n_i\cdot x=h_i\}$.
+For $\theta_i\in(-\pi,\pi)$ set
+\[
+ a_i(\theta_i)=h_i(1+\cos\theta_i)n_i+h_i\sin\theta_i e,
+ \qquad
+ C_i(\theta_i)=\conv(F_i\cup\{a_i(\theta_i)\}).
+\]
+The excluded value $\pi$ collapses the apex to $o$.  At $\theta_i=0$,
+$a_i=2h_i n_i$, the reflection of $o$ in $\aff F_i$.
+
+Two data are called congruent when an ambient Euclidean isometry carries the
+core, centre, and unordered cap family of one to those of the other.  Thus the
+angle coordinates are used only to parametrise the geometric caps.
+
+The datum is $D=(P,o,\theta)$ and its raw union is
+\[
+ X(D)=P\cup\bigcup_{i=1}^m C_i(\theta_i)\subset\R^4,
+\]
+retained as a bare Euclidean subset.  Put
+\[
+ J=\{i:\theta_i=0\},\qquad I=[m]\setminus J.
+\]
+The datum is \emph{proper-zero} when $I$ and $J$ are both nonempty.  Its
+merged flat component is
+\[
+ M_J=P\cup\bigcup_{j\in J}C_j(0)\subset H.
+\]
+
+\begin{proposition}[exact contacts]
+\label{prop:contacts}
+For every angle vector $\theta\in(-\pi,\pi)^m$,
+\[
+ P\cap C_i(\theta_i)=F_i,
+ \qquad
+ C_i(\theta_i)\cap C_j(\theta_j)=F_i\cap F_j\quad(i\ne j).
+\]
+Thus the cells form an embedded face-to-face polyhedral complex whose contact
+poset is independent of the angles.
+\end{proposition}
+
+\begin{proof}
+Use the Voronoi diagram of the sites
+$0,a_1(\theta_1),\ldots,a_m(\theta_m)$.  The sites are distinct: equality of
+two nonzero $H$-components would force two irredundant outward facet normals
+to agree.  For $x\in P$,
+\begin{align*}
+ \|x-a_i\|^2-\|x\|^2
+ &=\|a_i\|^2-2x\cdot a_i\\
+ &=2h_i(1+\cos\theta_i)(h_i-n_i\cdot x)\ge0.
+\end{align*}
+The first factor is positive on $(-\pi,\pi)$.  Hence $P$ lies in the Voronoi
+cell $V_0$ of $0$, and $F_i\subset V_0\cap V_i$.  The apex $a_i$ is in the
+interior of $V_i$.  Convexity of $V_i$ gives
+$C_i\setminus F_i\subset\operatorname{int}V_i$.  Therefore no point of
+$P\cap C_i$ can lie outside $F_i$.
+
+If a point of $C_i\cap C_j$ lay outside one of the two hinge facets, the same
+argument would place it in one open Voronoi cell and simultaneously in a
+different open cell or in $V_0$.  This is impossible.  The reverse inclusion
+$F_i\cap F_j\subset C_i\cap C_j$ is immediate.
+\end{proof}
+
+\section{Intrinsic recovery in the proper-zero regime}
+\label{sec:intrinsic-recovery}
+
+For a three-dimensional polyhedral subset $Y\subset\R^4$, let
+$\operatorname{FlatReg}_3(Y)$ be the set of points having a neighbourhood in
+$Y$ that is relatively open in one affine three-plane.  This set is determined
+by $Y$ alone.
+
+\begin{proposition}[proper-zero intrinsic recovery]
+\label{prop:intrinsic-recovery}
+If $I\ne\varnothing$, the raw subset $X(D)$ intrinsically determines $M_J$,
+every nonflat cap and its hinge facet, the centre $o$, and the fully reflected
+site associated with every nonflat hinge.
+\end{proposition}
+
+\begin{proof}
+The closures of the connected components of
+$\operatorname{FlatReg}_3(X)$ are $M_J$ and the nonflat caps.  Indeed, the
+zero-angle cells join the core through facets inside $H$ and form one
+three-dimensional flat component, while every nonflat cap has a different
+affine hull.  Proposition~\ref{prop:contacts} accounts for every contact.
+The codimension-one adjacency graph of these closures is a star.
+
+If $|I|\ge2$, the unique star centre is $M_J$.  If $|I|=1$, let $i$ be the
+nonflat index, let $V=\vol_3(P)$, and let
+$v_k=\vol_3\conv(\{o\}\cup F_k)$.  The radial pyramids tile $P$, so
+$\sum_kv_k=V$.  Rotation preserves the intrinsic volume of a cap, and hence
+\[
+ \vol_3(M_J)=2V-v_i>v_i=\vol_3(C_i).
+\]
+Thus in the two-component case the larger component is $M_J$.
+
+Fix one recovered nonflat cap, with apex $A_i$ and hinge $F_i$.  Let $p_i$ be
+the orthogonal projection of $A_i$ to $\aff F_i$, let
+$r_i=\dist(A_i,\aff F_i)$, and let $\nu_i$ be either unit normal to
+$\aff F_i$ inside $H$.  Rotation about $\aff F_i$ preserves the radius in its
+two-dimensional normal plane, so
+\[
+ \{p_i-r_i\nu_i,p_i+r_i\nu_i\}=\{o,a_i(0)\}.
+\]
+The centre belongs to the interior of $M_J$.  The other point does not belong
+to $M_J$: apply Proposition~\ref{prop:contacts} to the angle vector in
+which cap $i$ is also set to zero.  Its apex meets neither the core nor another
+cap away from prescribed lower-dimensional contacts.  Consequently $o$ is the
+unique one of the two candidates in $\operatorname{int}M_J$.  Reflection of
+$o$ in the recovered hinge then gives the fully reflected site.
+\end{proof}
+
+Every compatible decomposition of a given proper-zero raw union therefore has
+the same $M_J$, centre, nonflat caps, and visible hinge facets.
+
+\section{The intrinsic boundary-germ skeleton}
+\label{sec:skeleton}
+
+Let an \emph{exposed planar sheet} of $\partial M_J$ be the closure of a
+maximal connected planar piece of its relative-regular locus.  Internal
+coplanar subdivisions are not retained.
+
+\begin{definition}[intrinsic germ skeleton]
+\label{def:skeleton}
+Atomise the boundaries of all exposed sheets at every endpoint contributed by
+any other sheet.  Retain the open segments carried by at least two distinct
+supporting planes.  Suppress a collinear degree-two point only if its complete
+local incident-sheet germ is unchanged through that point.  The resulting
+canonical graph is $\GammaM$.  A vertex $a$ \emph{passes} if every neighbour
+of $a$ in $\GammaM$ belongs to the perpendicular bisector
+\[
+ B(o,a)=\{x\in H:\|x-o\|=\|x-a\|\}.
+\]
+\end{definition}
+
+The definition is intrinsic: exposed sheet subsets, their supporting planes,
+and their local germs are properties of $M_J$ as a point set.  In particular,
+the graph stores neither a hidden cap label nor an erased internal seam.
+
+A compatible decomposition of $M_J$ consists of a convex core $P'$, the
+already recovered visible hinge facets, and hidden facets $G_a$ indexed by
+reflected sites $a$ such that
+\[
+ M_J=P'\cup\bigcup_{a\in A}\conv(G_a\cup\{a\})
+\]
+with pairwise disjoint cell interiors.  For an edge $f$ of $G_a$, write
+$W(a,f)=\conv(\{a\}\cup f)$ for the corresponding wall.
+
+\begin{lemma}[boundary inventory]
+\label{lem:inventory}
+For every compatible decomposition,
+\[
+ \partial M_J
+ =\bigcup_{i\in I}F_i\ \cup\
+   \bigcup_{a\in A}\ \bigcup_{f\in E(G_a)}W(a,f).
+\]
+\end{lemma}
+
+\begin{proof}
+The boundary of $P'$ is the union of its visible facets and hidden facets.
+Each hidden facet is shared with its cap and becomes internal to $M_J$.  The
+remaining cap faces are the walls.  Proposition~\ref{prop:contacts} says that
+a wall meets another cell only in a lower-dimensional face.
+\end{proof}
+
+\begin{lemma}[decomposition computation of the intrinsic graph]
+\label{lem:graph-intrinsic}
+Starting from the inventory in Lemma~\ref{lem:inventory}, erase a side across
+which the two incident boundary patches are coplanar, atomise at every other
+sheet-boundary endpoint, and suppress only unchanged collinear degree-two
+germs.  The result is $\GammaM$, independently of the compatible
+decomposition used for the computation.
+\end{lemma}
+
+\begin{proof}
+At a relative-interior point of a patch side, exact face-to-face contact gives
+no transverse crossing in a patch interior.  If the two incident patch planes
+agree, their union is locally planar and the side is absent from the crease
+locus.  If the planes differ, the side is an intrinsic noncoplanar crease.
+Passing to maximal planar sheets deletes exactly the first kind.  Atomisation
+restores every endpoint where another sheet germ begins, ends, or changes,
+including a collinear endpoint omitted by a polygon hull.  The final
+suppression removes only a presentation subdivision at which the complete
+local germ is unchanged.  These conditions depend only on $\partial M_J$.
+\end{proof}
+
+\begin{remark}[the swallowed-corner control]
+There are legitimate data for which two coplanar merged triangles have a
+collinear boundary point that a polygonal hull would drop.  At that point a
+noncoplanar incident sheet changes, so Definition~\ref{def:skeleton} retains
+it.  The exact control used in the artifact is
+\[
+ P=\{x\ge0,\ z\ge0,\ x+y\ge2,\ y\le6,\ x+z\le4\},
+ \qquad o=(1,2,1),
+\]
+with the hidden facets $x=0$ and $z=0$.  Their shared edge starts at the foot
+of the perpendicular from $o$, making the two apexes and that endpoint
+collinear.
+\end{remark}
+
+\section{The apex signature and uniqueness}
+\label{sec:uniqueness}
+
+\begin{lemma}[only its own walls contain an apex]
+\label{lem:own-walls}
+For $a\in A$, the boundary patches containing $a$ are exactly the walls of the
+cap with apex $a$.
+\end{lemma}
+
+\begin{proof}
+The reflection $a$ lies strictly outside $P'$.  For $b\ne a$,
+Proposition~\ref{prop:contacts} gives
+$C_a\cap C_b=G_a\cap G_b\subset P'$, so $a$ belongs to no wall of $C_b$.
+Lemma~\ref{lem:inventory} leaves no other boundary patch.
+\end{proof}
+
+\begin{lemma}[candidate types]
+\label{lem:candidate-types}
+Every vertex of $\GammaM$ is either a hidden apex or a vertex of the compatible
+core.
+\end{lemma}
+
+\begin{proof}
+By Lemma~\ref{lem:graph-intrinsic}, a graph vertex is a branch point or a
+retained endpoint of the patch-side arrangement.  Exact face-to-face contacts
+create no transverse crossing in a patch interior, so such a point is a patch
+corner.  Visible-facet corners are core vertices, and wall corners are one
+apex and two core vertices.
+\end{proof}
+
+\begin{lemma}[apexes pass]
+\label{lem:apexes-pass}
+Every hidden apex passes in $\GammaM$.
+\end{lemma}
+
+\begin{proof}
+Let $a$ be the apex over a hidden facet $G_a$.  For each vertex $v$ of $G_a$,
+the two walls over the two facet edges incident to $v$ meet along $[a,v]$.
+Their planes are distinct: if they were coplanar, the apex and three
+consecutive vertices of the convex facet polygon would be coplanar, forcing
+$a\in\aff G_a$, contrary to $o\in\operatorname{int}P'$.
+Thus the relative interior of $[a,v]$ is an intrinsic crease.  The apex is a
+branch point, and $v$ is retained because the two wall-sheet germs containing
+$a$ end or change there.  Conversely, Lemma~\ref{lem:own-walls} shows that
+every crease incident to $a$ is of this form.  Hence
+\[
+ N_{\GammaM}(a)=\operatorname{vert}G_a\subset\aff G_a=B(o,a).
+\]
+\end{proof}
+
+For a facet $f$ of a compatible core, write
+$v_f=\vol_3\conv(\{o\}\cup f)$.
+
+\begin{lemma}[volume identity]
+\label{lem:volume}
+Let $W=\sum_{i\in I}v_{F_i}$.  Every compatible decomposition satisfies
+\[
+ \vol_3(M_J)=W+2\sum_{a\in A}v_{G_a}.
+\]
+Consequently all compatible cores have the same volume.
+\end{lemma}
+
+\begin{proof}
+The radial pyramids from $o$ to the facets tile a convex core, so
+$\vol_3(P')=W+\sum_av_{G_a}$.  The cap over $G_a$ is a reflection of its radial
+pyramid and has the same volume.  Exact contacts give pairwise disjoint cell
+interiors, proving the displayed identity.  Both $M_J$ and $W$ are intrinsic,
+so $\sum_av_{G_a}$ and then the core volume are common to all decompositions.
+\end{proof}
+
+\begin{lemma}[nested site sets]
+\label{lem:nested}
+If $(P',A)$ and $(P'',A'')$ are compatible and $A''\subseteq A$, then the two
+decompositions coincide.
+\end{lemma}
+
+\begin{proof}
+The hidden facet associated with $a$ has halfspace
+$\{x:\|x-o\|\le\|x-a\|\}$.  Therefore
+\[
+ P'=\bigcap_{i\in I}H_i^-\cap
+     \bigcap_{a\in A}\{x:\|x-o\|\le\|x-a\|\},
+\]
+and similarly for $P''$.  The inclusion $A''\subseteq A$ gives
+$P'\subseteq P''$.  Lemma~\ref{lem:volume} gives equal finite volume, so the
+two closed convex bodies agree.  Their active facets and reflected sites then
+agree.
+\end{proof}
+
+\begin{theorem}[exact reconstruction]
+\label{thm:main}
+Let $D$ be a three-dimensional proper-zero datum.  Suppose no vertex of its
+core passes in $\GammaM$.  Then the passing vertices of $\GammaM$ are exactly
+the hidden reflected apexes, the core is
+\[
+ P=\bigcap_{i\in I}H_i^-\cap
+   \bigcap_{a\text{ passing}}\{x:\|x-o\|\le\|x-a\|\},
+\]
+and every compatible decomposition of $X(D)$ is the same.  Consequently,
+$X(D)$ congruent to $X(D')$ implies $D$ congruent to $D'$.
+\end{theorem}
+
+\begin{proof}
+Let $A$ be the hidden apex set of $D$, and let $(P'',A'')$ be any compatible
+decomposition.  The graph $\GammaM$ is intrinsic, hence common to both
+decompositions.  Lemma~\ref{lem:apexes-pass} gives that every element of $A$
+and $A''$ passes in this common graph.  By Lemma~\ref{lem:candidate-types}, a
+passing vertex is an apex of $D$ or a core vertex.  The second possibility is
+excluded by hypothesis, so the passing set is exactly $A$ and $A''\subseteq A$.
+Lemma~\ref{lem:nested} completes the uniqueness proof.
+
+An ambient isometry carrying one raw union to another preserves the intrinsic
+components, centre, exposed sheet germs, and $\GammaM$.  It carries the first
+datum to a compatible decomposition of the second raw union, which uniqueness
+identifies with the second datum.
+\end{proof}
+
+\section{The exceptional centre set}
+\label{sec:genericity}
+
+\begin{theorem}[fixed-realization genericity]
+\label{thm:genericity}
+Fix a realized three-polytope $P$ and a visible-facet mask.  The set of centres
+$o\in\operatorname{int}P$ at which some core vertex passes is contained in a
+finite union of proper spheres and quadrics.  In particular, it has
+three-dimensional Lebesgue measure zero.
+\end{theorem}
+
+\begin{proof}
+Use fixed absolute coordinates.  Suppose a core vertex $v$ is incident to a
+hidden facet with outward unit normal $n$ and equation $n\cdot x=h$.  The
+reflected apex is
+\[
+ a=o+2(h-n\cdot o)n.
+\]
+The two walls meeting along $[v,a]$ have distinct planes, so this is an edge of
+$\GammaM$.  If $v$ passes, then $a\in B(o,v)$, which forces
+\[
+ 4(h-n\cdot o)^2=\|v-o\|^2.
+\]
+Its quadratic part is $o^{\mathsf T}(4nn^{\mathsf T}-I)o$.  The eigenvalue
+along $n$ is $3$ and the two eigenvalues on $n^\perp$ are $-1$.  The polynomial
+is nonzero and its zero set is a proper quadric.
+
+If $v$ is incident only to visible hinge facets, the core edges at $v$ are
+intersections of distinct facet planes and are intrinsic crease edges.  Any
+crease neighbour $w$ required by passing satisfies
+\[
+ \|w-o\|^2=\|w-v\|^2,
+\]
+a proper sphere condition in $o$.
+
+There are finitely many vertices and incidences.  Every passing event is
+contained in at least one of the displayed proper algebraic hypersurfaces, and
+a finite union of such zero sets has measure zero.
+\end{proof}
+
+The theorem deliberately does not assert that the bad-centre set itself is
+closed.  A subset of a closed algebraic union need not be closed.  Nor does the
+argument define a measure on simultaneously varying realizations of $P$.
+
+\section{Exact reconstruction algorithm and evidence}
+\label{sec:algorithm}
+
+Assume an exact rational polygonal presentation of the exposed boundary.
+Coplanar subdivisions are presentation data and may be inserted or removed.
+The conceptual algorithm is:
+
+\begin{enumerate}[label=\arabic*.]
+\item Compute the closures of the connected components of the local-flat
+locus.  With at least three components, select the unique centre of their
+codimension-one adjacency star; with exactly two, select the component of
+larger intrinsic volume.  This is $M_J$.
+\item Intersect every other component with $M_J$ to recover the nonflat hinges
+and their cap geometry.
+\item Recover $o$ from either nonflat cap by the two-candidate construction in
+Proposition~\ref{prop:intrinsic-recovery}.
+\item Construct $\GammaM$ from exposed sheet germs.
+\item Keep exactly the graph vertices that pass.
+\item Intersect the visible hinge halfspaces with the bisector halfspaces of
+the passing vertices.
+\end{enumerate}
+
+Under the hypothesis of Theorem~\ref{thm:main}, correctness is immediate from
+Lemmas~\ref{lem:candidate-types} and~\ref{lem:apexes-pass}.  A full certifier
+may rebuild the entire raw union, including the observed nonflat caps, and
+compare it exactly with the input.  The released reference code implements the
+flat reconstruction kernel in steps 4--6 and compares the rebuilt merged flat
+component; it is not an end-to-end implementation of steps 1--3 or of the full
+raw-union certifier.
+
+Let $N$ be the number of input boundary corners and $k$ the number of returned
+core facets.  The reference germ extractor atomises each segment against all
+exact endpoints and builds carrier labels during atomisation.  Its conservative
+bound is $O(N^2\log N)$ exact field operations and $O(N^2)$ crease atoms.  The
+reference three-dimensional halfspace kernel enumerates triples and costs
+$O(k^3)$.  Thus the proved reference bound is
+\[
+ O(N^2\log N+k^3).
+\]
+No sharper literature bound is imported into this statement.
+
+The executable audit has two layers.  E-A60 runs the intrinsic germ skeleton
+on every frozen six-vertex row.  E-A58 runs the reconstruction/flat
+certification kernel.  The frozen measurements are:
+
+\begin{center}
+\begin{tabular}{lr}
+\hline
+intrinsic-skeleton corpus rows & 16,744\\
+rows reconstructed by the intrinsic signature & 16,744\\
+rows agreeing with the historical graph on the corpus & 16,744\\
+collinear-subdivision mutations invariant & 256/256\\
+independent maximal-sheet cross-checks & 256/256\\
+flat-kernel reconstructions & 16,744/16,744\\
+sampled flat certifications & 340/340\\
+wrong answers certified & 0\\
+degenerate swallowed-corner witness & pass\\
+\hline
+\end{tabular}
+\end{center}
+
+The E-A60 canonical payload is
+\begin{center}
+\small\texttt{D18C07176BAF7B729A550E9B9B8B9D9E04BB58A0C52D295243108417C9BE785A}.
+\end{center}
+The E-A58 payload in the release artifact is
+\begin{center}
+\small\texttt{49A3FDC23406557354FEC8DDA51B4C2BB5CA9D43E11D2793C95034C0BA61FA5C}.
+\end{center}
+Finite replay is evidence about the implementation and its frozen domain.  The
+proof of Theorem~\ref{thm:main} is the intrinsic argument in the preceding
+sections.
+
+\section{Relation to supplied-boundary inverse problems}
+\label{sec:related}
+
+Ash and Bolker study recognition of supplied Dirichlet tessellations.  Their
+Lemma~1 places a common cell boundary on the perpendicular bisector of its two
+sources, and their Theorem~2 constructs a Dirichlet cell by reflecting an
+interior point in the known facet hyperplanes~\cite{AshBolker1985}.  The latter
+is exactly the forward reflection construction used in Section~\ref{sec:model}
+and is cited as such.
+
+Subsequent recognition algorithms also begin with substantially visible
+boundary data.  Aurenhammer takes a supplied polytopal cell
+complex~\cite{Aurenhammer1987}; Hartvigsen takes a tessellation of Euclidean
+space into polyhedra and uses linear programming~\cite{Hartvigsen1992}; and
+Schoenberg, Ferguson, and Li recover generators from segments demarcating cell
+boundaries~\cite{SchoenbergFergusonLi2003}.  In the plane, Alonso Ferrero states
+the generator-recognition problem with the Voronoi edges
+provided~\cite{AlonsoFerrero2011}.  Biedl, Held, and Huber reconstruct from a
+supplied embedded straight-line graph with rays~\cite{BiedlHeldHuber2013}.
+Power-diagram detection and weighted bisector-graph reconstruction similarly
+start from a supplied complex, partition, or geometric graph
+\cite{BorgwardtFrongillo2017,EderEtAl2023}.  The generalized inverse Voronoi
+problem studied by Aloupis et al. permits added edges while retaining the
+original input edges~\cite{AloupisEtAl2013}.
+
+The precise distinction in the present model is that the zero-angle source
+layer and its facet boundaries have already been erased by the raw union.  The
+intrinsic germ skeleton is designed to use only the boundary information that
+survives that erasure.  This comparison is a statement about input hypotheses,
+not a claim that the present result is the first possible treatment of every
+related erased-boundary problem.
+
+\section{Limitations and open problems}
+\label{sec:limitations}
+
+The following questions are not resolved here.
+
+\begin{itemize}
+\item If a core vertex passes, Theorem~\ref{thm:main} does not decide whether
+the datum remains unique or whether an exact ambiguity exists.
+\item The proof is three-dimensional.  Higher-dimensional analogues require a
+new analysis of the boundary-germ strata and candidate types.
+\item The reference implementation assumes an exact polygonal presentation.
+It does not extract such a presentation from a point cloud, floating-point
+mesh, or arbitrary implicit-set oracle.
+\item E-A58 implements the flat reconstruction kernel, not the full six-step
+pipeline or full raw-union certifier.
+\item The finite corpus and deterministic mutation sample do not establish
+novelty, priority, or unrestricted-domain behaviour.
+\end{itemize}
+
+\begingroup
+\small
+\bibliographystyle{plain}
+\bibliography{references}
+\endgroup
+
+\end{document}

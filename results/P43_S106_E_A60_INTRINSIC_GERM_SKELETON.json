@@ -1,0 +1,39 @@
+{
+  "assertions": {
+    "all_rows_reconstruct": true,
+    "all_sampled_maximal_sheet_cross_checks_agree": true,
+    "all_sampled_subdivision_mutations_are_invariant": true,
+    "degenerate_witness_is_subdivision_invariant": true,
+    "degenerate_witness_reconstructs": true,
+    "historical_graph_agrees_on_corpus": true
+  },
+  "canonical_mathematical_payload_sha256": "D18C07176BAF7B729A550E9B9B8B9D9E04BB58A0C52D295243108417C9BE785A",
+  "claim_boundary": {
+    "established": [
+      "the skeleton extractor does not read source kind labels or hidden-cap identities",
+      "the result is invariant under inserted boundary subdivision points on the deterministic mutation sample",
+      "the intrinsic signature reconstructs every corpus row and the S101 witness"
+    ],
+    "excluded": [
+      "a complete implementation from arbitrary point clouds or implicit sets",
+      "a proof that finite replay replaces the intrinsic germ argument",
+      "unrestricted presentation invariance beyond the tested mutation class",
+      "novelty or priority"
+    ]
+  },
+  "definition": "vertices and edges of the non-coplanar crease locus of maximal coplanar exposed boundary sheets, suppressing only collinear degree-two points with unchanged complete incident-sheet carrier germ",
+  "metrics": {
+    "maximal_sheet_cross_checks_agree": 256,
+    "rows_agreeing_with_historical_source_side_graph": 16744,
+    "rows_examined": 16744,
+    "rows_reconstructed_from_intrinsic_germ_skeleton": 16744,
+    "subdivision_mutation_checks": 256,
+    "subdivision_mutation_checks_invariant": 256,
+    "witness_reconstructed": true,
+    "witness_subdivision_invariant": true
+  },
+  "phase": "S106_intrinsic_germ_skeleton",
+  "project": "P43",
+  "schema_version": "P43-E-A60-INTRINSIC-GERM-SKELETON-v2",
+  "status": "pass_exact_observable_skeleton_replay"
+}

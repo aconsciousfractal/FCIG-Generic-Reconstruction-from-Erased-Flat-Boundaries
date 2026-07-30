@@ -1,0 +1,51 @@
+{
+  "algorithm": {
+    "certifying_variant": "rebuild M_J from the output and compare it exactly as a set",
+    "step_1_2": "local-flat components give M_J and the nonflat caps; C030 and C032",
+    "step_3": "one nonflat cap gives the centre; C032",
+    "step_4": "build the source-free intrinsic boundary-germ skeleton from exposed sheets",
+    "step_5": "keep the candidates that pass the intrinsic apex signature",
+    "step_6": "intersect the hinge halfspaces with the bisector halfspaces"
+  },
+  "assertions": {
+    "every_attempted_certification_succeeded": true,
+    "historical_H_is_not_needed_by_the_kernel_on_this_corpus": true,
+    "the_certifying_variant_never_certifies_a_wrong_answer": true,
+    "the_degenerate_witness_is_reconstructed_and_certified": true,
+    "the_flat_kernel_is_correct_on_every_frozen_row": true,
+    "the_intrinsic_candidate_step_and_historical_plane_count_agree_on_this_corpus": true
+  },
+  "canonical_mathematical_payload_sha256": "49A3FDC23406557354FEC8DDA51B4C2BB5CA9D43E11D2793C95034C0BA61FA5C",
+  "claim_boundary": {
+    "established": [
+      "the flat kernel in steps 4 to 6 returns the true sites and core on every frozen corpus row and on the degenerate S101 witness",
+      "the certifying variant certified every attempt and never certified a wrong answer",
+      "the intrinsic candidate set and the historical plane-count shortcut agree on every frozen corpus row"
+    ],
+    "excluded": [
+      "steps 1 to 3, which are proved elsewhere but are not implemented by E-A58",
+      "certification on every row: it is sampled, since an exact set comparison costs pairwise intersection volumes",
+      "any equivalence theorem inferred from the historical plane-count shortcut, or any theorem-level role for historical condition (H)"
+    ]
+  },
+  "metrics": {
+    "certification_attempts": 340,
+    "certified": 340,
+    "correct_when_historical_H_fails": 64,
+    "correct_when_historical_H_holds": 16680,
+    "rows_examined": 16744,
+    "rows_where_historical_H_fails": 64,
+    "rows_where_historical_H_holds": 16680,
+    "rows_where_intrinsic_and_historical_candidate_sets_agree": 16744,
+    "witness_certified": true,
+    "witness_reconstructed_correctly": true,
+    "wrong_and_certified": 0,
+    "wrong_answers": 0
+  },
+  "phase": "S102_E_A58_reference_reconstruction",
+  "project": "P43",
+  "schema_version": "P43-E-A58-REFERENCE-RECONSTRUCTION-v2",
+  "status": "pass_exact_flat_kernel_replay",
+  "wrong_and_certified": [],
+  "wrong_answers": []
+}

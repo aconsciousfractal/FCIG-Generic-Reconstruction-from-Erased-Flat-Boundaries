@@ -1,0 +1,28 @@
+name: verify
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Closed-tree manifest
+        run: python scripts/check_manifest.py --closed-tree
+      - name: Focused tests
+        run: python -m unittest discover -s tests
+      - name: Exact replay
+        run: python scripts/verify_all.py
+      - name: Optimized exact replay
+        run: python -O scripts/verify_all.py
+      - name: Isolated manifest-only replay
+        run: python scripts/verify_manifest_only.py

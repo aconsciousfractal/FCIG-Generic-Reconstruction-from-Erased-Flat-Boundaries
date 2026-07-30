@@ -1,0 +1,3091 @@
+{
+  "adjudication": {
+    "finite_exhaustion": "All labeled simple graphs on six vertices are exhausted; the seven isomorphism classes pass independent face, Euler, automorphism, dual and bidual checks.",
+    "proof_boundary": "This is a complete combinatorial census, not a proper-zero pattern classification or geometric uniqueness theorem for the seven core types."
+  },
+  "arithmetic": "exact finite graph enumeration, all 6! relabelings, peripheral cycle face extraction, automorphism actions and duality",
+  "assertions": {
+    "all_32768_labeled_graphs_are_exhausted": true,
+    "all_type_certificates_pass": true,
+    "exactly_1227_labeled_three_connected_planar_graphs": true,
+    "exactly_seven_unlabeled_types": true,
+    "exactly_two_maximal_planar_seed_types": true,
+    "facet_count_distribution_is_1_2_2_2": true,
+    "four_triangle_two_quadrilateral_type_is_self_dual": true,
+    "maximal_planar_deletion_route_recovers_same_seven_types": true,
+    "octahedron_dual_is_cube": true,
+    "orbit_stabilizer_sum_recovers_labeled_count": true,
+    "pentagonal_pyramid_is_self_dual": true,
+    "triangular_prism_dual_is_triangular_bipyramid": true
+  },
+  "canonical_mathematical_payload_sha256": "23BAB0259DCB468B0A109E2CEC53E8A4AEEE4260FE08234697C4C40B7F939B4B",
+  "experiment": "E-A22",
+  "metrics": {
+    "failed_types": 0,
+    "labeled_simple_graphs_exhausted": 32768,
+    "labeled_three_connected_planar_graphs": 1227,
+    "maximal_planar_seed_types": 2,
+    "self_dual_six_vertex_types": 2,
+    "total_labeled_orbit_sizes": 1227,
+    "types_recovered_by_maximal_planar_edge_deletions": 7,
+    "types_with_eight_facets": 2,
+    "types_with_five_facets": 1,
+    "types_with_seven_facets": 2,
+    "types_with_six_facets": 2,
+    "unlabeled_six_vertex_three_polytope_types": 7
+  },
+  "phase": "1_six_vertex_three_polytope_core_census",
+  "project": "P43",
+  "provenance": {
+    "external_graph_library": null,
+    "python": "3.14.6"
+  },
+  "schema_version": "1.0",
+  "status": "completed_pass_supporting_private_C047",
+  "types": [
+    {
+      "alias": "triangular_prism",
+      "assertions": {
+        "bidual_has_six_vertices": true,
+        "bidual_is_isomorphic_to_primal": true,
+        "dual_automorphism_order_matches": true,
+        "every_edge_has_exactly_two_incident_faces": true,
+        "facet_action_is_faithful": true,
+        "peripheral_faces_satisfy_Euler": true,
+        "planar_by_excluded_minors": true,
+        "three_connected": true
+      },
+      "automorphism_group_order": 12,
+      "canonical_adjacency_mask_15bit": "001101110111100",
+      "canonical_adjacency_mask_decimal": 7100,
+      "degree_sequence": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "dual": {
+        "alias": "triangular_bipyramid",
+        "automorphism_group_order": 12,
+        "canonical_adjacency_mask_decimal": 511,
+        "degree_sequence": [
+          3,
+          3,
+          4,
+          4,
+          4
+        ],
+        "edge_count": 9,
+        "six_vertex_type": null,
+        "vertex_count": 5
+      },
+      "edge_count": 9,
+      "edge_orbits": [
+        [
+          0,
+          1,
+          3,
+          5,
+          7,
+          8
+        ],
+        [
+          2,
+          4,
+          6
+        ]
+      ],
+      "edge_to_facet_incidence": {
+        "0-3": [
+          0,
+          2
+        ],
+        "0-4": [
+          0,
+          3
+        ],
+        "0-5": [
+          2,
+          3
+        ],
+        "1-2": [
+          1,
+          4
+        ],
+        "1-4": [
+          3,
+          4
+        ],
+        "1-5": [
+          1,
+          3
+        ],
+        "2-3": [
+          2,
+          4
+        ],
+        "2-5": [
+          1,
+          2
+        ],
+        "3-4": [
+          0,
+          4
+        ]
+      },
+      "edges": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "facet_automorphisms": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          0,
+          1,
+          3,
+          2,
+          4
+        ],
+        [
+          1,
+          0,
+          4,
+          3,
+          2
+        ],
+        [
+          1,
+          0,
+          3,
+          4,
+          2
+        ],
+        [
+          1,
+          0,
+          4,
+          2,
+          3
+        ],
+        [
+          1,
+          0,
+          2,
+          4,
+          3
+        ],
+        [
+          0,
+          1,
+          2,
+          4,
+          3
+        ],
+        [
+          0,
+          1,
+          4,
+          2,
+          3
+        ],
+        [
+          0,
+          1,
+          3,
+          4,
+          2
+        ],
+        [
+          0,
+          1,
+          4,
+          3,
+          2
+        ],
+        [
+          1,
+          0,
+          3,
+          2,
+          4
+        ],
+        [
+          1,
+          0,
+          2,
+          3,
+          4
+        ]
+      ],
+      "facet_count": 5,
+      "facet_orbits": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "facet_size_sequence": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "facets_cyclic": [
+        [
+          0,
+          3,
+          4
+        ],
+        [
+          1,
+          2,
+          5
+        ],
+        [
+          0,
+          3,
+          2,
+          5
+        ],
+        [
+          0,
+          4,
+          1,
+          5
+        ],
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ],
+      "id": "S6-01",
+      "labeled_graph_orbit_size": 60,
+      "status": "pass",
+      "vertex_automorphisms": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          0,
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        [
+          1,
+          0,
+          3,
+          2,
+          5,
+          4
+        ],
+        [
+          1,
+          3,
+          0,
+          5,
+          2,
+          4
+        ],
+        [
+          2,
+          0,
+          4,
+          1,
+          5,
+          3
+        ],
+        [
+          2,
+          4,
+          0,
+          5,
+          1,
+          3
+        ],
+        [
+          3,
+          1,
+          5,
+          0,
+          4,
+          2
+        ],
+        [
+          3,
+          5,
+          1,
+          4,
+          0,
+          2
+        ],
+        [
+          4,
+          2,
+          5,
+          0,
+          3,
+          1
+        ],
+        [
+          4,
+          5,
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          5,
+          3,
+          4,
+          1,
+          2,
+          0
+        ],
+        [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ]
+      ],
+      "vertex_count": 6,
+      "vertex_orbits": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ]
+    },
+    {
+      "alias": "pentagonal_pyramid",
+      "assertions": {
+        "bidual_has_six_vertices": true,
+        "bidual_is_isomorphic_to_primal": true,
+        "dual_automorphism_order_matches": true,
+        "every_edge_has_exactly_two_incident_faces": true,
+        "facet_action_is_faithful": true,
+        "peripheral_faces_satisfy_Euler": true,
+        "planar_by_excluded_minors": true,
+        "three_connected": true
+      },
+      "automorphism_group_order": 10,
+      "canonical_adjacency_mask_15bit": "001101110011111",
+      "canonical_adjacency_mask_decimal": 7071,
+      "degree_sequence": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        5
+      ],
+      "dual": {
+        "alias": "S6-02",
+        "automorphism_group_order": 10,
+        "canonical_adjacency_mask_decimal": 7071,
+        "degree_sequence": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          5
+        ],
+        "edge_count": 10,
+        "six_vertex_type": "S6-02",
+        "vertex_count": 6
+      },
+      "edge_count": 10,
+      "edge_orbits": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      ],
+      "edge_to_facet_incidence": {
+        "0-1": [
+          0,
+          1
+        ],
+        "0-2": [
+          2,
+          3
+        ],
+        "0-3": [
+          2,
+          4
+        ],
+        "0-4": [
+          0,
+          4
+        ],
+        "0-5": [
+          1,
+          3
+        ],
+        "1-4": [
+          0,
+          5
+        ],
+        "1-5": [
+          1,
+          5
+        ],
+        "2-3": [
+          2,
+          5
+        ],
+        "2-5": [
+          3,
+          5
+        ],
+        "3-4": [
+          4,
+          5
+        ]
+      },
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "facet_automorphisms": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5
+        ],
+        [
+          2,
+          3,
+          0,
+          1,
+          4,
+          5
+        ],
+        [
+          3,
+          2,
+          0,
+          4,
+          1,
+          5
+        ],
+        [
+          2,
+          4,
+          1,
+          0,
+          3,
+          5
+        ],
+        [
+          4,
+          2,
+          1,
+          3,
+          0,
+          5
+        ],
+        [
+          0,
+          4,
+          3,
+          2,
+          1,
+          5
+        ],
+        [
+          4,
+          0,
+          3,
+          1,
+          2,
+          5
+        ],
+        [
+          1,
+          3,
+          4,
+          2,
+          0,
+          5
+        ],
+        [
+          3,
+          1,
+          4,
+          0,
+          2,
+          5
+        ]
+      ],
+      "facet_count": 6,
+      "facet_orbits": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          5
+        ]
+      ],
+      "facet_size_sequence": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        5
+      ],
+      "facets_cyclic": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          0,
+          1,
+          5
+        ],
+        [
+          0,
+          2,
+          3
+        ],
+        [
+          0,
+          2,
+          5
+        ],
+        [
+          0,
+          3,
+          4
+        ],
+        [
+          1,
+          4,
+          3,
+          2,
+          5
+        ]
+      ],
+      "id": "S6-02",
+      "labeled_graph_orbit_size": 72,
+      "status": "pass",
+      "vertex_automorphisms": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          0,
+          1,
+          3,
+          2,
+          5,
+          4
+        ],
+        [
+          0,
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        [
+          0,
+          2,
+          4,
+          1,
+          5,
+          3
+        ],
+        [
+          0,
+          3,
+          1,
+          5,
+          2,
+          4
+        ],
+        [
+          0,
+          3,
+          5,
+          1,
+          4,
+          2
+        ],
+        [
+          0,
+          4,
+          2,
+          5,
+          1,
+          3
+        ],
+        [
+          0,
+          4,
+          5,
+          2,
+          3,
+          1
+        ],
+        [
+          0,
+          5,
+          3,
+          4,
+          1,
+          2
+        ],
+        [
+          0,
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
+      ],
+      "vertex_count": 6,
+      "vertex_orbits": [
+        [
+          0
+        ],
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ]
+    },
+    {
+      "alias": "self_dual_four_triangle_two_quadrilateral",
+      "assertions": {
+        "bidual_has_six_vertices": true,
+        "bidual_is_isomorphic_to_primal": true,
+        "dual_automorphism_order_matches": true,
+        "every_edge_has_exactly_two_incident_faces": true,
+        "facet_action_is_faithful": true,
+        "peripheral_faces_satisfy_Euler": true,
+        "planar_by_excluded_minors": true,
+        "three_connected": true
+      },
+      "automorphism_group_order": 2,
+      "canonical_adjacency_mask_15bit": "001101110111101",
+      "canonical_adjacency_mask_decimal": 7101,
+      "degree_sequence": [
+        3,
+        3,
+        3,
+        3,
+        4,
+        4
+      ],
+      "dual": {
+        "alias": "S6-03",
+        "automorphism_group_order": 2,
+        "canonical_adjacency_mask_decimal": 7101,
+        "degree_sequence": [
+          3,
+          3,
+          3,
+          3,
+          4,
+          4
+        ],
+        "edge_count": 10,
+        "six_vertex_type": "S6-03",
+        "vertex_count": 6
+      },
+      "edge_count": 10,
+      "edge_orbits": [
+        [
+          0
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          7
+        ],
+        [
+          8,
+          9
+        ]
+      ],
+      "edge_to_facet_incidence": {
+        "0-1": [
+          0,
+          1
+        ],
+        "0-3": [
+          2,
+          4
+        ],
+        "0-4": [
+          0,
+          2
+        ],
+        "0-5": [
+          1,
+          4
+        ],
+        "1-2": [
+          3,
+          5
+        ],
+        "1-4": [
+          0,
+          5
+        ],
+        "1-5": [
+          1,
+          3
+        ],
+        "2-3": [
+          4,
+          5
+        ],
+        "2-5": [
+          3,
+          4
+        ],
+        "3-4": [
+          2,
+          5
+        ]
+      },
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "facet_automorphisms": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          1,
+          0,
+          3,
+          2,
+          5,
+          4
+        ]
+      ],
+      "facet_count": 6,
+      "facet_orbits": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "facet_size_sequence": [
+        3,
+        3,
+        3,
+        3,
+        4,
+        4
+      ],
+      "facets_cyclic": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          0,
+          1,
+          5
+        ],
+        [
+          0,
+          3,
+          4
+        ],
+        [
+          1,
+          2,
+          5
+        ],
+        [
+          0,
+          3,
+          2,
+          5
+        ],
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ],
+      "id": "S6-03",
+      "labeled_graph_orbit_size": 360,
+      "status": "pass",
+      "vertex_automorphisms": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          1,
+          0,
+          3,
+          2,
+          5,
+          4
+        ]
+      ],
+      "vertex_count": 6,
+      "vertex_orbits": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ]
+      ]
+    },
+    {
+      "alias": "one_quadrilateral_degree_333445",
+      "assertions": {
+        "bidual_has_six_vertices": true,
+        "bidual_is_isomorphic_to_primal": true,
+        "dual_automorphism_order_matches": true,
+        "every_edge_has_exactly_two_incident_faces": true,
+        "facet_action_is_faithful": true,
+        "peripheral_faces_satisfy_Euler": true,
+        "planar_by_excluded_minors": true,
+        "three_connected": true
+      },
+      "automorphism_group_order": 2,
+      "canonical_adjacency_mask_15bit": "001101110111111",
+      "canonical_adjacency_mask_decimal": 7103,
+      "degree_sequence": [
+        3,
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "dual": {
+        "alias": "seven_vertex_dual_of_one_quadrilateral_degree_333445",
+        "automorphism_group_order": 2,
+        "canonical_adjacency_mask_decimal": 120444,
+        "degree_sequence": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4
+        ],
+        "edge_count": 11,
+        "six_vertex_type": null,
+        "vertex_count": 7
+      },
+      "edge_count": 11,
+      "edge_orbits": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          10
+        ]
+      ],
+      "edge_to_facet_incidence": {
+        "0-1": [
+          0,
+          1
+        ],
+        "0-2": [
+          2,
+          3
+        ],
+        "0-3": [
+          2,
+          4
+        ],
+        "0-4": [
+          0,
+          4
+        ],
+        "0-5": [
+          1,
+          3
+        ],
+        "1-2": [
+          5,
+          6
+        ],
+        "1-4": [
+          0,
+          6
+        ],
+        "1-5": [
+          1,
+          5
+        ],
+        "2-3": [
+          2,
+          6
+        ],
+        "2-5": [
+          3,
+          5
+        ],
+        "3-4": [
+          4,
+          6
+        ]
+      },
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "facet_automorphisms": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        [
+          2,
+          3,
+          0,
+          1,
+          4,
+          5,
+          6
+        ]
+      ],
+      "facet_count": 7,
+      "facet_orbits": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ],
+        [
+          6
+        ]
+      ],
+      "facet_size_sequence": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        4
+      ],
+      "facets_cyclic": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          0,
+          1,
+          5
+        ],
+        [
+          0,
+          2,
+          3
+        ],
+        [
+          0,
+          2,
+          5
+        ],
+        [
+          0,
+          3,
+          4
+        ],
+        [
+          1,
+          2,
+          5
+        ],
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ],
+      "id": "S6-04",
+      "labeled_graph_orbit_size": 360,
+      "status": "pass",
+      "vertex_automorphisms": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          0,
+          2,
+          1,
+          4,
+          3,
+          5
+        ]
+      ],
+      "vertex_count": 6,
+      "vertex_orbits": [
+        [
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          5
+        ]
+      ]
+    },
+    {
+      "alias": "one_quadrilateral_degree_334444",
+      "assertions": {
+        "bidual_has_six_vertices": true,
+        "bidual_is_isomorphic_to_primal": true,
+        "dual_automorphism_order_matches": true,
+        "every_edge_has_exactly_two_incident_faces": true,
+        "facet_action_is_faithful": true,
+        "peripheral_faces_satisfy_Euler": true,
+        "planar_by_excluded_minors": true,
+        "three_connected": true
+      },
+      "automorphism_group_order": 4,
+      "canonical_adjacency_mask_15bit": "001101111111110",
+      "canonical_adjacency_mask_decimal": 7166,
+      "degree_sequence": [
+        3,
+        3,
+        4,
+        4,
+        4,
+        4
+      ],
+      "dual": {
+        "alias": "seven_vertex_dual_of_one_quadrilateral_degree_334444",
+        "automorphism_group_order": 4,
+        "canonical_adjacency_mask_decimal": 120568,
+        "degree_sequence": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4
+        ],
+        "edge_count": 11,
+        "six_vertex_type": null,
+        "vertex_count": 7
+      },
+      "edge_count": 11,
+      "edge_orbits": [
+        [
+          0,
+          1,
+          4,
+          5
+        ],
+        [
+          2,
+          3,
+          6,
+          7
+        ],
+        [
+          8
+        ],
+        [
+          9,
+          10
+        ]
+      ],
+      "edge_to_facet_incidence": {
+        "0-2": [
+          0,
+          1
+        ],
+        "0-3": [
+          0,
+          2
+        ],
+        "0-4": [
+          2,
+          6
+        ],
+        "0-5": [
+          1,
+          6
+        ],
+        "1-2": [
+          3,
+          4
+        ],
+        "1-3": [
+          3,
+          5
+        ],
+        "1-4": [
+          5,
+          6
+        ],
+        "1-5": [
+          4,
+          6
+        ],
+        "2-3": [
+          0,
+          3
+        ],
+        "2-5": [
+          1,
+          4
+        ],
+        "3-4": [
+          2,
+          5
+        ]
+      },
+      "edges": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "facet_automorphisms": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        [
+          0,
+          2,
+          1,
+          3,
+          5,
+          4,
+          6
+        ],
+        [
+          3,
+          4,
+          5,
+          0,
+          1,
+          2,
+          6
+        ],
+        [
+          3,
+          5,
+          4,
+          0,
+          2,
+          1,
+          6
+        ]
+      ],
+      "facet_count": 7,
+      "facet_orbits": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2,
+          4,
+          5
+        ],
+        [
+          6
+        ]
+      ],
+      "facet_size_sequence": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        4
+      ],
+      "facets_cyclic": [
+        [
+          0,
+          2,
+          3
+        ],
+        [
+          0,
+          2,
+          5
+        ],
+        [
+          0,
+          3,
+          4
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          2,
+          5
+        ],
+        [
+          1,
+          3,
+          4
+        ],
+        [
+          0,
+          4,
+          1,
+          5
+        ]
+      ],
+      "id": "S6-05",
+      "labeled_graph_orbit_size": 180,
+      "status": "pass",
+      "vertex_automorphisms": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          0,
+          1,
+          3,
+          2,
+          5,
+          4
+        ],
+        [
+          1,
+          0,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          1,
+          0,
+          3,
+          2,
+          5,
+          4
+        ]
+      ],
+      "vertex_count": 6,
+      "vertex_orbits": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ]
+      ]
+    },
+    {
+      "alias": "stacked_simplicial_non_octahedral",
+      "assertions": {
+        "bidual_has_six_vertices": true,
+        "bidual_is_isomorphic_to_primal": true,
+        "dual_automorphism_order_matches": true,
+        "every_edge_has_exactly_two_incident_faces": true,
+        "facet_action_is_faithful": true,
+        "peripheral_faces_satisfy_Euler": true,
+        "planar_by_excluded_minors": true,
+        "three_connected": true
+      },
+      "automorphism_group_order": 4,
+      "canonical_adjacency_mask_15bit": "001101111111111",
+      "canonical_adjacency_mask_decimal": 7167,
+      "degree_sequence": [
+        3,
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "dual": {
+        "alias": "simple_eight_vertex_dual_of_stacked_simplicial_six_vertex",
+        "automorphism_group_order": 4,
+        "canonical_adjacency_mask_decimal": 5691760,
+        "degree_sequence": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "edge_count": 12,
+        "six_vertex_type": null,
+        "vertex_count": 8
+      },
+      "edge_count": 12,
+      "edge_orbits": [
+        [
+          0
+        ],
+        [
+          1,
+          2,
+          5,
+          6
+        ],
+        [
+          3,
+          4,
+          7,
+          8
+        ],
+        [
+          9
+        ],
+        [
+          10,
+          11
+        ]
+      ],
+      "edge_to_facet_incidence": {
+        "0-1": [
+          0,
+          1
+        ],
+        "0-2": [
+          2,
+          3
+        ],
+        "0-3": [
+          2,
+          4
+        ],
+        "0-4": [
+          0,
+          4
+        ],
+        "0-5": [
+          1,
+          3
+        ],
+        "1-2": [
+          5,
+          6
+        ],
+        "1-3": [
+          5,
+          7
+        ],
+        "1-4": [
+          0,
+          7
+        ],
+        "1-5": [
+          1,
+          6
+        ],
+        "2-3": [
+          2,
+          5
+        ],
+        "2-5": [
+          3,
+          6
+        ],
+        "3-4": [
+          4,
+          7
+        ]
+      },
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "facet_automorphisms": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          7,
+          6
+        ],
+        [
+          0,
+          1,
+          5,
+          6,
+          7,
+          2,
+          3,
+          4
+        ],
+        [
+          1,
+          0,
+          5,
+          7,
+          6,
+          2,
+          4,
+          3
+        ]
+      ],
+      "facet_count": 8,
+      "facet_orbits": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4,
+          6,
+          7
+        ]
+      ],
+      "facet_size_sequence": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "facets_cyclic": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          0,
+          1,
+          5
+        ],
+        [
+          0,
+          2,
+          3
+        ],
+        [
+          0,
+          2,
+          5
+        ],
+        [
+          0,
+          3,
+          4
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          2,
+          5
+        ],
+        [
+          1,
+          3,
+          4
+        ]
+      ],
+      "id": "S6-06",
+      "labeled_graph_orbit_size": 180,
+      "status": "pass",
+      "vertex_automorphisms": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          0,
+          1,
+          3,
+          2,
+          5,
+          4
+        ],
+        [
+          1,
+          0,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          1,
+          0,
+          3,
+          2,
+          5,
+          4
+        ]
+      ],
+      "vertex_count": 6,
+      "vertex_orbits": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ]
+      ]
+    },
+    {
+      "alias": "octahedron",
+      "assertions": {
+        "bidual_has_six_vertices": true,
+        "bidual_is_isomorphic_to_primal": true,
+        "dual_automorphism_order_matches": true,
+        "every_edge_has_exactly_two_incident_faces": true,
+        "facet_action_is_faithful": true,
+        "peripheral_faces_satisfy_Euler": true,
+        "planar_by_excluded_minors": true,
+        "three_connected": true
+      },
+      "automorphism_group_order": 48,
+      "canonical_adjacency_mask_15bit": "011110111111110",
+      "canonical_adjacency_mask_decimal": 15870,
+      "degree_sequence": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "dual": {
+        "alias": "cube",
+        "automorphism_group_order": 48,
+        "canonical_adjacency_mask_decimal": 2022000,
+        "degree_sequence": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "edge_count": 12,
+        "six_vertex_type": null,
+        "vertex_count": 8
+      },
+      "edge_count": 12,
+      "edge_orbits": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      ],
+      "edge_to_facet_incidence": {
+        "0-2": [
+          0,
+          1
+        ],
+        "0-3": [
+          2,
+          3
+        ],
+        "0-4": [
+          0,
+          2
+        ],
+        "0-5": [
+          1,
+          3
+        ],
+        "1-2": [
+          4,
+          5
+        ],
+        "1-3": [
+          6,
+          7
+        ],
+        "1-4": [
+          4,
+          6
+        ],
+        "1-5": [
+          5,
+          7
+        ],
+        "2-4": [
+          0,
+          4
+        ],
+        "2-5": [
+          1,
+          5
+        ],
+        "3-4": [
+          2,
+          6
+        ],
+        "3-5": [
+          3,
+          7
+        ]
+      },
+      "edges": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "facet_automorphisms": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          1,
+          0,
+          3,
+          2,
+          5,
+          4,
+          7,
+          6
+        ],
+        [
+          2,
+          3,
+          0,
+          1,
+          6,
+          7,
+          4,
+          5
+        ],
+        [
+          3,
+          2,
+          1,
+          0,
+          7,
+          6,
+          5,
+          4
+        ],
+        [
+          0,
+          2,
+          1,
+          3,
+          4,
+          6,
+          5,
+          7
+        ],
+        [
+          2,
+          0,
+          3,
+          1,
+          6,
+          4,
+          7,
+          5
+        ],
+        [
+          1,
+          3,
+          0,
+          2,
+          5,
+          7,
+          4,
+          6
+        ],
+        [
+          3,
+          1,
+          2,
+          0,
+          7,
+          5,
+          6,
+          4
+        ],
+        [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          5,
+          4,
+          7,
+          6,
+          1,
+          0,
+          3,
+          2
+        ],
+        [
+          6,
+          7,
+          4,
+          5,
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          6,
+          5,
+          7,
+          0,
+          2,
+          1,
+          3
+        ],
+        [
+          6,
+          4,
+          7,
+          5,
+          2,
+          0,
+          3,
+          1
+        ],
+        [
+          5,
+          7,
+          4,
+          6,
+          1,
+          3,
+          0,
+          2
+        ],
+        [
+          7,
+          5,
+          6,
+          4,
+          3,
+          1,
+          2,
+          0
+        ],
+        [
+          0,
+          1,
+          4,
+          5,
+          2,
+          3,
+          6,
+          7
+        ],
+        [
+          1,
+          0,
+          5,
+          4,
+          3,
+          2,
+          7,
+          6
+        ],
+        [
+          4,
+          5,
+          0,
+          1,
+          6,
+          7,
+          2,
+          3
+        ],
+        [
+          5,
+          4,
+          1,
+          0,
+          7,
+          6,
+          3,
+          2
+        ],
+        [
+          0,
+          4,
+          1,
+          5,
+          2,
+          6,
+          3,
+          7
+        ],
+        [
+          4,
+          0,
+          5,
+          1,
+          6,
+          2,
+          7,
+          3
+        ],
+        [
+          1,
+          5,
+          0,
+          4,
+          3,
+          7,
+          2,
+          6
+        ],
+        [
+          5,
+          1,
+          4,
+          0,
+          7,
+          3,
+          6,
+          2
+        ],
+        [
+          2,
+          3,
+          6,
+          7,
+          0,
+          1,
+          4,
+          5
+        ],
+        [
+          3,
+          2,
+          7,
+          6,
+          1,
+          0,
+          5,
+          4
+        ],
+        [
+          6,
+          7,
+          2,
+          3,
+          4,
+          5,
+          0,
+          1
+        ],
+        [
+          7,
+          6,
+          3,
+          2,
+          5,
+          4,
+          1,
+          0
+        ],
+        [
+          2,
+          6,
+          3,
+          7,
+          0,
+          4,
+          1,
+          5
+        ],
+        [
+          6,
+          2,
+          7,
+          3,
+          4,
+          0,
+          5,
+          1
+        ],
+        [
+          3,
+          7,
+          2,
+          6,
+          1,
+          5,
+          0,
+          4
+        ],
+        [
+          7,
+          3,
+          6,
+          2,
+          5,
+          1,
+          4,
+          0
+        ],
+        [
+          0,
+          2,
+          4,
+          6,
+          1,
+          3,
+          5,
+          7
+        ],
+        [
+          2,
+          0,
+          6,
+          4,
+          3,
+          1,
+          7,
+          5
+        ],
+        [
+          4,
+          6,
+          0,
+          2,
+          5,
+          7,
+          1,
+          3
+        ],
+        [
+          6,
+          4,
+          2,
+          0,
+          7,
+          5,
+          3,
+          1
+        ],
+        [
+          0,
+          4,
+          2,
+          6,
+          1,
+          5,
+          3,
+          7
+        ],
+        [
+          4,
+          0,
+          6,
+          2,
+          5,
+          1,
+          7,
+          3
+        ],
+        [
+          2,
+          6,
+          0,
+          4,
+          3,
+          7,
+          1,
+          5
+        ],
+        [
+          6,
+          2,
+          4,
+          0,
+          7,
+          3,
+          5,
+          1
+        ],
+        [
+          1,
+          3,
+          5,
+          7,
+          0,
+          2,
+          4,
+          6
+        ],
+        [
+          3,
+          1,
+          7,
+          5,
+          2,
+          0,
+          6,
+          4
+        ],
+        [
+          5,
+          7,
+          1,
+          3,
+          4,
+          6,
+          0,
+          2
+        ],
+        [
+          7,
+          5,
+          3,
+          1,
+          6,
+          4,
+          2,
+          0
+        ],
+        [
+          1,
+          5,
+          3,
+          7,
+          0,
+          4,
+          2,
+          6
+        ],
+        [
+          5,
+          1,
+          7,
+          3,
+          4,
+          0,
+          6,
+          2
+        ],
+        [
+          3,
+          7,
+          1,
+          5,
+          2,
+          6,
+          0,
+          4
+        ],
+        [
+          7,
+          3,
+          5,
+          1,
+          6,
+          2,
+          4,
+          0
+        ]
+      ],
+      "facet_count": 8,
+      "facet_orbits": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      ],
+      "facet_size_sequence": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "facets_cyclic": [
+        [
+          0,
+          2,
+          4
+        ],
+        [
+          0,
+          2,
+          5
+        ],
+        [
+          0,
+          3,
+          4
+        ],
+        [
+          0,
+          3,
+          5
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          5
+        ],
+        [
+          1,
+          3,
+          4
+        ],
+        [
+          1,
+          3,
+          5
+        ]
+      ],
+      "id": "S6-07",
+      "labeled_graph_orbit_size": 15,
+      "status": "pass",
+      "vertex_automorphisms": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          0,
+          1,
+          2,
+          3,
+          5,
+          4
+        ],
+        [
+          0,
+          1,
+          3,
+          2,
+          4,
+          5
+        ],
+        [
+          0,
+          1,
+          3,
+          2,
+          5,
+          4
+        ],
+        [
+          0,
+          1,
+          4,
+          5,
+          2,
+          3
+        ],
+        [
+          0,
+          1,
+          4,
+          5,
+          3,
+          2
+        ],
+        [
+          0,
+          1,
+          5,
+          4,
+          2,
+          3
+        ],
+        [
+          0,
+          1,
+          5,
+          4,
+          3,
+          2
+        ],
+        [
+          1,
+          0,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          1,
+          0,
+          2,
+          3,
+          5,
+          4
+        ],
+        [
+          1,
+          0,
+          3,
+          2,
+          4,
+          5
+        ],
+        [
+          1,
+          0,
+          3,
+          2,
+          5,
+          4
+        ],
+        [
+          1,
+          0,
+          4,
+          5,
+          2,
+          3
+        ],
+        [
+          1,
+          0,
+          4,
+          5,
+          3,
+          2
+        ],
+        [
+          1,
+          0,
+          5,
+          4,
+          2,
+          3
+        ],
+        [
+          1,
+          0,
+          5,
+          4,
+          3,
+          2
+        ],
+        [
+          2,
+          3,
+          0,
+          1,
+          4,
+          5
+        ],
+        [
+          2,
+          3,
+          0,
+          1,
+          5,
+          4
+        ],
+        [
+          2,
+          3,
+          1,
+          0,
+          4,
+          5
+        ],
+        [
+          2,
+          3,
+          1,
+          0,
+          5,
+          4
+        ],
+        [
+          2,
+          3,
+          4,
+          5,
+          0,
+          1
+        ],
+        [
+          2,
+          3,
+          4,
+          5,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          5,
+          4,
+          0,
+          1
+        ],
+        [
+          2,
+          3,
+          5,
+          4,
+          1,
+          0
+        ],
+        [
+          3,
+          2,
+          0,
+          1,
+          4,
+          5
+        ],
+        [
+          3,
+          2,
+          0,
+          1,
+          5,
+          4
+        ],
+        [
+          3,
+          2,
+          1,
+          0,
+          4,
+          5
+        ],
+        [
+          3,
+          2,
+          1,
+          0,
+          5,
+          4
+        ],
+        [
+          3,
+          2,
+          4,
+          5,
+          0,
+          1
+        ],
+        [
+          3,
+          2,
+          4,
+          5,
+          1,
+          0
+        ],
+        [
+          3,
+          2,
+          5,
+          4,
+          0,
+          1
+        ],
+        [
+          3,
+          2,
+          5,
+          4,
+          1,
+          0
+        ],
+        [
+          4,
+          5,
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          0,
+          1,
+          3,
+          2
+        ],
+        [
+          4,
+          5,
+          1,
+          0,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          1,
+          0,
+          3,
+          2
+        ],
+        [
+          4,
+          5,
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          4,
+          5,
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          4,
+          5,
+          3,
+          2,
+          0,
+          1
+        ],
+        [
+          4,
+          5,
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          5,
+          4,
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          5,
+          4,
+          0,
+          1,
+          3,
+          2
+        ],
+        [
+          5,
+          4,
+          1,
+          0,
+          2,
+          3
+        ],
+        [
+          5,
+          4,
+          1,
+          0,
+          3,
+          2
+        ],
+        [
+          5,
+          4,
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          5,
+          4,
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          5,
+          4,
+          3,
+          2,
+          0,
+          1
+        ],
+        [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ]
+      ],
+      "vertex_count": 6,
+      "vertex_orbits": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ]
+    }
+  ]
+}
