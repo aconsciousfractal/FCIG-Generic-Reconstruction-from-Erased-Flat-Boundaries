@@ -1,5 +1,13 @@
 # Red-team report
 
+Scope: the P43 public companion package and its manuscript.  Maintained by
+the P43 project through three adversarial waves (internal S105--S107 release
+audit; external manuscript audit with internal adjudication, 2026-07-31;
+external release audit with internal adjudication, 2026-07-31, on the tree
+whose parent is the S108 candidate).  Enumeration and mutation checks quoted
+below were executed during the audits; the enumeration scripts are audit
+tooling and are not part of this package.
+
 ## Outcome
 
 The release candidate passed only after repairing multiple claim-critical
@@ -16,7 +24,7 @@ revision:
 
 | Finding | Severity | Disposition |
 |---|---|---|
-| the exchange-graph planarity proof rested on star-shapedness of the merged component, which is false in general (explicit obtuse-prism witness; the segment from the centre to a flat apex can leave the component) | high | the topological route was withdrawn entirely; the bound now uses a two-common-neighbours lemma (two distinct bisector planes meet a sphere in at most two points) and an incidence count, brute-force-validated over all relevant bipartite graphs |
+| the exchange-graph planarity proof rested on star-shapedness of the merged component, which is false in general (explicit obtuse-prism witness; the segment from the centre to a flat apex can leave the component) | high | the topological route was withdrawn entirely; the bound now uses a two-common-neighbours lemma (two distinct bisector planes meet a sphere in at most two points) and an incidence count, validated during the audits by exhaustive enumeration of the relevant bipartite graphs |
 | the k^3 halfspace-kernel cost was still understated | high | corrected to k^4 in paper and claim ledger |
 | the certifier at exceptional centres accepted a wrong reconstruction under the flat-only comparison | high | two-condition certifier shipped (E-A58 v3); necessity of each condition is witnessed (E-A61, E-A63) and unit-tested |
 | stale payload pins and citation-name drift | high | payloads realigned to the v3/realigned receipts; author names corrected against the source lock |
@@ -24,6 +32,26 @@ revision:
 The four certificate identities of Theorem 7.6, the endgame, the payload
 reproduction and a proof-must-fail control at distance one third were
 re-derived from scratch by the external wave and again by the adjudication.
+
+## Third wave: the release candidate
+
+The committed candidate went through an external release audit followed by an
+internal adjudication that re-verified every finding.  The audit re-expanded
+the certificates from the shipped bytes, re-derived the endgame, recomputed
+all manifest entries and attestation pins, enumerated the counting lemma's
+graph classes independently, and confirmed the earlier layout and
+`k^4` corrections.  Findings, all repaired in this tree:
+
+| Finding | Severity | Disposition |
+|---|---|---|
+| the certificate verifier closed on bare `assert` statements, which `python -O` strips: under the documented optimized replay a tampered certificate re-derivation would not fail the run (byte tampering was still caught by hash pins; the lost protection was recomputation against environment drift) | blocker | asserts replaced by hard failures that survive `-O`; a SymPy version gate added; regression-tested by tampering a cofactor on a copy under `-O`, which now exits nonzero |
+| one block of the public source lock still pinned the superseded E-A58 v2 schema and payload | blocker | realigned to v3 with the v2 value kept as history; all five payloads now listed |
+| four classical comparators entered the related-work section with theorem-level characterisations although their primary texts are unread | blocker | the four sentences weakened to subject-matter level; the prior-art table now marks them "primaries not read, no theorem-level import" |
+| the public claim rows lacked registry identities; three backing claims were still at proof-obligation level and the cost bound had no claim | blocker | claim rows now cite their internal ids and levels; the backing claims were promoted by the maintainer after verification; the `k^4` bound is registered |
+| only one direction of the certifier-necessity claim was unit-tested: forcing the flat-only comparison to `True` left the suite green | blocker | a reversed-family test added; the suite now kills that mutation |
+| the git history carried a personal author email while the paper deliberately uses a noreply address | high | history rewritten to the noreply identity and old objects purged before any remote exists |
+| no script verified the attestation, so the trust chain ended at internal consistency | high | `check_attestation.py` added and wired into the documented gates and CI |
+| replay scripts overwrite frozen receipts when run without `--verify-existing` | high | documented prominently in the reproduction guide; the manifest and attestation gates fail closed on any such pollution, and version control restores the tree |
 
 ## Material findings and disposition
 

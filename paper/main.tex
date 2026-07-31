@@ -69,9 +69,10 @@ certificate identities that are re-verified by exact expansion, together with
 an elementary positivity analysis.
 
 We also give an exact rational reference algorithm, a certifying variant
-whose two comparison conditions are each provably necessary, and a complete
-16,744-instance finite replay.  The finite replay supports the
-implementation; it is not used as the proof.
+whose two comparison conditions are each provably necessary, and a
+16,744-instance finite replay: reconstruction on every instance, exact
+certification on a deterministic 340-instance sample.  The finite replay
+supports the implementation; it is not used as the proof.
 \end{abstract}
 
 \maketitle
@@ -939,15 +940,14 @@ reconstruction is noise-sensitive~\cite{BourneEtAl2021NDT}.  These are
 partial- and indirect-data comparators, but their observables are respectively
 global labelled cell moments and travel times, not a reflected-cap raw union.
 
-Three further classical theories are sometimes suggested as antecedents and
-are not.  Alexandrov's theory determines a convex polyhedron from its
-intrinsic surface metric, which is blind to the fold structure of a flat
-doubly covered region --- exactly the information at issue
-here~\cite{Alexandrov2005}.  The Blind--Mani theorem, with Kalai's proof,
-reconstructs a simple polytope from its graph, with combinatorial input and
-output~\cite{BlindMani1987,Kalai1988}.  Geometric tomography reconstructs
-bodies from projections or sections, and the reflected-cap raw union is
-neither~\cite{Gardner2006}.
+Three further classical theories are sometimes suggested as antecedents.
+They concern different observables: the theory of convex polyhedra from
+intrinsic surface data~\cite{Alexandrov2005}, the reconstruction of a simple
+polytope from its graph~\cite{BlindMani1987,Kalai1988}, and geometric
+tomography, which works from lower-dimensional data such as projections and
+sections~\cite{Gardner2006}.  None of these takes the reflected-cap raw union
+as its input, and no comparison beyond that input-model distinction is made
+here.
 
 The precise distinction in the present model is that the zero-angle source
 layer and its facet boundaries have already been erased by the raw union.  The

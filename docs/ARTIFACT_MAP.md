@@ -17,7 +17,8 @@
 | Certificate provenance (search/control drivers, computed bases) | <code>certificates/*.sing</code>, <code>certificates/*_SATURATED_GB_*.txt</code> (not proof dependencies) |
 | Focused controls | <code>tests/test_public_kernel.py</code> |
 | One-command replay | <code>scripts/verify_all.py</code> |
-| Integrity/isolated gates | <code>scripts/check_manifest.py</code>, <code>scripts/verify_manifest_only.py</code> |
+| Integrity/isolated gates | <code>scripts/check_manifest.py</code>, <code>scripts/check_attestation.py</code>, <code>scripts/verify_manifest_only.py</code> |
+| Library modules imported by the replay whose own historical receipts are not shipped (not directly executable here) | <code>p43_s100_e_a56...</code>, <code>p43_s101_e_a57...</code>, <code>p43_s97_e_a50...</code>, <code>p43_s91_e_a44/45...</code> |
 | Claims and exclusions | <code>docs/CLAIM_LEDGER.md</code>, <code>docs/PUBLIC_CLAIM_BOUNDARY.md</code> |
 | Prior art and sources | <code>docs/SOURCE_LOCK.md</code>, <code>docs/PRIOR_ART.md</code> |
 | Adversarial audit | <code>docs/RED_TEAM_REPORT.md</code> |

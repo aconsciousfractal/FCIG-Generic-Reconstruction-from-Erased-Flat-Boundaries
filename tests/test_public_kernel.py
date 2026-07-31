@@ -17,6 +17,7 @@ import p43_s90_e_a43c_six_vertex_c033_fiber_census as CEN
 import p43_s102_e_a58_reference_reconstruction as ALG
 import p43_s106_e_a60_intrinsic_germ_skeleton as GERM
 import p43_s109_e_a61_exceptional_centre_witness as EXC
+import p43_s111_e_a63_volume_branch_witness as REV
 
 
 class ObservableSkeleton(unittest.TestCase):
@@ -135,6 +136,20 @@ class CertifierNecessity(unittest.TestCase):
         self.assertTrue(record["flat_component_only_certifier_accepts"])
         self.assertFalse(record["recovered_hinge_facets_survive"])
         self.assertFalse(record["current_kernel_certifier_accepts"])
+
+    def test_hinge_condition_alone_accepts_and_two_condition_rejects_on_the_reversed_family(self):
+        """On the reversed witness family the hinge facets survive while the
+        flat components differ, so the flat comparison must return False here.
+        Together with the previous test this pins both directions of the
+        necessity claim: a mutation forcing either condition to a constant
+        breaks one of the two tests."""
+        record = REV.inspect(1)
+        self.assertIsNotNone(record)
+        self.assertTrue(record["core_vertex_passes"])
+        self.assertFalse(record["passing_vertex_touches_a_visible_hinge"])
+        self.assertTrue(record["hinge_facets_survive"])
+        self.assertFalse(record["flat_component_matches"])
+        self.assertFalse(record["repaired_certifier_accepts"])
 
 
 if __name__ == "__main__":

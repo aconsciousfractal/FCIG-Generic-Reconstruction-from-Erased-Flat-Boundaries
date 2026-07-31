@@ -48,6 +48,9 @@ elementary positivity analysis.
 
 ## Evidence boundary
 
+- The frozen corpus is the complete six-vertex census: 35 exactly
+  constructed rational realizations of the seven six-vertex core types, four
+  interior centres each, all visible-facet masks — 16,744 rows.
 - E-A60 reconstructs all 16,744 rows in the frozen exact-rational corpus,
   checks 256 boundary-subdivision mutations (a deterministic corpus prefix),
   256 independent maximal-sheet extractions, and the swallowed-corner witness.
@@ -81,6 +84,7 @@ python scripts/check_manifest.py --closed-tree
 python -m unittest discover -s tests
 python scripts/verify_all.py
 python -O scripts/verify_all.py
+python scripts/check_attestation.py
 python scripts/verify_manifest_only.py
 ~~~
 

@@ -21,6 +21,7 @@ recovery. The public package claims no industrial deployment.
    python -m unittest discover -s tests
    python scripts/verify_all.py
    python -O scripts/verify_all.py
+   python scripts/check_attestation.py
    python scripts/verify_manifest_only.py
    ~~~
 
@@ -46,7 +47,7 @@ recovery. The public package claims no industrial deployment.
 
 | Artifact | Direct conclusion | Boundary |
 |---|---|---|
-| E-A60 | source-kind fields ignored; 16,744 reconstructions; mutation and independent-extractor controls | frozen rational corpus; the 256 mutation/extractor checks are a deterministic corpus prefix |
+| E-A60 | source-kind fields ignored; 16,744 reconstructions; mutation and independent-extractor controls | frozen rational corpus (the complete six-vertex census); the 256 mutation/extractor checks are a deterministic corpus prefix |
 | E-A58 | exact steps-4-to-6 flat reconstruction; 340 exact two-condition certifications | not steps 1 to 3 and not a full raw-union certifier; completeness of the two conditions not claimed |
 | E-A61 | six exact exceptional-centre witnesses: flat-only accepts a strict superset, two-condition rejects | constructed witnesses, not the exceptional locus |
 | E-A63 | three reversed witnesses: hinges survive, flat comparison fails | same |
@@ -64,10 +65,15 @@ shortcut is regression evidence only, not a general equivalence theorem.
 3. Run <code>python scripts/p43_s122_e_a69_branch3_exact_closure.py --verify-existing</code>:
    it re-derives the polynomials from the Gram matrix, expands each identity to
    the zero polynomial in exact rational arithmetic, re-runs the elementary
-   endgame, and re-checks the standing positive controls (the regular
-   tetrahedron at distance one third must remain a solution).
-4. The Groebner search that found the cofactors (Singular 4.3.2, drivers under
-   <code>certificates/</code>) is provenance, not a proof dependency.
+   endgame, and re-checks the executable positive controls: the regular
+   tetrahedron solves the distance-one-third system exactly, and an isosceles
+   witness solves the system at its own ratio.  The further ideal-level
+   control quoted in Remark 7.7 (the regular point surviving the saturation)
+   was run in the archived Singular drivers, which are provenance rather than
+   an executable gate here.
+4. Run <code>python scripts/check_attestation.py</code> to anchor the manifest,
+   the PDF, the regenerated receipt and the certificate files against
+   <code>RELEASE_ATTESTATION.json</code>.
 
 ## Claims deliberately absent
 

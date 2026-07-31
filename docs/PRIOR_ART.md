@@ -19,9 +19,17 @@ or geometric partition.
 | Borgwardt--Frongillo | polyhedral complex | power-diagram comparator |
 | Eder et al. | planar partition or bisector graph | weighted/bisector comparator |
 | Aloupis et al. | planar tessellation whose original edges remain | generalized inverse comparator |
+| Bourne--Pearce--Roper | labelled Laguerre cell volumes and centroids | partial-data comparator (moment inversion) |
+| Bourne--Mulholland--Sahu--Tant | ultrasonic boundary travel times | indirect-data comparator (simplified NDT model) |
+| Alexandrov | intrinsic surface data of convex polyhedra | subject-matter comparator; primary not read, no theorem-level import |
+| Blind--Mani, Kalai | graph of a simple polytope | subject-matter comparator; primaries not read, no theorem-level import |
+| Gardner | projections and sections (geometric tomography) | subject-matter comparator; primary not read, no theorem-level import |
 
 ## Locked conclusion
 
-The manuscript may say that these cited methods begin with more explicit
-boundary structure than the erased-flat-boundary datum considered here. It may
-not convert that scoped comparison into a claim of novelty or priority.
+The manuscript may say that these cited methods begin with more explicit or
+differently structured input than the erased-flat-boundary datum considered
+here, and nothing more.  For the last three rows the manuscript names the
+subject matter only, makes no claim about the content of the primary texts,
+and rests no proof on them.  None of this converts into a claim of novelty or
+priority.

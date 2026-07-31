@@ -10,12 +10,12 @@ permissions:
 jobs:
   exact-replay:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 300
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.14"
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Closed-tree manifest
@@ -26,5 +26,7 @@ jobs:
         run: python scripts/verify_all.py
       - name: Optimized exact replay
         run: python -O scripts/verify_all.py
+      - name: Attestation anchor
+        run: python scripts/check_attestation.py
       - name: Isolated manifest-only replay
         run: python scripts/verify_manifest_only.py

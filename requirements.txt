@@ -1,3 +1,5 @@
 # Exact replay dependencies.
-# SymPy is used only by the E-A69 certificate verification (exact expansion).
+# SymPy is used only by the E-A69 certificate verification (exact expansion);
+# mpmath is its arithmetic backend and is pinned for reproducibility.
 sympy==1.14.0
+mpmath==1.3.0

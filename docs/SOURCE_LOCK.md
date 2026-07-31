@@ -68,10 +68,15 @@ No third-party PDF is distributed in this repository.
 
 - E-A60 schema: <code>P43-E-A60-INTRINSIC-GERM-SKELETON-v2</code>.
 - E-A60 canonical payload: <code>D18C07176BAF7B729A550E9B9B8B9D9E04BB58A0C52D295243108417C9BE785A</code>.
-- E-A58 schema: <code>P43-E-A58-REFERENCE-RECONSTRUCTION-v2</code>.
-- E-A58 canonical payload: <code>49A3FDC23406557354FEC8DDA51B4C2BB5CA9D43E11D2793C95034C0BA61FA5C</code>.
-- The manifest pins the exact scripts, tests, prose, bibliography, and frozen
-  JSON receipts used by the release.
+- E-A58 schema: <code>P43-E-A58-REFERENCE-RECONSTRUCTION-v3</code> (the
+  two-condition certifier; the superseded v2 payload was
+  <code>49A3FDC23406557354FEC8DDA51B4C2BB5CA9D43E11D2793C95034C0BA61FA5C</code>).
+- E-A58 canonical payload: <code>3C58C0B88081380C7D22993A6FEE3B4EC9FE1A8C3D0CDC107BE9D40C33BA4ACC</code>.
+- E-A61 canonical payload: <code>76956805B0BA304142CB08D833FA1179876A9F2154A76CE6C5A232BEF9E3F7F1</code>.
+- E-A63 canonical payload: <code>50B26633575C81C67AD3A9857DC5BE1227B512E21CC98168EECEC37B360DB1A8</code>.
+- E-A69 canonical payload: <code>5DC4C5800572C64F07C7A815CE7BEFFB930FEF03E04CC71679FB9501606F1D92</code>.
+- The manifest pins the exact scripts, tests, prose, bibliography, certificate
+  files, and frozen JSON receipts used by the release.
 
 ## Provenance and admissibility
 

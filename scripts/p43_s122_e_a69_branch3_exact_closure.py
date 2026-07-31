@@ -106,6 +106,12 @@ CERT_FILES = {
 CHECKS: list[tuple[str, bool]] = []
 
 
+def require(condition: bool, message: str) -> None:
+    """Hard failure that survives ``python -O`` (asserts do not)."""
+    if not condition:
+        raise RuntimeError(message)
+
+
 def check(label: str, condition: bool) -> None:
     CHECKS.append((label, bool(condition)))
     print(f"[{'PASS' if condition else 'FAIL'}] {label}")
@@ -172,7 +178,7 @@ for l_str, fname in CERT_FILES.items():
     cert_hashes[fname] = hashlib.sha256(raw).hexdigest().upper()
     text = raw.decode("utf-8")
     lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
-    assert len(lines) == 5, f"{fname}: expected 5 cofactors, found {len(lines)}"
+    require(len(lines) == 5, f"{fname}: expected 5 cofactors, found {len(lines)}")
     cofs = [sp.sympify(ln.replace("^", "**"), locals={str(v): v for v in VARS}) for ln in lines]
     ell = sp.sympify(l_str, locals={str(v): v for v in VARS})
     residue = sp.expand(ell * m_sat - sum(q * e for q, e in zip(cofs, E)))
@@ -265,14 +271,20 @@ if __name__ == "__main__":
     parser.add_argument("--verify-existing", action="store_true")
     args = parser.parse_args()
     if args.verify_existing:
-        frozen = json.loads(args.output.read_text(encoding="utf-8"))
-        assert all_pass, "a verification check failed on recomputation"
-        assert frozen.get("payload_sha256") == payload_hash, (
-            f"payload mismatch: frozen {frozen.get('payload_sha256')}, "
-            f"recomputed {payload_hash}"
+        require(
+            sp.__version__.startswith("1.14"),
+            f"SymPy 1.14 is pinned for this replay; found {sp.__version__}",
         )
-        assert canonical_hash(frozen.get("payload")) == canonical_hash(payload), (
-            "frozen payload body differs from recomputation"
+        frozen = json.loads(args.output.read_text(encoding="utf-8"))
+        require(all_pass, "a verification check failed on recomputation")
+        require(
+            frozen.get("payload_sha256") == payload_hash,
+            f"payload mismatch: frozen {frozen.get('payload_sha256')}, "
+            f"recomputed {payload_hash}",
+        )
+        require(
+            canonical_hash(frozen.get("payload")) == canonical_hash(payload),
+            "frozen payload body differs from recomputation",
         )
         print(f"PASS_E_A69_CERTIFICATE_CLOSURE payload={payload_hash}")
     else:

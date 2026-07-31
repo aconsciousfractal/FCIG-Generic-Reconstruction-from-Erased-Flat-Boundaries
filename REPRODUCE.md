@@ -22,8 +22,15 @@ python scripts/check_manifest.py --closed-tree
 python -m unittest discover -s tests
 python scripts/verify_all.py
 python -O scripts/verify_all.py
+python scripts/check_attestation.py
 python scripts/verify_manifest_only.py
 ~~~
+
+**Warning:** the replay scripts write their receipts by default.  Run them
+only through the gates above, or with the `--verify-existing` flag, unless
+you intend to regenerate a frozen receipt: a direct run (for example with
+`--limit`) overwrites the pinned JSON and the manifest gate will then fail
+until you restore the tree (`git checkout -- results/`).
 
 <code>verify_all.py</code> first verifies the source manifest, runs the focused
 unit tests, regenerates E-A60, E-A58, E-A61, E-A63 and E-A69 in

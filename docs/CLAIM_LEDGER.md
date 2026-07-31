@@ -3,6 +3,7 @@
 ## C1 — exact contact complex
 
 **Status:** proved in manuscript Proposition 2.1.
+**Registry:** P43-C025, level CL5 (internal theorem).
 
 For every angle vector in the stated open range, each cap meets the core in
 its hinge facet and two distinct caps meet only in the corresponding core-face
@@ -11,6 +12,7 @@ intersection. Unit facet normals are part of the model.
 ## C2 — intrinsic proper-zero recovery
 
 **Status:** proved in manuscript Proposition 3.1.
+**Registry:** P43-C032, level CL5 (internal theorem).
 
 The bare raw union determines the merged flat component, nonflat caps, visible
 hinges, centre, and fully reflected sites for the nonflat hinges. The component
@@ -20,6 +22,7 @@ volume distinguishes the merged component.
 ## C3 — conditional exact reconstruction and uniqueness
 
 **Status:** proved in manuscript Theorem 5.6.
+**Registry:** P43-C088, level CL5 (internal theorem).
 
 The authoritative graph is the intrinsic noncoplanar crease graph of maximal
 exposed planar sheet germs. If no core vertex passes the bisector-neighbour
@@ -29,6 +32,7 @@ core and every compatible datum are unique.
 ## C4 — fixed-realization genericity
 
 **Status:** proved in manuscript Theorem 6.1.
+**Registry:** P43-C088 (same claim, genericity clause), level CL5.
 
 For each fixed realized three-polytope and fixed visible mask, centres at which
 a core vertex passes are contained in a finite union of proper spheres and
@@ -38,6 +42,7 @@ measure statement is included.
 ## C5 — reference algorithm and finite replay
 
 **Status:** exact implementation evidence.
+**Registry:** P43-C087, level CL3 (certified finite result), for the replay; P43-C092, level CL5, for the cost bound.
 
 E-A60 is the observable skeleton replay. E-A58 implements only conceptual
 steps 4 to 6 with the two-condition certifier: flat-component equality and
@@ -52,6 +57,7 @@ cross-check is regression evidence, not a general theorem.
 ## C6 — application boundary
 
 **Status:** verified comparison, not an application theorem.
+**Registry:** boundary statement under the S108 source lock; no theorem claim is registered or made.
 
 The result currently supplies an exact inverse theorem, a certifying reference
 algorithm and a 16,744-row adversarial corpus for its promised reflected-cap
@@ -63,6 +69,7 @@ interval-certificate theorem.
 ## C7 — hinge-anchored uniqueness
 
 **Status:** proved in manuscript Theorem 7.2.
+**Registry:** P43-C089, level CL5 (internal theorem).
 
 If every core vertex that passes the bisector-neighbour test lies on at least
 one visible hinge facet, the compatible decomposition is unique. Theorem 5.6
@@ -74,6 +81,7 @@ lying on no visible hinge facet.
 
 **Status:** proved in manuscript Theorem 7.6; computer-assisted with
 independently verified certificates.
+**Registry:** P43-C090, level CL5 (internal theorem, computer-assisted).
 
 There is no configuration of distinct unit vectors d_1..d_4 and distinct unit
 vectors e_1..e_4 in three-space with e_l . d_i = 1/2 for all l != i. The
@@ -86,6 +94,7 @@ hand-checkable.
 ## C9 — five sites per side, and the four-hidden-facet corollary
 
 **Status:** proved in manuscript Theorem 7.8 and Corollary 7.9.
+**Registry:** P43-C091, level CL5 (internal theorem).
 
 Two distinct compatible decompositions of one proper-zero raw union differ in
 at least five reflected sites on each side. Hence a proper-zero datum with at
@@ -105,3 +114,11 @@ argument is used.
 - an end-to-end implementation of steps 1 to 3;
 - completeness of the two certifier conditions;
 - novelty, priority, or firstness.
+
+## Registry correspondence
+
+Levels follow the project claim ladder: CL5 = internal theorem, public if
+proof and dependencies are present (they ship in this package); CL3 =
+certified finite result, public with its certificate scope. The internal
+`public_ready` flags remain false by registry invariant until the release
+act itself; the levels above are what license the wording used here.

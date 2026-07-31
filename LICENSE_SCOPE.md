@@ -5,7 +5,7 @@ Everything authored in this package is released under the single MIT
 
 | Paths | License |
 |---|---|
-| <code>paper/**</code>, <code>scripts/**</code>, <code>docs/**</code>, <code>tests/**</code>, <code>results/**</code> | MIT |
+| <code>paper/**</code>, <code>scripts/**</code>, <code>docs/**</code>, <code>tests/**</code>, <code>results/**</code>, <code>certificates/**</code> | MIT |
 | root Markdown, CFF, manifest, requirements, Git and workflow files | MIT |
 
 Copyright (c) 2026 Oleksiy Babanskyy.
