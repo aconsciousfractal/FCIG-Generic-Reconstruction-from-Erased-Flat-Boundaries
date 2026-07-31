@@ -23,6 +23,10 @@ explicit exclusions, not hidden release defects.
 | signature graph retained hidden source-side patch provenance | fatal | replaced by intrinsic maximal-sheet germ skeleton E-A60 |
 | merged component was always selected by volume | high | star-centre rule restored except in two-component case |
 | C088 registry and E-A58 receipt retained pre-S106 wording | high | authoritative statement and schema v2 corrected before release |
+| supplied-boundary comparison overgeneralized | high | Laguerre moment and NDT travel-time comparators added |
+| systematic diffraction absence treated as an erased Brillouin face | high | mapping rejected; structure-factor and geometric boundaries separated |
+| NDT/EBSD described as direct applications | high | reduced to bridge targets requiring generative and stability theorems |
+| prescribed-crease origami hardness transferred to inverse recovery | high | transfer rejected absent a common decision problem and reduction |
 
 ## Adversarial controls
 

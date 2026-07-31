@@ -1,5 +1,19 @@
 # Source lock
 
+## S108 correction
+
+The earlier supplied-boundary summary was too broad. Two primary comparators use
+partial or indirect observables: labelled Laguerre-cell volumes and centroids,
+and ultrasonic boundary travel times. They materially narrow the input-model
+comparison but do not supply the raw reflected-cap union of this paper.
+
+The Brillouin-zone analogy is exact only at the local construction level: a
+zone face is a perpendicular bisector in the reciprocal-lattice Voronoi cell.
+IUCr systematic absences are zeros of the structure factor caused by symmetry;
+they do not erase that mathematical face. The cited rigid-origami hardness result
+decides foldability of a prescribed crease pattern and gives no reduction for
+inverse erased-boundary reconstruction.
+
 ## Mathematical source boundary
 
 The paper is self-contained for its reconstruction, uniqueness, genericity,
@@ -25,6 +39,11 @@ input models, not black-box proof dependencies.
 | Eder et al., 2023 | https://doi.org/10.1016/j.comgeo.2022.101935 | supplied planar partition or bisector graph |
 | Alonso Ferrero, 2011 | https://arxiv.org/abs/1105.4246 | generator recognition with Voronoi edges given |
 | Aloupis et al., 2013 | https://arxiv.org/abs/1308.5550 | inverse fitting while retaining original input edges |
+| Bourne--Pearce--Roper, 2025 | https://doi.org/10.1051/m2an/2025004 | labelled Laguerre cells from volumes and centroids |
+| Bourne et al., 2021 | https://doi.org/10.1002/mma.6977 | oriented planar Voronoi fitting from ultrasonic travel times |
+| Simon, solid-state notes | https://www-thphys.physics.ox.ac.uk/people/SteveSimon/condmat2011/LectureNotes.pdf | Brillouin zone as reciprocal-lattice Voronoi cell |
+| IUCr Online Dictionary | https://dictionary.iucr.org/Systematic_absences | systematic absences are structure-factor zeros |
+| Akitaya et al., 2020 | https://doi.org/10.20382/jocg.v11i1a4 | prescribed-pattern rigid foldability is NP-hard |
 
 Bibliographic titles, author lists, years, and the specific input descriptions
 were checked against publisher pages, arXiv records, or author-hosted full text.

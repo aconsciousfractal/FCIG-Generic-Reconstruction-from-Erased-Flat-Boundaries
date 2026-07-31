@@ -7,6 +7,18 @@ Companion package for the paper
 
 PDF: [paper/Generic_Exact_Reconstruction_of_Reflected_Cap_Data_from_an_Erased_Flat_Boundary.pdf](paper/Generic_Exact_Reconstruction_of_Reflected_Cap_Data_from_an_Erased_Flat_Boundary.pdf).
 
+## S108 application and prior-art audit
+
+Primary-source checking corrected one overbroad comparison: inverse tessellation
+problems do not always receive boundary edges. Labelled Laguerre cells can be
+recovered from volumes and centroids, and a simplified ultrasonic NDT model fits
+an oriented planar Voronoi diagram from travel times. Those observables are not
+the reflected-cap raw union used here. Brillouin zones share the local
+perpendicular-bisector construction, but diffraction extinctions do not erase
+zone faces. EBSD, NDT and lattice models are research bridges, not current
+deployments; prescribed-crease origami hardness does not transfer to this inverse
+problem. See the source lock and red-team report.
+
 ## What the paper proves
 
 A convex three-polytope lies in a hyperplane of four-space. Its interior

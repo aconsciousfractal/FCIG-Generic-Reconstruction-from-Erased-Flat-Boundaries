@@ -16,6 +16,14 @@ evidence on their frozen exact-rational domain.
 - Genericity fixes both the realization and the visible-facet mask.
 - Finite replay supports but does not replace the proof.
 
+## Application language
+
+It is licensed to say that Brillouin zones share the local perpendicular-
+bisector/Voronoi construction and that moment-based Laguerre inversion and
+travel-time-based Voronoi inversion are relevant partial-data comparators. It is
+not licensed to call EBSD, NDT, crystallographic extinction or origami a solved
+application of this theorem.
+
 ## Forbidden widening
 
 No public text may claim exceptional-centre uniqueness, a closed bad set, a

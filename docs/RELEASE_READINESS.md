@@ -1,6 +1,6 @@
 # Release-candidate readiness record
 
-Audit date: 2026-07-30  
+Audit date: 2026-07-31  
 Repository: https://github.com/aconsciousfractal/FCIG-Generic-Reconstruction-from-Erased-Flat-Boundaries
 
 ## Candidate scope
@@ -21,7 +21,7 @@ replay, not the complete input-extraction pipeline.
 - isolated manifest-only normal and optimized replay;
 - title-named 10-page PDF built with resolved citations and zero layout warnings;
 - all 10 pages rendered and visually inspected;
-- source, prior-art, claim, and open-problem boundaries explicit;
+- source, corrected partial-data prior art, application claims, and open-problem boundaries explicit;
 - privacy/placeholder/superseded-wording scan clean;
 - non-circular release attestation binds manifest, PDF, and aggregate receipt.
 
@@ -33,7 +33,7 @@ corpus, and novelty/priority remain outside this release.
 
 ## Publication authority
 
-The owner explicitly requested a P39-style public repository. That authorizes
-creation and push of this exact accepted tree. It does not create a tag or
+The owner explicitly requested a local project commit. This audit authorizes the
+scoped local commit only. It does not authorize creating or pushing a remote, a tag or
 GitHub Release, assign a DOI, submit to arXiv or a journal, claim acceptance,
 or publish the full internal P43 workspace.

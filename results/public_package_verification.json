@@ -12,7 +12,7 @@
     "wrong_and_certified": 0,
     "wrong_answers": 0
   },
-  "manifest_sha256": "241A8F06BBFE44BA2731AC03BEAC901C6DC1990F5607D9999CFFBD3B52F118A2",
+  "manifest_sha256": "98AAA173EB2F86460CF4C6425FD8BA6B16EFC6420F0BC3B2E2B391BEF54B394B",
   "schema": "P43-PUBLIC-PACKAGE-VERIFICATION-v1",
   "status": "PASS",
   "theorem_boundary": {

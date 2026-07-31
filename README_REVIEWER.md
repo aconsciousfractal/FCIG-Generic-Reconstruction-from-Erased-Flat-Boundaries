@@ -1,5 +1,13 @@
 # Reviewer guide
 
+## S108 prior-art challenge
+
+Before accepting an impact statement, check three observable mismatches: Laguerre
+moments and ultrasonic travel times are comparator inputs, not reflected-cap raw
+unions; systematic diffraction absences do not delete Brillouin-zone bisectors;
+and NP-hard foldability of a prescribed crease pattern is not inverse crease
+recovery. The public package claims no industrial deployment.
+
 ## Fast audit route
 
 1. Read the title-named PDF under <code>paper/</code>.

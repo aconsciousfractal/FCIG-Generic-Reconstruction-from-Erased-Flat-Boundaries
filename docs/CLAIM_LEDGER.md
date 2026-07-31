@@ -44,6 +44,17 @@ steps 4 to 6 and the merged-flat-component certifier. The conservative
 reference bound is O(N^2 log N + k^3) exact field operations. The finite
 candidate-set cross-check is regression evidence, not a general theorem.
 
+## C6 — application boundary
+
+**Status:** verified comparison, not an application theorem.
+
+The result currently supplies an exact inverse theorem, a certifying reference
+algorithm and a 16,744-row adversarial corpus for its promised reflected-cap
+class. Laguerre moments, ultrasonic NDT, EBSD microstructure reconstruction and
+lattice Brillouin models are adjacent bridge targets. A direct application would
+first require a generative reduction to reflected-cap data and a stability or
+interval-certificate theorem.
+
 ## Explicit exclusions
 
 - uniqueness or injectivity when a core vertex passes;
