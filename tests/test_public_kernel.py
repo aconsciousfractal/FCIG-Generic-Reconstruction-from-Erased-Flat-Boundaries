@@ -16,6 +16,7 @@ import p43_s90_exact_rational_kernel as K
 import p43_s90_e_a43c_six_vertex_c033_fiber_census as CEN
 import p43_s102_e_a58_reference_reconstruction as ALG
 import p43_s106_e_a60_intrinsic_germ_skeleton as GERM
+import p43_s109_e_a61_exceptional_centre_witness as EXC
 
 
 class ObservableSkeleton(unittest.TestCase):
@@ -115,10 +116,25 @@ class FrozenReceipts(unittest.TestCase):
         )
         self.assertEqual(
             e58["schema_version"],
-            "P43-E-A58-REFERENCE-RECONSTRUCTION-v2",
+            "P43-E-A58-REFERENCE-RECONSTRUCTION-v3",
         )
         self.assertTrue(all(e60["assertions"].values()))
         self.assertTrue(all(e58["assertions"].values()))
+
+
+class CertifierNecessity(unittest.TestCase):
+    def test_flat_only_accepts_and_two_condition_rejects_at_an_exceptional_centre(self):
+        """At an exceptional centre the flat-component comparison alone
+        certifies a strict superset of the true site set; the two-condition
+        certifier rejects it. Both facts are load-bearing for the paper's
+        certifier section."""
+        record = EXC.inspect_witness((1, 2, 1))
+        self.assertTrue(record["centre_is_strictly_interior"])
+        self.assertTrue(record["core_vertex_passes"])
+        self.assertTrue(record["returned_is_a_strict_superset"])
+        self.assertTrue(record["flat_component_only_certifier_accepts"])
+        self.assertFalse(record["recovered_hinge_facets_survive"])
+        self.assertFalse(record["current_kernel_certifier_accepts"])
 
 
 if __name__ == "__main__":

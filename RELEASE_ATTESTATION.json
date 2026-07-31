@@ -1,50 +1,60 @@
 {
-  "schema": "P43-S108-RELEASE-ATTESTATION-v2",
+  "schema": "P43-S126-RELEASE-ATTESTATION-v3",
   "status": "VERIFIED_LOCAL_CANDIDATE",
   "audit_date": "2026-07-31",
-  "source_base_commit": "7171eb170b2cf8c4635bb292a11aae2a2444d637",
+  "source_base_commit": "cc4fd6156beee0d34294a78c1c7f8ae7cd3015fb",
   "artifacts": {
     "source_manifest": {
       "path": "MANIFEST_SHA256.txt",
-      "sha256": "98AAA173EB2F86460CF4C6425FD8BA6B16EFC6420F0BC3B2E2B391BEF54B394B",
-      "entries": 38
+      "sha256": "EEE94440ADEB51A068487652662028B3A4464A86FB02DB163FC46C408709E32A",
+      "entries": 53
     },
     "paper_pdf": {
       "path": "paper/Generic_Exact_Reconstruction_of_Reflected_Cap_Data_from_an_Erased_Flat_Boundary.pdf",
-      "sha256": "1ACA6B03CA7715D93A1EAEFC56FB12214AEDFCDC92F818810EA188733B687874",
-      "pages": 10,
-      "bytes": 410388
+      "sha256": "647AD033857D1D383B6548D4566BABB9195E8A3B0E37CA0ECF6FEDC0451B9D69",
+      "pages": 16,
+      "bytes": 461802
     },
     "aggregate_receipt": {
       "path": "results/public_package_verification.json",
-      "sha256": "5CC2FDFBDFB34D4451E7530639F2A90CF2C5A05AE4D56493D2502DFE5A46E6A0",
-      "bytes": 1023
+      "sha256": "A4CF2C79EC419595B62A75E38AAB690F0B6F9D9AF05EF87C3A646D902F0FAC3F",
+      "bytes": 1915
     },
     "exact_payloads": {
       "intrinsic_germ_skeleton_e_a60": "D18C07176BAF7B729A550E9B9B8B9D9E04BB58A0C52D295243108417C9BE785A",
-      "flat_reconstruction_kernel_e_a58": "49A3FDC23406557354FEC8DDA51B4C2BB5CA9D43E11D2793C95034C0BA61FA5C"
+      "two_condition_flat_kernel_e_a58_v3": "3C58C0B88081380C7D22993A6FEE3B4EC9FE1A8C3D0CDC107BE9D40C33BA4ACC",
+      "exceptional_centre_witnesses_e_a61": "76956805B0BA304142CB08D833FA1179876A9F2154A76CE6C5A232BEF9E3F7F1",
+      "reversed_witnesses_e_a63": "50B26633575C81C67AD3A9857DC5BE1227B512E21CC98168EECEC37B360DB1A8",
+      "certificate_closure_e_a69": "5DC4C5800572C64F07C7A815CE7BEFFB930FEF03E04CC71679FB9501606F1D92"
+    },
+    "theorem_7_6_certificates": {
+      "P43_S122_E_A69_COFACTORS_L12_34.txt": "732F9F6F7E0E7EC2CDACEA719737D29B42D0310AE6983EE618A7C47E9EE330C8",
+      "P43_S122_E_A69_COFACTORS_L13_24.txt": "16A52151712A57F4DF291F4AD061CE4E17662935F886909AE651E0F66429D1F8",
+      "P43_S122_E_A69_COFACTORS_L14_23.txt": "4258FCF017881C2C05E66B327BD6121D6A2FE240DDF35D116407E02FD86D88AE",
+      "P43_S122_E_A69_COFACTORS_G1.txt": "5C2DF9BE8D84B2BD1BE83056B684025E6777D99AD150852EFB1DB799D527545D"
     }
   },
   "toolchain": {
     "python": "3.14.6",
+    "sympy": "1.14.0",
     "tex": "MiKTeX-pdfTeX 4.23 (MiKTeX 25.12)",
-    "pdf_renderer": "Poppler pdftoppm from the bundled Codex runtime"
+    "pdf_renderer": "local page rasterization for visual QA"
   },
   "gates": {
-    "private_regression_641_tests": true,
-    "public_focused_7_tests": true,
+    "private_regression_662_tests": true,
+    "public_focused_8_tests": true,
     "public_replay_normal": true,
     "public_replay_optimized": true,
     "receipts_byte_identical": true,
-    "manifest_closed_tree": true,
-    "manifest_only_normal_replay": true,
-    "manifest_only_optimized_replay": true,
+    "manifest_closed_tree_53_files": true,
+    "manifest_only_isolated_replay_normal_and_optimized": true,
+    "certificate_files_hash_checked_against_e69_payload": true,
     "latex_build_no_layout_or_reference_warnings": true,
-    "pdf_rendered_10_pages": true,
-    "visual_qa_10_pages": true,
+    "pdf_rendered_16_pages": true,
+    "visual_qa_new_material_pages": true,
     "private_path_secret_placeholder_scan_clean": true,
     "claim_source_and_prior_art_boundaries_present": true,
-    "application_overclaim_red_team_complete": true
+    "manuscript_red_team_second_wave_adjudicated": true
   },
   "publication_actions_at_audit_time": {
     "committed": false,
@@ -54,10 +64,11 @@
   },
   "notes": [
     "The source manifest excludes this attestation, the title-named PDF and the regenerated aggregate receipt to avoid circular hashes.",
-    "S108 corrects the supplied-boundary prior-art summary by adding Laguerre moment inversion and ultrasonic travel-time Voronoi inversion as partial/indirect-data comparators.",
-    "Brillouin systematic-absence, direct NDT/EBSD deployment and inverse-origami complexity transfers are explicitly rejected.",
-    "Normal and optimized replays passed both in the candidate tree and in a temporary tree containing only the manifest and its 38 entries.",
-    "All 10 PDF pages were rendered; pages 1-10 and the final post-layout pages 9-10 were visually inspected locally.",
-    "The present task authorizes scoped local commits only. No remote, tag, GitHub Release, DOI, arXiv submission or journal submission is created."
+    "This re-lock ships the revised 16-page manuscript (hinge-anchored uniqueness, certified exchange bound, at-most-four-hidden-facet corollary), the two-condition E-A58 v3 kernel, the E-A61/E-A63 witness families, the four Theorem 7.6 certificates with their SymPy verification, and corrects the reference cost to O(N^2 log N + k^4).",
+    "The two recorded defects of the S107/S108 candidate (pre-repair flat-only certifier; k^3 cost claim) are repaired by this tree.",
+    "The archived Singular driver files under certificates/ had their output path neutralized to a relative filename for release; no mathematical content changed.",
+    "Five working files carried CRLF endings from Windows text-mode writes; they were normalized to LF and the manifest and all replays were regenerated on the exact normalized bytes, so staged, cloned and verified bytes coincide (the S107 RT-101 control).",
+    "Normal and optimized replays passed in the candidate tree and in the isolated 53-file manifest-only tree, all three producing the same receipt bytes.",
+    "The present task authorizes a scoped local commit only. No remote, tag, GitHub Release, DOI, arXiv submission or journal submission is created."
   ]
 }

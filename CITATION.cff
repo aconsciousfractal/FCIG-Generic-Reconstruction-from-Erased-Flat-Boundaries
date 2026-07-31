@@ -6,9 +6,9 @@ authors:
   - family-names: Babanskyy
     given-names: Oleksiy
     orcid: "https://orcid.org/0009-0001-6176-6208"
-version: "1.0.0"
+version: "1.1.0"
 repository-code: "https://github.com/aconsciousfractal/FCIG-Generic-Reconstruction-from-Erased-Flat-Boundaries"
-date-released: "2026-07-30"
+date-released: "2026-07-31"
 license: MIT
 keywords:
   - convex-polytopes
@@ -20,7 +20,9 @@ keywords:
 abstract: >-
   A source-free intrinsic boundary-germ reconstruction theorem for
   three-dimensional proper-zero reflected-cap data, a fixed-realization
-  measure-zero exceptional-centre result, and exact rational replay artifacts.
+  measure-zero exceptional-centre result, unconditional uniqueness for data
+  with at most four hidden facets via a certified exchange bound, and exact
+  rational replay artifacts including verified polynomial certificates.
 preferred-citation:
   type: article
   title: "Generic Exact Reconstruction of Reflected-Cap Data from an Erased Flat Boundary"

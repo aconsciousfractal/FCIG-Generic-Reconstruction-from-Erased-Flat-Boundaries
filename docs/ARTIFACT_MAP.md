@@ -9,7 +9,12 @@
 | Deterministic frozen corpus | S90/S91/S97 modules under <code>scripts/</code> |
 | Degenerate witness | <code>scripts/p43_s101_e_a57_skeleton_definition_witness.py</code> |
 | Intrinsic skeleton replay | <code>scripts/p43_s106_e_a60_intrinsic_germ_skeleton.py</code> and corresponding JSON |
-| Flat reconstruction replay | <code>scripts/p43_s102_e_a58_reference_reconstruction.py</code> and corresponding JSON |
+| Flat reconstruction replay (two-condition certifier) | <code>scripts/p43_s102_e_a58_reference_reconstruction.py</code> and corresponding JSON |
+| Exceptional-centre witnesses (flat-only accepts, two-condition rejects) | <code>scripts/p43_s109_e_a61_exceptional_centre_witness.py</code> and corresponding JSON |
+| Reversed witnesses (hinges survive, flat differs) | <code>scripts/p43_s111_e_a63_volume_branch_witness.py</code> and corresponding JSON; <code>scripts/p43_s110_e_a62_exceptional_ambiguity_decision.py</code> is its import dependency (no receipt shipped) |
+| Theorem 7.6 certificates | four cofactor files under <code>certificates/</code>, hash-pinned by the E-A69 receipt |
+| Certificate verification (exact expansion + endgame) | <code>scripts/p43_s122_e_a69_branch3_exact_closure.py</code> and corresponding JSON |
+| Certificate provenance (search/control drivers, computed bases) | <code>certificates/*.sing</code>, <code>certificates/*_SATURATED_GB_*.txt</code> (not proof dependencies) |
 | Focused controls | <code>tests/test_public_kernel.py</code> |
 | One-command replay | <code>scripts/verify_all.py</code> |
 | Integrity/isolated gates | <code>scripts/check_manifest.py</code>, <code>scripts/verify_manifest_only.py</code> |

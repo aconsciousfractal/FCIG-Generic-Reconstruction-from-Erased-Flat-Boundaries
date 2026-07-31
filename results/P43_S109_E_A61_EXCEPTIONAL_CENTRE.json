@@ -1,0 +1,178 @@
+{
+  "assertions": {
+    "every_witness_has_a_strictly_interior_centre": true,
+    "every_witness_makes_the_algorithm_return_a_strict_superset": true,
+    "every_witness_really_has_a_passing_core_vertex": true,
+    "the_current_kernel_certifier_rejects_every_witness": true,
+    "the_extra_condition_rejects_nothing_on_the_corpus": true,
+    "the_flat_component_condition_alone_accepts_the_wrong_answer": true,
+    "the_recovered_hinge_facets_do_not_survive_the_truncation": true
+  },
+  "canonical_mathematical_payload_sha256": "76956805B0BA304142CB08D833FA1179876A9F2154A76CE6C5A232BEF9E3F7F1",
+  "claim_boundary": {
+    "established": [
+      "explicit exact data in the excluded case of Theorem A",
+      "the released flat certifier is not free of silent error there",
+      "one intrinsic extra condition rejects every witness and rejects nothing on the frozen corpus"
+    ],
+    "excluded": [
+      "any decision of Q1: whether a genuine second compatible decomposition exists at an exceptional centre is still open",
+      "any claim that the strengthened certifier is complete",
+      "novelty or priority"
+    ]
+  },
+  "corpus_regression": {
+    "certification_attempts": 340,
+    "current_kernel_certifier_accepted": 340,
+    "disagreements_on_the_corpus": 0,
+    "flat_component_only_accepted": 340,
+    "rows_scanned": 16744
+  },
+  "finding": "at a centre where a core vertex passes, the released flat certifier accepts a reconstruction that is not a compatible decomposition; the merged flat component is reproduced exactly, but the recovered visible hinge facets are truncated, so the raw union is not",
+  "fix": "require every recovered visible hinge facet to survive as a facet of the reconstructed core with the same vertex set; the hinge facets are intrinsic by C032",
+  "phase": "S109_E_A61_exceptional_centre_witness",
+  "project": "P43",
+  "schema_version": "P43-E-A61-EXCEPTIONAL-CENTRE-v1",
+  "status": "pass_exceptional_witness_and_certifier_repair",
+  "theorem_impact": "none; Theorem A assumes no core vertex passes and these data violate that hypothesis by construction",
+  "witnesses": [
+    {
+      "centre_is_strictly_interior": true,
+      "core_vertex_passes": true,
+      "current_kernel_certifier_accepts": false,
+      "facet_count": 8,
+      "flat_component_only_certifier_accepts": true,
+      "neighbours_of_the_core_vertex": 4,
+      "recovered_hinge_facets_survive": false,
+      "returned_is_a_strict_superset": true,
+      "shape": {
+        "bottom": 2,
+        "radius": 1,
+        "top": 1
+      },
+      "sites_returned": 5,
+      "true_apexes": 4,
+      "visible_facets_at_the_passing_vertex": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "centre_is_strictly_interior": true,
+      "core_vertex_passes": true,
+      "current_kernel_certifier_accepts": false,
+      "facet_count": 8,
+      "flat_component_only_certifier_accepts": true,
+      "neighbours_of_the_core_vertex": 4,
+      "recovered_hinge_facets_survive": false,
+      "returned_is_a_strict_superset": true,
+      "shape": {
+        "bottom": 3,
+        "radius": 1,
+        "top": 1
+      },
+      "sites_returned": 5,
+      "true_apexes": 4,
+      "visible_facets_at_the_passing_vertex": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "centre_is_strictly_interior": true,
+      "core_vertex_passes": true,
+      "current_kernel_certifier_accepts": false,
+      "facet_count": 8,
+      "flat_component_only_certifier_accepts": true,
+      "neighbours_of_the_core_vertex": 4,
+      "recovered_hinge_facets_survive": false,
+      "returned_is_a_strict_superset": true,
+      "shape": {
+        "bottom": 2,
+        "radius": 2,
+        "top": 1
+      },
+      "sites_returned": 5,
+      "true_apexes": 4,
+      "visible_facets_at_the_passing_vertex": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "centre_is_strictly_interior": true,
+      "core_vertex_passes": true,
+      "current_kernel_certifier_accepts": false,
+      "facet_count": 8,
+      "flat_component_only_certifier_accepts": true,
+      "neighbours_of_the_core_vertex": 4,
+      "recovered_hinge_facets_survive": false,
+      "returned_is_a_strict_superset": true,
+      "shape": {
+        "bottom": 5,
+        "radius": 1,
+        "top": 2
+      },
+      "sites_returned": 5,
+      "true_apexes": 4,
+      "visible_facets_at_the_passing_vertex": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "centre_is_strictly_interior": true,
+      "core_vertex_passes": true,
+      "current_kernel_certifier_accepts": false,
+      "facet_count": 8,
+      "flat_component_only_certifier_accepts": true,
+      "neighbours_of_the_core_vertex": 4,
+      "recovered_hinge_facets_survive": false,
+      "returned_is_a_strict_superset": true,
+      "shape": {
+        "bottom": 4,
+        "radius": 3,
+        "top": 1
+      },
+      "sites_returned": 5,
+      "true_apexes": 4,
+      "visible_facets_at_the_passing_vertex": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "centre_is_strictly_interior": true,
+      "core_vertex_passes": true,
+      "current_kernel_certifier_accepts": false,
+      "facet_count": 8,
+      "flat_component_only_certifier_accepts": true,
+      "neighbours_of_the_core_vertex": 4,
+      "recovered_hinge_facets_survive": false,
+      "returned_is_a_strict_superset": true,
+      "shape": {
+        "bottom": 7,
+        "radius": 2,
+        "top": 3
+      },
+      "sites_returned": 5,
+      "true_apexes": 4,
+      "visible_facets_at_the_passing_vertex": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

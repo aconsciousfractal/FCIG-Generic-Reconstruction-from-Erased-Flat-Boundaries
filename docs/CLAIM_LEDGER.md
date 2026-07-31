@@ -40,9 +40,14 @@ measure statement is included.
 **Status:** exact implementation evidence.
 
 E-A60 is the observable skeleton replay. E-A58 implements only conceptual
-steps 4 to 6 and the merged-flat-component certifier. The conservative
-reference bound is O(N^2 log N + k^3) exact field operations. The finite
-candidate-set cross-check is regression evidence, not a general theorem.
+steps 4 to 6 with the two-condition certifier: flat-component equality and
+survival of every recovered visible hinge facet. Each condition is provably
+necessary (E-A61 and E-A63 witnesses); completeness of the pair is not
+claimed. The conservative reference bound is O(N^2 log N + k^4) exact field
+operations — the halfspace kernel enumerates plane triples and validates each
+candidate corner against every halfspace. (An earlier revision stated k^3,
+omitting the per-candidate scan; corrected here.) The finite candidate-set
+cross-check is regression evidence, not a general theorem.
 
 ## C6 — application boundary
 
@@ -55,10 +60,48 @@ lattice Brillouin models are adjacent bridge targets. A direct application would
 first require a generative reduction to reflected-cap data and a stability or
 interval-certificate theorem.
 
+## C7 — hinge-anchored uniqueness
+
+**Status:** proved in manuscript Theorem 7.2.
+
+If every core vertex that passes the bisector-neighbour test lies on at least
+one visible hinge facet, the compatible decomposition is unique. Theorem 5.6
+is the special case in which no core vertex passes. A site of one compatible
+decomposition absent from the other is a passing core vertex of the other
+lying on no visible hinge facet.
+
+## C8 — no exchange quadruple
+
+**Status:** proved in manuscript Theorem 7.6; computer-assisted with
+independently verified certificates.
+
+There is no configuration of distinct unit vectors d_1..d_4 and distinct unit
+vectors e_1..e_4 in three-space with e_l . d_i = 1/2 for all l != i. The
+machine contribution is four certificate identities l * s_1 s_2 = sum q_i g_i,
+archived under certificates/ with SHA-256 pins carried by the E-A69 receipt
+and re-verified by exact expansion; the remaining steps (pattern reduction to
+one cubic, positivity on the closed square) are printed in full and are
+hand-checkable.
+
+## C9 — five sites per side, and the four-hidden-facet corollary
+
+**Status:** proved in manuscript Theorem 7.8 and Corollary 7.9.
+
+Two distinct compatible decompositions of one proper-zero raw union differ in
+at least five reflected sites on each side. Hence a proper-zero datum with at
+most four hidden facets has a unique compatible decomposition, with no
+hypothesis on its centre. The route is an exchange graph with an equilateral
+edge relation, a two-common-neighbours lemma (two distinct bisector planes
+meet a sphere in at most two points), an incidence count, and C8 for the
+forced K_{4,4}-minus-perfect-matching case. No planarity or star-shapedness
+argument is used.
+
 ## Explicit exclusions
 
-- uniqueness or injectivity when a core vertex passes;
+- uniqueness or injectivity at exceptional centres with five or more hidden
+  facets;
 - dimensions above three;
 - arbitrary implicit, noisy, or floating-point input extraction;
 - an end-to-end implementation of steps 1 to 3;
+- completeness of the two certifier conditions;
 - novelty, priority, or firstness.

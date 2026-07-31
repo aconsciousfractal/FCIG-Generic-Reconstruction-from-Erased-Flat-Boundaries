@@ -1,28 +1,38 @@
 {
   "checks": {
-    "E_A58_payload": "49A3FDC23406557354FEC8DDA51B4C2BB5CA9D43E11D2793C95034C0BA61FA5C",
+    "E_A58_payload": "3C58C0B88081380C7D22993A6FEE3B4EC9FE1A8C3D0CDC107BE9D40C33BA4ACC",
     "E_A60_payload": "D18C07176BAF7B729A550E9B9B8B9D9E04BB58A0C52D295243108417C9BE785A",
+    "E_A61_payload": "76956805B0BA304142CB08D833FA1179876A9F2154A76CE6C5A232BEF9E3F7F1",
+    "E_A63_payload": "50B26633575C81C67AD3A9857DC5BE1227B512E21CC98168EECEC37B360DB1A8",
+    "E_A69_payload": "5DC4C5800572C64F07C7A815CE7BEFFB930FEF03E04CC71679FB9501606F1D92",
     "focused_unit_tests": "PASS"
   },
   "finite_evidence": {
     "E_A58_exact_certifications": 340,
     "E_A60_independent_extractor_checks": 256,
     "E_A60_subdivision_mutations": 256,
+    "E_A61_exceptional_witnesses": 6,
+    "E_A63_reversed_witnesses": 3,
+    "E_A69_certificate_identities_verified": 4,
     "rows": 16744,
     "wrong_and_certified": 0,
     "wrong_answers": 0
   },
-  "manifest_sha256": "98AAA173EB2F86460CF4C6425FD8BA6B16EFC6420F0BC3B2E2B391BEF54B394B",
-  "schema": "P43-PUBLIC-PACKAGE-VERIFICATION-v1",
+  "manifest_sha256": "EEE94440ADEB51A068487652662028B3A4464A86FB02DB163FC46C408709E32A",
+  "schema": "P43-PUBLIC-PACKAGE-VERIFICATION-v2",
   "status": "PASS",
   "theorem_boundary": {
+    "certificates": "Theorem 7.6 is computer-assisted; four identities archived under certificates/ and re-verified by exact expansion",
+    "certifier": "two conditions, each provably necessary; completeness not claimed",
+    "conditional_hypothesis": "no core vertex passes the intrinsic bisector-neighbour test",
     "dimension": 3,
     "end_to_end_input_extraction": "NOT_IMPLEMENTED",
-    "exceptional_centres": "OPEN",
+    "exceptional_centres": "OPEN_FOR_FIVE_OR_MORE_HIDDEN_FACETS",
+    "exchange_bound": "two distinct compatible decompositions differ in at least five reflected sites per side (Theorem 7.8)",
     "genericity": "fixed realized core and fixed visible mask",
     "higher_dimensions": "OPEN",
-    "hypothesis": "no core vertex passes the intrinsic bisector-neighbour test",
     "novelty_or_priority": "NOT_CLAIMED",
-    "regime": "proper-zero reflected-cap data"
+    "regime": "proper-zero reflected-cap data",
+    "unconditional_uniqueness": "hinge-anchored (Theorem 7.2) and at most four hidden facets (Corollary 7.9)"
   }
 }

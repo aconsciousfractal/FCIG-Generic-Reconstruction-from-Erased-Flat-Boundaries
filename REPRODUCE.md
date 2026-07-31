@@ -3,7 +3,9 @@
 ## Requirements
 
 - Python 3.10 or newer;
-- no third-party Python packages;
+- SymPy (see <code>requirements.txt</code>), used only by the certificate
+  verification E-A69 for exact polynomial expansion; everything else is
+  standard-library;
 - to build the paper: a LaTeX installation with <code>amsart</code>,
   <code>lmodern</code>, <code>microtype</code>, <code>mathtools</code>,
   <code>enumitem</code>, <code>xcolor</code>, <code>hyperref</code>, and BibTeX.
@@ -24,8 +26,9 @@ python scripts/verify_manifest_only.py
 ~~~
 
 <code>verify_all.py</code> first verifies the source manifest, runs the focused
-unit tests, regenerates E-A60 and E-A58 in verify-existing mode, checks their
-canonical payloads and frozen metrics, and writes
+unit tests, regenerates E-A60, E-A58, E-A61, E-A63 and E-A69 in
+verify-existing mode, checks their canonical payloads, frozen metrics and the
+four certificate-file hashes, and writes
 <code>results/public_package_verification.json</code>. Normal and optimized
 runs must produce identical bytes.
 

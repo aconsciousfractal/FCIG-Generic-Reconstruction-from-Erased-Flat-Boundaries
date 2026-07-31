@@ -1,5 +1,18 @@
 # Source lock
 
+## Certificate toolchain provenance
+
+The four cofactor files under <code>certificates/</code> were found by a
+Groebner-basis saturation in Singular 4.3.2, with the saturation recomputed
+by iterated ideal quotients under in-run containment and stability checks;
+the search drivers and the computed reduced bases are archived alongside.
+No Groebner output is trusted by the proof: each identity is re-verified by
+expanding the difference of its two sides to the zero polynomial in exact
+rational arithmetic (SymPy 1.14), and the remaining steps of Theorem 7.6 are
+printed in the manuscript and hand-checkable. The comparator dismissals in
+the related-work section (Alexandrov, Blind--Mani/Kalai, Gardner) cite
+classical works by their registered metadata; none is a proof dependency.
+
 ## S108 correction
 
 The earlier supplied-boundary summary was too broad. Two primary comparators use

@@ -1,0 +1,103 @@
+{
+  "payload": {
+    "certificate_files": {
+      "P43_S122_E_A69_COFACTORS_G1.txt": "5C2DF9BE8D84B2BD1BE83056B684025E6777D99AD150852EFB1DB799D527545D",
+      "P43_S122_E_A69_COFACTORS_L12_34.txt": "732F9F6F7E0E7EC2CDACEA719737D29B42D0310AE6983EE618A7C47E9EE330C8",
+      "P43_S122_E_A69_COFACTORS_L13_24.txt": "16A52151712A57F4DF291F4AD061CE4E17662935F886909AE651E0F66429D1F8",
+      "P43_S122_E_A69_COFACTORS_L14_23.txt": "4258FCF017881C2C05E66B327BD6121D6A2FE240DDF35D116407E02FD86D88AE"
+    },
+    "checks": [
+      {
+        "label": "P1 regular tetrahedron solves the h=1/3 system",
+        "pass": true
+      },
+      {
+        "label": "P1 regular tetrahedron is non-degenerate (s_i != 0)",
+        "pass": true
+      },
+      {
+        "label": "P2 isosceles witness solves the system at its own h",
+        "pass": true
+      },
+      {
+        "label": "P2 its h is below the inside bound 1/3",
+        "pass": true
+      },
+      {
+        "label": "P2 witness Gram is PSD of rank 3",
+        "pass": true
+      },
+      {
+        "label": "e_0..e_4 derived (degrees 4,3,3,3,3)",
+        "pass": true
+      },
+      {
+        "label": "identity (x12-x34) * s1 * s2 = sum q_i e_i",
+        "pass": true
+      },
+      {
+        "label": "identity (x13-x24) * s1 * s2 = sum q_i e_i",
+        "pass": true
+      },
+      {
+        "label": "identity (x14-x23) * s1 * s2 = sum q_i e_i",
+        "pass": true
+      },
+      {
+        "label": "identity (x23+x24+x34+1) * s1 * s2 = sum q_i e_i",
+        "pass": true
+      },
+      {
+        "label": "e_0 vanishes identically on the pattern",
+        "pass": true
+      },
+      {
+        "label": "each face equation reduces to a nonzero constant times F",
+        "pass": true
+      },
+      {
+        "label": "critical system solved completely (4 real points)",
+        "pass": true
+      },
+      {
+        "label": "critical ideal is zero-dimensional with vdim 4 (list is complete)",
+        "pass": true
+      },
+      {
+        "label": "every interior critical value is > 0 (values 20/27, 3/4, 3/4, 3/4)",
+        "pass": true
+      },
+      {
+        "label": "edge restrictions are 3(b+1)^2, 1-b^2, 3(a+1)^2, 1-a^2",
+        "pass": true
+      },
+      {
+        "label": "boundary zeros are exactly the three degenerate corners",
+        "pass": true
+      },
+      {
+        "label": "each boundary zero forces two coincident vertices",
+        "pass": true
+      }
+    ],
+    "critical_values": [
+      "3/4",
+      "3/4",
+      "20/27",
+      "3/4"
+    ],
+    "experiment": "E-A69",
+    "face_quotients_on_pattern": [
+      "4",
+      "4",
+      "4",
+      "4"
+    ],
+    "method": "Nullstellensatz certificates verified by exact expansion + exact box positivity",
+    "saturator": "s1*s2 (numerators of c_1, c_2)",
+    "session": "S122",
+    "statement": "No non-degenerate tetrahedron inscribed in the unit sphere has all four face planes at distance 1/2 from the circumcentre; hence branch 3 of the exchange-graph bound is closed, and with it branches 1-3.",
+    "verdict": "BRANCH3_CLOSED_NO_NONDEGENERATE_SOLUTION_AT_H_ONE_HALF"
+  },
+  "payload_sha256": "5DC4C5800572C64F07C7A815CE7BEFFB930FEF03E04CC71679FB9501606F1D92"
+}

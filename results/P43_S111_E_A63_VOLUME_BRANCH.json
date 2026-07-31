@@ -1,0 +1,98 @@
+{
+  "assertions": {
+    "no_incomparable_ambiguity_on_this_family": true,
+    "the_algorithm_returns_a_strict_superset": true,
+    "the_core_vertex_really_passes": true,
+    "the_flat_condition_does_catch_this_branch": true,
+    "the_hinge_condition_does_not_catch_this_branch": true,
+    "the_intrinsic_volume_formula_is_correct": true,
+    "the_passing_vertex_carries_no_visible_hinge": true,
+    "the_repaired_certifier_still_rejects_every_witness": true,
+    "the_volume_branch_witness_exists": true,
+    "the_volume_test_also_rejects_every_witness": true
+  },
+  "canonical_mathematical_payload_sha256": "50B26633575C81C67AD3A9857DC5BE1227B512E21CC98168EECEC37B360DB1A8",
+  "claim_boundary": {
+    "established": [
+      "the volume branch of the superset exclusion is now exercised on constructed data rather than argued",
+      "the two certifier conditions are complementary and their conjunction rejects both witness families",
+      "the intrinsic core-volume formula is exact on these data"
+    ],
+    "excluded": [
+      "any decision of Q1 in general",
+      "any claim that the conjunction of the two conditions, or the volume test, is complete",
+      "novelty or priority"
+    ]
+  },
+  "finding": "the two certifier conditions are complementary: on the S109 bipyramids the flat component matches and the hinge facets are destroyed; on this family the hinge facets survive and the flat component does not match. Neither condition alone is sufficient, and their conjunction rejects both families.",
+  "intrinsic_volume_invariant": "vol(core) = (vol(M_J) + W)/2 with W the sum of the radial pyramids over the recovered hinge facets; computable from observables and rejecting both branches at the cost of one volume",
+  "phase": "S111_E_A63_volume_branch_witness",
+  "project": "P43",
+  "schema_version": "P43-E-A63-VOLUME-BRANCH-v1",
+  "status": "pass_volume_branch_exercised_and_conditions_shown_complementary",
+  "witnesses": [
+    {
+      "bound": 1,
+      "core_vertex_passes": true,
+      "facets": 8,
+      "facets_at_the_passing_vertex": 4,
+      "flat_component_matches": false,
+      "hinge_facets_survive": true,
+      "incomparable_candidates_compatible": 0,
+      "incomparable_candidates_tested": 15,
+      "intrinsic_core_volume_predicted": "37/12",
+      "passing_vertex_touches_a_visible_hinge": false,
+      "reconstructed_core_volume": "35/12",
+      "repaired_certifier_accepts": false,
+      "returned_is_a_strict_superset": true,
+      "sites_returned": 5,
+      "true_apexes": 4,
+      "true_core_volume": "37/12",
+      "vertices": 11,
+      "volume_prediction_is_correct": true,
+      "volume_test_rejects": true
+    },
+    {
+      "bound": 2,
+      "core_vertex_passes": true,
+      "facets": 8,
+      "facets_at_the_passing_vertex": 4,
+      "flat_component_matches": false,
+      "hinge_facets_survive": true,
+      "incomparable_candidates_compatible": 0,
+      "incomparable_candidates_tested": 15,
+      "intrinsic_core_volume_predicted": "91/12",
+      "passing_vertex_touches_a_visible_hinge": false,
+      "reconstructed_core_volume": "89/12",
+      "repaired_certifier_accepts": false,
+      "returned_is_a_strict_superset": true,
+      "sites_returned": 5,
+      "true_apexes": 4,
+      "true_core_volume": "91/12",
+      "vertices": 11,
+      "volume_prediction_is_correct": true,
+      "volume_test_rejects": true
+    },
+    {
+      "bound": 3,
+      "core_vertex_passes": true,
+      "facets": 8,
+      "facets_at_the_passing_vertex": 4,
+      "flat_component_matches": false,
+      "hinge_facets_survive": true,
+      "incomparable_candidates_compatible": 0,
+      "incomparable_candidates_tested": 15,
+      "intrinsic_core_volume_predicted": "169/12",
+      "passing_vertex_touches_a_visible_hinge": false,
+      "reconstructed_core_volume": "167/12",
+      "repaired_certifier_accepts": false,
+      "returned_is_a_strict_superset": true,
+      "sites_returned": 5,
+      "true_apexes": 4,
+      "true_core_volume": "169/12",
+      "vertices": 11,
+      "volume_prediction_is_correct": true,
+      "volume_test_rejects": true
+    }
+  ]
+}

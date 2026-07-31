@@ -1,1 +1,3 @@
-# Standard-library-only exact replay.
+# Exact replay dependencies.
+# SymPy is used only by the E-A69 certificate verification (exact expansion).
+sympy==1.14.0

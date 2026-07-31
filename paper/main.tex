@@ -56,9 +56,22 @@ the hidden reflected apexes, provided no core vertex satisfies the same test.
 This yields exact reconstruction and uniqueness of every compatible
 decomposition.  For each fixed realized core and visible-facet mask, centres
 violating the hypothesis lie in a finite union of proper spheres and quadrics,
-and hence form a measure-zero set.  We also give an exact rational reference
-algorithm and report a complete 16,744-instance finite replay.  The finite
-replay supports the implementation; it is not used as the proof.
+and hence form a measure-zero set.
+
+Beyond the generic statement we prove two unconditional structure results.
+Uniqueness holds whenever every core vertex that passes the test lies on a
+visible hinge facet.  Moreover, any two distinct compatible decompositions
+must differ in at least five reflected sites on each side; consequently a
+proper-zero datum with at most four hidden facets is unique without any
+genericity hypothesis.  The five-site bound rests on a nonexistence theorem
+for an eight-point spherical configuration, proved by four polynomial
+certificate identities that are re-verified by exact expansion, together with
+an elementary positivity analysis.
+
+We also give an exact rational reference algorithm, a certifying variant
+whose two comparison conditions are each provably necessary, and a complete
+16,744-instance finite replay.  The finite replay supports the
+implementation; it is not used as the proof.
 \end{abstract}
 
 \maketitle
@@ -104,7 +117,27 @@ is unique up to ambient Euclidean congruence.  For a fixed realized core and
 visible mask, the excluded centres form a measure-zero subset of the core.
 \end{theorem}
 
-The theorem does not assert uniqueness at excluded centres, a result in higher
+At excluded centres the conditional theorem is silent, but the ambiguity it
+leaves open is strongly constrained.
+
+\begin{theorem}[informal]
+Uniqueness already holds whenever every core vertex that passes the test lies
+on at least one visible hinge facet.  In general, two distinct compatible
+decompositions of one proper-zero raw union must differ in at least five
+reflected sites on each side.  Hence a proper-zero datum with at most four
+hidden facets is unique, with no hypothesis on its centre.
+\end{theorem}
+
+The five-site bound reduces, through an exchange graph and an elementary
+incidence count, to the nonexistence of a specific eight-point spherical
+configuration.
+That nonexistence is proved by a computer-assisted but fully verifiable
+argument: four explicit polynomial identities, found by a Gr\"obner search and
+re-verified independently by exact expansion, force the configuration into a
+one-parameter family that an elementary positivity analysis then empties.
+Section~\ref{sec:exchange} contains the complete argument.
+
+The theorems do not assert uniqueness for all data, a result in higher
 dimension, or novelty or priority relative to all possible prior art.  Those
 boundaries are repeated in Section~\ref{sec:limitations}.
 
@@ -127,7 +160,9 @@ For $\theta_i\in(-\pi,\pi)$ set
  C_i(\theta_i)=\conv(F_i\cup\{a_i(\theta_i)\}).
 \]
 The excluded value $\pi$ collapses the apex to $o$.  At $\theta_i=0$,
-$a_i=2h_i n_i$, the reflection of $o$ in $\aff F_i$.
+$a_i=2h_i n_i$, the reflection of $o$ in $\aff F_i$: at zero angle the sites
+are exactly those of Ash and Bolker's forward
+construction~\cite{AshBolker1985}.
 
 Two data are called congruent when an ambient Euclidean isometry carries the
 core, centre, and unordered cap family of one to those of the other.  Thus the
@@ -256,13 +291,16 @@ The definition is intrinsic: exposed sheet subsets, their supporting planes,
 and their local germs are properties of $M_J$ as a point set.  In particular,
 the graph stores neither a hidden cap label nor an erased internal seam.
 
-A compatible decomposition of $M_J$ consists of a convex core $P'$, the
-already recovered visible hinge facets, and hidden facets $G_a$ indexed by
-reflected sites $a$ such that
+A compatible decomposition of $M_J$ consists of a convex core $P'$ and hidden
+facets $G_a$ indexed by sites $a$, where the facet set of $P'$ is exactly the
+already recovered visible hinge facets together with the pairwise distinct
+facets $G_a$, each site $a$ is the reflection of the recovered centre $o$ in
+$\aff G_a$, and
 \[
  M_J=P'\cup\bigcup_{a\in A}\conv(G_a\cup\{a\})
 \]
-with pairwise disjoint cell interiors.  For an edge $f$ of $G_a$, write
+with pairwise disjoint cell interiors.  The original datum is one such
+decomposition.  For an edge $f$ of $G_a$, write
 $W(a,f)=\conv(\{a\}\cup f)$ for the corresponding wall.
 
 \begin{lemma}[boundary inventory]
@@ -395,7 +433,8 @@ decompositions coincide.
 
 \begin{proof}
 The hidden facet associated with $a$ has halfspace
-$\{x:\|x-o\|\le\|x-a\|\}$.  Therefore
+$\{x:\|x-o\|\le\|x-a\|\}$, the Dirichlet-cell description of the core
+against its reflected sites~\cite{AshBolker1985}.  Therefore
 \[
  P'=\bigcap_{i\in I}H_i^-\cap
      \bigcap_{a\in A}\{x:\|x-o\|\le\|x-a\|\},
@@ -478,6 +517,284 @@ The theorem deliberately does not assert that the bad-centre set itself is
 closed.  A subset of a closed algebraic union need not be closed.  Nor does the
 argument define a measure on simultaneously varying realizations of $P$.
 
+\section{Ambiguities require five hidden sites per side}
+\label{sec:exchange}
+
+This section studies what a failure of uniqueness would have to look like.
+Throughout, $D$ is a three-dimensional proper-zero datum with decomposition
+$(P,A)$ and centre $o$, and $(P'',A'')$ is a second compatible decomposition
+of the same raw union.  By Section~\ref{sec:intrinsic-recovery} the two
+decompositions share $M_J$, the centre, the visible hinge facets, and the
+intrinsic graph $\GammaM$.
+
+\begin{lemma}[differing sites avoid visible hinges]
+\label{lem:diff-site}
+Let $a\in A''\setminus A$.  Then $a$ is a vertex of $P$ that passes in
+$\GammaM$ and lies on no visible hinge facet.  Symmetrically for
+$A\setminus A''$.
+\end{lemma}
+
+\begin{proof}
+As an apex of the second decomposition, $a$ passes
+(Lemma~\ref{lem:apexes-pass}) and, by Lemma~\ref{lem:candidate-types} applied
+to the first decomposition, $a$ is an apex of $D$ or a vertex of $P$; the
+first option is excluded by $a\notin A$.  Applying
+Lemma~\ref{lem:own-walls} in the second decomposition, the only boundary
+patches containing $a$ are the walls of its own cap there.  A visible hinge
+facet $F_i$ is a boundary patch of every decomposition and is contained in the
+core of each; since an apex lies strictly outside the core, $F_i$ is not a
+wall of the cap of $a$, and hence $a\notin F_i$.
+\end{proof}
+
+\begin{theorem}[hinge-anchored uniqueness]
+\label{thm:hinge-anchored}
+Suppose every vertex of the core that passes in $\GammaM$ lies on at least one
+visible hinge facet.  Then the compatible decomposition is unique.
+Theorem~\ref{thm:main} is the special case in which no core vertex passes.
+\end{theorem}
+
+\begin{proof}
+Suppose $(P'',A'')\neq(P,A)$.  If $A''\subseteq A$,
+Lemma~\ref{lem:nested} forces equality, so $A''\setminus A\neq\varnothing$.
+Any $a\in A''\setminus A$ is, by Lemma~\ref{lem:diff-site}, a passing core
+vertex on no visible hinge facet, contradicting the hypothesis.
+\end{proof}
+
+\begin{lemma}[exchange edges]
+\label{lem:exchange-edges}
+Let $a\in A''\setminus A$.  Then $a$ lies on at least three hidden facets of
+$(P,A)$.  For every hidden facet $G_c\ni a$, its site $c$ satisfies
+$c\in A\setminus A''$, the segment $[a,c]$ is an edge of $\GammaM$, and the
+triangle $(o,a,c)$ is equilateral.  Symmetrically with the two decompositions
+exchanged.
+\end{lemma}
+
+\begin{proof}
+By Lemma~\ref{lem:diff-site}, $a$ is a vertex of the three-polytope $P$, so at
+least three facets of $P$ pass through it, and none of them is visible;
+distinct facets have distinct planes, and the site is the reflection of $o$ in
+the plane, so the corresponding sites are distinct.
+
+Let $G_c$ be such a hidden facet.  Then $a\in\operatorname{vert}G_c$, so by
+the proof of Lemma~\ref{lem:apexes-pass} the segment $[c,a]$ is an edge of
+$\GammaM$.  The facet plane $\aff G_c$ is the perpendicular bisector of $o$
+and $c$, and $a$ lies on it, so $\|a-o\|=\|a-c\|$.  Since $a$ passes and $c$
+is one of its graph neighbours, $\|c-o\|=\|c-a\|$.  The triangle is
+equilateral.
+
+Finally $c\notin A''$: otherwise $c$ would be an apex of the second
+decomposition, and Lemma~\ref{lem:apexes-pass} applied there would give
+$N_{\GammaM}(c)=\operatorname{vert}G''_c\subset P''$; but
+$a\in N_{\GammaM}(c)$ is an apex of the second decomposition and lies strictly
+outside $P''$.
+\end{proof}
+
+\begin{lemma}[two common neighbours]
+\label{lem:common}
+Let $X$ be the graph on $(A\setminus A'')\cup(A''\setminus A)$ whose edges are
+the pairs $\{a,c\}$ of Lemma~\ref{lem:exchange-edges}.  Then $X$ is simple and
+bipartite between the two difference sets, with minimum degree at least three,
+and two distinct sites on one side have at most two common neighbours.
+\end{lemma}
+
+\begin{proof}
+Bipartiteness, simplicity and the degree bound are
+Lemma~\ref{lem:exchange-edges}.  Let $c$ be a common neighbour of the distinct
+same-side sites $a$ and $a'$.  The two equilateral relations give
+$\|c-o\|=\|c-a\|=\|a-o\|$ and $\|c-o\|=\|c-a'\|=\|a'-o\|$.  So $c$ lies on
+the perpendicular bisector plane of $o$ and $a$, on that of $o$ and $a'$, and
+on the sphere of radius $\|a-o\|$ about $o$.  The two planes are distinct,
+because reflecting $o$ across them returns $a$, respectively $a'$; hence they
+meet in a line or not at all, and a line meets a sphere in at most two points.
+\end{proof}
+
+\begin{lemma}[incidence count]
+\label{lem:count}
+Each side of $X$ has at least four sites.  If some side has exactly four,
+then both do, $X$ is $3$-regular, that is, $K_{4,4}$ minus a perfect
+matching, and all eight sites lie at one common distance $R>0$ from $o$ with
+every edge a chord of length $R$.
+\end{lemma}
+
+\begin{proof}
+Write $p$ and $q$ for the two side sizes.  Every vertex has at least three
+neighbours, all on the other side, so $p,q\ge3$.  Count the incidences
+$(\{a,a'\},c)$ of a common neighbour $c$ with an unordered pair of distinct
+sites on the $p$-side: Lemma~\ref{lem:common} bounds them by
+$2\binom p2$, and they number
+$\sum_{c}\binom{\deg c}{2}\ge3q$, because each of the $q$ vertices $c$ of the
+other side has degree at least three.
+
+If $p=3$, every vertex of the other side is adjacent to all three sites, so
+one pair on the $p$-side has $q\ge3>2$ common neighbours, impossible.  Hence,
+exchanging the roles of the sides, $p,q\ge4$.  If $p=4$, then
+$3q\le2\binom42=12$ forces $q\le4$, hence $q=4$; and a vertex of degree four
+on either side would give
+$\sum_c\binom{\deg c}{2}\ge\binom42+3\binom32=15>12$, so every degree is
+exactly three.  The bipartite complement of a $3$-regular bipartite graph on
+$4+4$ vertices is $1$-regular, a perfect matching.  Such a graph is connected
+(a component would need at least three vertices on each side), and the
+equilateral relation of Lemma~\ref{lem:exchange-edges} propagates the
+distance $\|a-o\|$ across every edge, so all eight sites lie at one distance
+$R>0$ and every edge has length $R$.
+\end{proof}
+
+The remaining case is a genuinely geometric one, and it is the heart of the
+bound.
+
+\begin{theorem}[no exchange quadruple]
+\label{thm:fourbyfour}
+There is no configuration of distinct unit vectors $d_1,\ldots,d_4$ and
+distinct unit vectors $e_1,\ldots,e_4$ in $\R^3$ with
+\[
+ e_l\cdot d_i=\tfrac12
+ \qquad\text{for all }l\ne i.
+\]
+\end{theorem}
+
+\begin{proof}
+Write $x_{ij}=d_i\cdot d_j$, let $G$ be the unit-diagonal Gram matrix of
+$d_1,\ldots,d_4$, let $G_i$ be its principal $3\times3$ minor deleting row and
+column $i$, and let $r_i$ be the deleted off-diagonal column.  Define the
+polynomials
+\begin{align*}
+ g_0&:=\det G,\\
+ g_i&:=\mathbf 1^{\mathsf T}\operatorname{adj}(G_i)\mathbf 1-4\det G_i
+ \qquad(i=1,\ldots,4),\\
+ s_i&:=\mathbf 1^{\mathsf T}\operatorname{adj}(G_i)r_i-\det G_i .
+\end{align*}
+For example, in the variables $(x_{23},x_{24},x_{34})$,
+\begin{multline*}
+ g_1=3x_{23}^2+3x_{24}^2+3x_{34}^2-8x_{23}x_{24}x_{34}\\
+     +2(x_{23}x_{24}+x_{23}x_{34}+x_{24}x_{34})
+     -2(x_{23}+x_{24}+x_{34})-1 .
+\end{multline*}
+
+\emph{Step 1: the configuration satisfies the polynomial system.}
+Four vectors in $\R^3$ give $g_0=\det G=0$.  Fix $l$ and suppose the triple
+$\{d_i:i\ne l\}$ were linearly dependent; applying $e_l\cdot(\,\cdot\,)$ to a
+dependence shows the coefficients sum to zero, so three distinct points would
+be affinely dependent, hence collinear, and a line meets the unit sphere in at
+most two points.  So each triple is a basis and $\det G_l\neq0$, and $e_l$ is
+the unique solution of the three linear equations $e_l\cdot d_i=\tfrac12$
+($i\ne l$).  Solving that system by Cramer's rule and imposing
+$\|e_l\|^2=1$ yields
+$\mathbf 1^{\mathsf T}\operatorname{adj}(G_l)\mathbf 1=4\det G_l$, that is,
+$g_l=0$ on the Gram coordinates of the configuration.  Moreover
+$c_l:=e_l\cdot d_l-\tfrac12$ satisfies $2c_l\det G_l=s_l$.  If some $c_l=0$,
+then $e_l\cdot d_i=\tfrac12$ for all four $i$, so all four $d_i$ lie on the
+plane $\{x:e_l\cdot x=\tfrac12\}$, which misses the origin; any three of them
+are then linearly independent, and every $e_m$ solves the same three linear
+equations as $e_l$, forcing $e_m=e_l$ for all $m$ and contradicting
+distinctness.  Hence every $s_l\neq0$.
+
+\emph{Step 2: four certificate identities force an isosceles pattern.}
+There exist explicit polynomials
+$q_0^{(\ell)},\ldots,q_4^{(\ell)}\in\mathbb Q[x_{12},\ldots,x_{34}]$ of total
+degree at most eight with
+\[
+ \ell\cdot s_1s_2
+ \;=\;
+ q_0^{(\ell)}g_0+q_1^{(\ell)}g_1+q_2^{(\ell)}g_2+q_3^{(\ell)}g_3
+ +q_4^{(\ell)}g_4
+\]
+for each of the four linear forms
+\[
+ \ell\in\{\,x_{12}-x_{34},\;x_{13}-x_{24},\;x_{14}-x_{23},\;
+          x_{23}+x_{24}+x_{34}+1\,\}.
+\]
+The cofactors are archived, with the verification script, alongside the
+reference implementation; each identity is re-verified by expanding the
+difference of the two sides to the zero polynomial in exact rational
+arithmetic, independently of the software that found it.  At the configuration all
+$g_i$ vanish and $s_1s_2\neq0$, so all four linear forms vanish:
+\[
+ x_{12}=x_{34}=:a,\qquad
+ x_{13}=x_{24}=:b,\qquad
+ x_{14}=x_{23}=:c,\qquad
+ a+b+c=-1 .
+\]
+
+\emph{Step 3: an elementary emptiness argument.}
+Substituting the pattern into any of the four face polynomials leaves one
+cubic; explicitly,
+\[
+ g_i\big|_{\text{pattern}}=4F(a,b),
+ \qquad
+ F(a,b)=2ab^2+2a^2b+a^2+3ab+b^2+a+b+1,
+\]
+an identity in $(a,b)$ that is checked by direct substitution.  Hence
+$F(a,b)=0$.  By Cauchy--Schwarz $|x_{ij}|\le1$, so $(a,b)\in[-1,1]^2$.  On
+the open square $F$ is strictly positive.  Indeed the difference
+$\partial_bF-\partial_aF$ factors as $(a-b)(2a+2b+1)$; on the branch $b=a$
+the equation $\partial_aF=0$ becomes $6a^2+5a+1=(3a+1)(2a+1)=0$, and on the
+branch $2a+2b+1=0$ it becomes $-a(2a+1)=0$.  This gives exactly the four
+interior critical points
+$(-\tfrac13,-\tfrac13),(-\tfrac12,-\tfrac12),(0,-\tfrac12),(-\tfrac12,0)$
+with values $\tfrac{20}{27},\tfrac34,\tfrac34,\tfrac34$, and the edge
+restrictions of $F$ are
+\[
+\begin{aligned}
+ F(a,1)&=3(a+1)^2, &\qquad F(a,-1)&=1-a^2,\\
+ F(1,b)&=3(b+1)^2, &\qquad F(-1,b)&=1-b^2,
+\end{aligned}
+\]
+whose only zeros on the closed square are the three corners $(-1,1)$,
+$(1,-1)$ and $(-1,-1)$ of the $(a,b)$-square.  An interior zero of $F$ would
+force an interior critical point with a nonpositive value, and there is none.
+At the three corners, respectively $x_{24}=1$, $x_{34}=1$, and
+$x_{14}=-1-a-b=1$, so two of the $d_i$ coincide by the equality case of
+Cauchy--Schwarz, contradicting distinctness.  No configuration exists.
+\end{proof}
+
+\begin{remark}
+The certificate identities show that the four linear forms, and with them
+$F(x_{34},x_{24})$, lie in the saturation of
+$\langle g_0,\ldots,g_4\rangle$ by $s_1s_2$: over the complex numbers, every
+solution of the distance-$\tfrac12$ system with $s_1s_2\neq0$ is already
+isosceles-patterned.  The certificates were found by a Gr\"obner-basis
+saturation in Singular~4.3.2, with the saturation recomputed by iterated
+ideal quotients under in-run containment and stability checks, and the
+computed reduced basis of the fully saturated ideal is
+$\{x_{23}+x_{24}+x_{34}+1,\ x_{14}+x_{24}+x_{34}+1,\ x_{13}-x_{24},\
+x_{12}-x_{34},\ F(x_{34},x_{24})\}$; the proof above uses only the certified
+fragment, re-verified by exact expansion in SymPy~1.14, so no Gr\"obner
+implementation is trusted.  As a standing positive control, the same pipeline
+at the distance $\tfrac13$ keeps the regular tetrahedron on the saturated
+variety, as it must.
+\end{remark}
+
+\begin{theorem}[five sites per side]
+\label{thm:five}
+Two distinct compatible decompositions of one proper-zero raw union differ in
+at least five reflected sites on each side:
+$|A\setminus A''|\ge5$ and $|A''\setminus A|\ge5$.
+\end{theorem}
+
+\begin{proof}
+As in Theorem~\ref{thm:hinge-anchored}, distinctness makes both difference
+sets nonempty.  By Lemma~\ref{lem:count} each side of the exchange graph $X$
+has at least four sites, and if some side had exactly four, $X$ would be
+$K_{4,4}$ minus a perfect matching with all eight sites at one distance
+$R>0$ from $o$ and all twelve edges of length $R$.  Translating $o$ to the
+origin and scaling by $R^{-1}$ makes the sites unit vectors with
+$\|a-c\|=1$, i.e.\ $a\cdot c=\tfrac12$, along every edge; labelling the
+matching pairs with equal indices produces exactly the configuration of
+Theorem~\ref{thm:fourbyfour}, which does not exist.  Hence both sides have at
+least five sites.
+\end{proof}
+
+\begin{corollary}[at most four hidden facets]
+\label{cor:four}
+A proper-zero datum with at most four hidden facets has a unique compatible
+decomposition, with no hypothesis on its centre.
+\end{corollary}
+
+\begin{proof}
+A second decomposition would give $|A\setminus A''|\ge5$, while
+$|A|\le4$.
+\end{proof}
+
 \section{Exact reconstruction algorithm and evidence}
 \label{sec:algorithm}
 
@@ -497,25 +814,40 @@ Proposition~\ref{prop:intrinsic-recovery}.
 \item Construct $\GammaM$ from exposed sheet germs.
 \item Keep exactly the graph vertices that pass.
 \item Intersect the visible hinge halfspaces with the bisector halfspaces of
-the passing vertices.
+the passing vertices, the Dirichlet-cell construction
+of~\cite{AshBolker1985}.
 \end{enumerate}
 
 Under the hypothesis of Theorem~\ref{thm:main}, correctness is immediate from
 Lemmas~\ref{lem:candidate-types} and~\ref{lem:apexes-pass}.  A full certifier
 may rebuild the entire raw union, including the observed nonflat caps, and
-compare it exactly with the input.  The released reference code implements the
-flat reconstruction kernel in steps 4--6 and compares the rebuilt merged flat
-component; it is not an end-to-end implementation of steps 1--3 or of the full
-raw-union certifier.
+compare it exactly with the input.  The reference code implements the flat
+reconstruction kernel in steps 4--6; it is not an end-to-end implementation of
+steps 1--3 or of the full raw-union certifier.
+
+The certifying variant compares two intrinsic conditions, and each is provably
+necessary.  There are constructed exact data, at exceptional centres, on
+which the reconstruction returns a strict superset of the true site set while
+the rebuilt merged flat component still equals the observed one exactly:
+cutting a passing vertex off with its bisector plane and re-attaching the cap
+over the new facet restores the removed piece.  Comparing only the merged flat
+component therefore certifies a wrong answer on those data (six exact
+witnesses).  What the wrong reconstruction destroys is the recovered visible
+hinge facets, so the certifier also requires every recovered visible hinge
+facet to survive as a facet of the reconstructed core.  On a second witness
+family (three exact witnesses) the situation is reversed: the hinge facets
+survive while the flat components differ.  Hence neither condition alone
+suffices, and the certifier checks both.
 
 Let $N$ be the number of input boundary corners and $k$ the number of returned
 core facets.  The reference germ extractor atomises each segment against all
 exact endpoints and builds carrier labels during atomisation.  Its conservative
 bound is $O(N^2\log N)$ exact field operations and $O(N^2)$ crease atoms.  The
-reference three-dimensional halfspace kernel enumerates triples and costs
-$O(k^3)$.  Thus the proved reference bound is
+reference three-dimensional halfspace kernel enumerates the $\binom k3$ plane
+triples and validates each candidate corner against every halfspace, so it
+costs $O(k^4)$.  Thus the proved reference bound is
 \[
- O(N^2\log N+k^3).
+ O(N^2\log N+k^4).
 \]
 No sharper literature bound is imported into this statement.
 
@@ -529,27 +861,47 @@ certification kernel.  The frozen measurements are:
 intrinsic-skeleton corpus rows & 16,744\\
 rows reconstructed by the intrinsic signature & 16,744\\
 rows agreeing with the historical graph on the corpus & 16,744\\
-collinear-subdivision mutations invariant & 256/256\\
-independent maximal-sheet cross-checks & 256/256\\
+subdivision mutations invariant (256-row corpus prefix) & 256/256\\
+maximal-sheet cross-checks (same prefix) & 256/256\\
 flat-kernel reconstructions & 16,744/16,744\\
-sampled flat certifications & 340/340\\
+sampled two-condition certifications & 340/340\\
 wrong answers certified & 0\\
 degenerate swallowed-corner witness & pass\\
+exceptional-centre witnesses & 6\\
+flat-only accepts / two-condition rejects & 6/6\\
+reversed witnesses (hinges survive, flat differs) & 3/3\\
+corpus disagreements between the two certifier variants & 0/340\\
+certificate identities of Theorem~\ref{thm:fourbyfour} verified & 4/4\\
 \hline
 \end{tabular}
 \end{center}
 
-The E-A60 canonical payload is
+The canonical payloads are, for the intrinsic-skeleton audit E-A60,
 \begin{center}
-\small\texttt{D18C07176BAF7B729A550E9B9B8B9D9E04BB58A0C52D295243108417C9BE785A}.
+\small\texttt{D18C07176BAF7B729A550E9B9B8B9D9E04BB58A0C52D295243108417C9BE785A},
 \end{center}
-The E-A58 payload in the release artifact is
+for the two-condition reconstruction/certification kernel E-A58,
 \begin{center}
-\small\texttt{49A3FDC23406557354FEC8DDA51B4C2BB5CA9D43E11D2793C95034C0BA61FA5C}.
+\small\texttt{3C58C0B88081380C7D22993A6FEE3B4EC9FE1A8C3D0CDC107BE9D40C33BA4ACC},
+\end{center}
+for the exceptional-centre adversarial control E-A61,
+\begin{center}
+\small\texttt{76956805B0BA304142CB08D833FA1179876A9F2154A76CE6C5A232BEF9E3F7F1},
+\end{center}
+for the reversed witness family E-A63,
+\begin{center}
+\small\texttt{50B26633575C81C67AD3A9857DC5BE1227B512E21CC98168EECEC37B360DB1A8},
+\end{center}
+and for the certificate verification of Theorem~\ref{thm:fourbyfour}, whose
+payload pins the SHA-256 of all four cofactor files, E-A69,
+\begin{center}
+\small\texttt{5DC4C5800572C64F07C7A815CE7BEFFB930FEF03E04CC71679FB9501606F1D92}.
 \end{center}
 Finite replay is evidence about the implementation and its frozen domain.  The
 proof of Theorem~\ref{thm:main} is the intrinsic argument in the preceding
-sections.
+sections, and the proof of Theorem~\ref{thm:fourbyfour} rests on the verified
+identities and the elementary analysis of Section~\ref{sec:exchange}, not on
+the replay.
 
 \section{Relation to supplied-boundary inverse problems}
 \label{sec:related}
@@ -587,6 +939,16 @@ reconstruction is noise-sensitive~\cite{BourneEtAl2021NDT}.  These are
 partial- and indirect-data comparators, but their observables are respectively
 global labelled cell moments and travel times, not a reflected-cap raw union.
 
+Three further classical theories are sometimes suggested as antecedents and
+are not.  Alexandrov's theory determines a convex polyhedron from its
+intrinsic surface metric, which is blind to the fold structure of a flat
+doubly covered region --- exactly the information at issue
+here~\cite{Alexandrov2005}.  The Blind--Mani theorem, with Kalai's proof,
+reconstructs a simple polytope from its graph, with combinatorial input and
+output~\cite{BlindMani1987,Kalai1988}.  Geometric tomography reconstructs
+bodies from projections or sections, and the reflected-cap raw union is
+neither~\cite{Gardner2006}.
+
 The precise distinction in the present model is that the zero-angle source
 layer and its facet boundaries have already been erased by the raw union.  The
 intrinsic germ skeleton is designed to use only the boundary information that
@@ -600,15 +962,24 @@ related erased-boundary problem.
 The following questions are not resolved here.
 
 \begin{itemize}
-\item If a core vertex passes, Theorem~\ref{thm:main} does not decide whether
-the datum remains unique or whether an exact ambiguity exists.
+\item Whether an exact ambiguity exists at all remains open.
+Theorems~\ref{thm:hinge-anchored} and~\ref{thm:five} constrain it: every
+ambiguous datum needs a passing core vertex avoiding all visible hinge facets
+and at least five differing sites on each side, hence at least five hidden
+facets.  Data with five or more hidden facets are not decided here.
 \item The proof is three-dimensional.  Higher-dimensional analogues require a
 new analysis of the boundary-germ strata and candidate types.
+\item Theorem~\ref{thm:fourbyfour} is computer-assisted: the four certificate
+identities were found by machine and are re-verified by exact expansion.  The
+verification chain ships with the reference implementation; the remaining
+steps are hand-checkable.
 \item The reference implementation assumes an exact polygonal presentation.
 It does not extract such a presentation from a point cloud, floating-point
 mesh, or arbitrary implicit-set oracle.
-\item E-A58 implements the flat reconstruction kernel, not the full six-step
-pipeline or full raw-union certifier.
+\item E-A58 implements the flat reconstruction kernel and the two-condition
+certifier; it is not the full six-step pipeline or a raw-union certifier.
+Completeness of the two conditions is not claimed; each is necessary, and
+their conjunction rejects every constructed wrong reconstruction.
 \item The finite corpus and deterministic mutation sample do not establish
 novelty, priority, or unrestricted-domain behaviour.
 \end{itemize}

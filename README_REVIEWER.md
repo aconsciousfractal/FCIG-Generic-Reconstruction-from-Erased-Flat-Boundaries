@@ -46,18 +46,37 @@ recovery. The public package claims no industrial deployment.
 
 | Artifact | Direct conclusion | Boundary |
 |---|---|---|
-| E-A60 | source-kind fields ignored; 16,744 reconstructions; mutation and independent-extractor controls | frozen rational corpus and stated mutation class |
-| E-A58 | exact steps-4-to-6 flat reconstruction; 340 exact set certifications | not steps 1 to 3 and not a full raw-union certifier |
-| Unit tests | source-label deletion, subdivision, witness, reconstruction, tamper rejection | focused samples |
+| E-A60 | source-kind fields ignored; 16,744 reconstructions; mutation and independent-extractor controls | frozen rational corpus; the 256 mutation/extractor checks are a deterministic corpus prefix |
+| E-A58 | exact steps-4-to-6 flat reconstruction; 340 exact two-condition certifications | not steps 1 to 3 and not a full raw-union certifier; completeness of the two conditions not claimed |
+| E-A61 | six exact exceptional-centre witnesses: flat-only accepts a strict superset, two-condition rejects | constructed witnesses, not the exceptional locus |
+| E-A63 | three reversed witnesses: hinges survive, flat comparison fails | same |
+| E-A69 | the four Theorem 7.6 certificate identities expand to zero exactly; endgame and positive controls re-run | certificates decide the two ratios used, over the complex numbers, not the general lemma |
+| Unit tests | source-label deletion, subdivision, witness, reconstruction, tamper rejection, certifier necessity | focused samples |
 
 Corpus agreement between the intrinsic candidate set and an older plane-count
 shortcut is regression evidence only, not a general equivalence theorem.
 
+## Certificate audit route (Theorem 7.6)
+
+1. Read Section 7 of the PDF: only Step 2 of Theorem 7.6 is machine-found.
+2. Check the four cofactor files under <code>certificates/</code> against the
+   SHA-256 pins inside <code>results/P43_S122_E_A69_BRANCH3_EXACT_CLOSURE.json</code>.
+3. Run <code>python scripts/p43_s122_e_a69_branch3_exact_closure.py --verify-existing</code>:
+   it re-derives the polynomials from the Gram matrix, expands each identity to
+   the zero polynomial in exact rational arithmetic, re-runs the elementary
+   endgame, and re-checks the standing positive controls (the regular
+   tetrahedron at distance one third must remain a solution).
+4. The Groebner search that found the cofactors (Singular 4.3.2, drivers under
+   <code>certificates/</code>) is provenance, not a proof dependency.
+
 ## Claims deliberately absent
 
-- no uniqueness theorem at exceptional centres;
+- no uniqueness theorem at exceptional centres with five or more hidden
+  facets (at most four is proved; hinge-anchored is proved);
 - no higher-dimensional theorem;
 - no floating-point or point-cloud front end;
+- no certifier-completeness claim;
+- no general equal-face-circumradius characterisation;
 - no novelty, priority, or firstness claim.
 
 ## Repository status

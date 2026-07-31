@@ -24,11 +24,25 @@ The intrinsic candidate set is also compared with the older plane-count
 shortcut, but agreement on this corpus is regression evidence, not an
 equivalence theorem.
 
-**The certifying variant never lies on the attempted sample.** Rebuild M_J
-from the reconstruction and compare it exactly, as a set, with the observed
-M_J.  A run either returns a certified datum or reports failure.  This is
-checked on a deterministic sample because exact set comparison requires
-pairwise halfspace-intersection volumes.
+**The certifying variant, corrected in S109.**  Rebuild M_J from the
+reconstruction and compare it exactly, as a set, with the observed M_J, **and**
+require every recovered visible hinge facet to survive as a facet of the
+reconstructed core.
+
+The second condition is not decoration.  E-A61 builds exact data with a passing
+core vertex, at which the first condition alone **accepts a reconstruction that
+is not a compatible decomposition**: cutting the passing vertex off with its
+bisector plane and attaching the cap over the new facet puts back exactly the
+piece that was cut, so the flat component matches, while the truncation destroys
+the hinge facets that the observed nonflat caps attach to.  Those facets are
+intrinsic by C032, so the added condition reads only legitimate input.
+
+The condition rejects nothing on the frozen corpus; that is measured here and
+reported as `rejected_by_the_added_hinge_condition`.  It closes the E-A61
+family and is not proved to close every failure mode.
+
+Certification is checked on a deterministic sample because exact set comparison
+requires pairwise halfspace-intersection volumes.
 
 The S101 swallowed-corner witness is included as a separate exact control.
 """
@@ -148,11 +162,57 @@ def observed_merged_component(union: dict[str, Any]) -> list[CEN.Cell]:
     ]
 
 
-def certifies(union: dict[str, Any], reconstruction: dict[str, Any]) -> bool:
+def hinge_facets_survive(
+    union: dict[str, Any], reconstruction: dict[str, Any]
+) -> bool:
+    """Every recovered visible hinge facet is still a facet of the new core.
+
+    Comparing only the merged flat component is not sufficient.  E-A61 exhibits
+    exact data at which a reconstruction reproduces M_J exactly and is still not
+    a compatible decomposition: cutting a passing core vertex off with its
+    bisector plane and attaching the cap over the new facet puts back exactly
+    the piece that was cut, so the flat component matches, while the truncation
+    destroys the recovered visible hinge facets.  The observed nonflat caps
+    attach along those facets, so the raw union is then not reproduced.
+
+    The hinge facets are intrinsic by C032, so this is legitimate input.
+    """
+    solved = K.Polytope(reconstruction["core_halfspaces"])
+    if not solved.bounded or len(solved.vertices) < 4:
+        return False
+    facets = {
+        K.unoriented_plane_key(normal, offset): sorted(
+            K.point_key(solved.vertices[position]) for position in indices
+        )
+        for (normal, offset), indices in K.hull_facets(list(solved.vertices))
+    }
+    for index in union["visible"]:
+        key = K.unoriented_plane_key(*union["hinge_planes"][index])
+        observed = sorted(
+            K.point_key(point) for point in union["hinge_polygons"][index]
+        )
+        if facets.get(key) != observed:
+            return False
+    return True
+
+
+def certifies_flat_only(
+    union: dict[str, Any], reconstruction: dict[str, Any]
+) -> bool:
+    """The historical condition: the merged flat component matches as a set."""
     rebuilt = rebuild_merged_component(reconstruction)
     if rebuilt is None:
         return False
     return CEN.unions_are_equal(rebuilt, observed_merged_component(union))
+
+
+def certifies(union: dict[str, Any], reconstruction: dict[str, Any]) -> bool:
+    """Flat-component equality **and** survival of the recovered hinge facets."""
+    if reconstruction is None:
+        return False
+    if not certifies_flat_only(union, reconstruction):
+        return False
+    return hinge_facets_survive(union, reconstruction)
 
 
 # --------------------------------------------------------------------------
@@ -188,6 +248,8 @@ def build(limit: int | None) -> dict[str, Any]:
     candidate_sets_agree = 0
     certified = 0
     certification_attempts = 0
+    certified_by_the_flat_condition_alone = 0
+    rejected_by_the_hinge_condition = 0
     wrong_and_certified: list[dict[str, Any]] = []
     wrong_answers: list[dict[str, Any]] = []
 
@@ -250,9 +312,14 @@ def build(limit: int | None) -> dict[str, Any]:
 
                 if mask % stride == 0 and result is not None:
                     certification_attempts += 1
-                    ok = certifies(union, result)
+                    flat_only = certifies_flat_only(union, result)
+                    ok = flat_only and hinge_facets_survive(union, result)
+                    if flat_only:
+                        certified_by_the_flat_condition_alone += 1
                     if ok:
                         certified += 1
+                    if flat_only and not ok:
+                        rejected_by_the_hinge_condition += 1
                     if ok and not right:
                         wrong_and_certified.append(where)
 
@@ -287,6 +354,8 @@ def build(limit: int | None) -> dict[str, Any]:
         "rows_where_intrinsic_and_historical_candidate_sets_agree": candidate_sets_agree,
         "certification_attempts": certification_attempts,
         "certified": certified,
+        "certified_by_the_flat_condition_alone": certified_by_the_flat_condition_alone,
+        "rejected_by_the_added_hinge_condition": rejected_by_the_hinge_condition,
         "wrong_answers": len(wrong_answers),
         "wrong_and_certified": len(wrong_and_certified),
         "witness_reconstructed_correctly": witness_right,
@@ -299,6 +368,9 @@ def build(limit: int | None) -> dict[str, Any]:
         ),
         "every_attempted_certification_succeeded": (
             certified == certification_attempts
+        ),
+        "the_added_hinge_condition_rejects_nothing_on_this_corpus": (
+            rejected_by_the_hinge_condition == 0
         ),
         "the_intrinsic_candidate_step_and_historical_plane_count_agree_on_this_corpus": (
             candidate_sets_agree == rows
@@ -317,17 +389,17 @@ def build(limit: int | None) -> dict[str, Any]:
         raise AssertionError(f"S102 reference-reconstruction failure: {failed}")
 
     result = {
-        "schema_version": "P43-E-A58-REFERENCE-RECONSTRUCTION-v2",
+        "schema_version": "P43-E-A58-REFERENCE-RECONSTRUCTION-v3",
         "project": "P43",
         "phase": "S102_E_A58_reference_reconstruction",
-        "status": "pass_exact_flat_kernel_replay",
+        "status": "pass_exact_flat_kernel_replay_with_hinge_survival",
         "algorithm": {
             "step_1_2": "local-flat components give M_J and the nonflat caps; C030 and C032",
             "step_3": "one nonflat cap gives the centre; C032",
             "step_4": "build the source-free intrinsic boundary-germ skeleton from exposed sheets",
             "step_5": "keep the candidates that pass the intrinsic apex signature",
             "step_6": "intersect the hinge halfspaces with the bisector halfspaces",
-            "certifying_variant": "rebuild M_J from the output and compare it exactly as a set",
+            "certifying_variant": "rebuild M_J from the output, compare it exactly as a set, AND require every recovered visible hinge facet to survive as a facet of the reconstructed core (S109/E-A61)",
         },
         "metrics": metrics,
         "wrong_answers": wrong_answers[:20],
@@ -338,7 +410,9 @@ def build(limit: int | None) -> dict[str, Any]:
                 "the flat kernel in steps 4 to 6 returns the true sites and core "
                 "on every frozen corpus row and on the degenerate S101 witness",
                 "the certifying variant certified every attempt and never "
-                "certified a wrong answer",
+                "certified a wrong answer on this corpus",
+                "the added hinge-survival condition rejects nothing here, "
+                "while E-A61 shows it is necessary off this corpus",
                 "the intrinsic candidate set and the historical plane-count "
                 "shortcut agree on every frozen corpus row",
             ],
@@ -349,6 +423,8 @@ def build(limit: int | None) -> dict[str, Any]:
                 "comparison costs pairwise intersection volumes",
                 "any equivalence theorem inferred from the historical plane-count "
                 "shortcut, or any theorem-level role for historical condition (H)",
+                "completeness of the certifier: the hinge condition closes the "
+                "E-A61 family, and is not proved to close every failure mode",
             ],
         },
     }
