@@ -1,6 +1,13 @@
-* text=auto eol=lf
-*.pdf binary
-*.json text eol=lf
-*.py text eol=lf
-*.tex text eol=lf
-*.bib text eol=lf
+# Normalize shipped text so manifest hashes are platform-independent.
+*.py    text eol=lf
+*.md    text eol=lf
+*.tex   text eol=lf
+*.bib   text eol=lf
+*.cff   text eol=lf
+*.txt   text eol=lf
+*.json  text eol=lf
+*.yml   text eol=lf
+LICENSE text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+*.pdf   binary

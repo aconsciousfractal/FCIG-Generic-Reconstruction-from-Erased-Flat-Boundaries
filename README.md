@@ -1,117 +1,116 @@
-# Generic Exact Reconstruction of Reflected-Cap Data from an Erased Flat Boundary
+# Exact Reconstruction of Reflected-Cap Data from an Erased Flat Boundary
 
 Companion package for the paper
 
-> **Generic Exact Reconstruction of Reflected-Cap Data from an Erased Flat Boundary**  
-> Oleksiy Babanskyy, 2026.
+> **Exact Reconstruction of Reflected-Cap Data from an Erased Flat Boundary**
+> Oleksiy Babanskyy.
 
-PDF: [paper/Generic_Exact_Reconstruction_of_Reflected_Cap_Data_from_an_Erased_Flat_Boundary.pdf](paper/Generic_Exact_Reconstruction_of_Reflected_Cap_Data_from_an_Erased_Flat_Boundary.pdf).
+PDF: [`paper/Exact_Reconstruction_of_Reflected-Cap_Data_from_an_Erased_Flat_Boundary.pdf`](paper/Exact_Reconstruction_of_Reflected-Cap_Data_from_an_Erased_Flat_Boundary.pdf).
 
-## S108 application and prior-art audit
+The paper studies a three-dimensional convex polytope whose facet reflections
+are independently rotated. In the **proper-zero** regime at least one cap is
+nonflat and at least one cap is flat. Flat caps merge with the core and erase
+their internal source seams; only the resulting raw union is observed.
 
-Primary-source checking corrected one overbroad comparison: inverse tessellation
-problems do not always receive boundary edges. Labelled Laguerre cells can be
-recovered from volumes and centroids, and a simplified ultrasonic NDT model fits
-an oriented planar Voronoi diagram from travel times. Those observables are not
-the reflected-cap raw union used here. Other inverse Voronoi and Laguerre methods
-start from a supplied planar tessellation, weighted cell partition, or spherical
-tessellation, even when they propagate generators by reflection; those source
-boundaries have already been erased in the present model. Brillouin zones share the local
-perpendicular-bisector construction, but diffraction extinctions do not erase
-zone faces. EBSD, NDT and lattice models are research bridges, not current
-deployments; prescribed-crease origami hardness does not transfer to this inverse
-problem. See the source lock and red-team report.
+## Main result
 
-## What the paper proves
+Every exact three-dimensional proper-zero raw union has exactly one compatible
+decomposition in the model stated in the paper. No genericity hypothesis and
+no bound on the number of facets is required.
 
-A convex three-polytope lies in a hyperplane of four-space. Its interior
-centre is reflected across every facet, producing one pyramidal cap per
-facet; the caps are then independently rotated about their base facets. In
-the proper-zero regime, at least one cap is nonflat and at least one is flat.
-The flat caps merge with the core and erase their internal source seams.
+The proof starts from any recovered visible hinge and repeats four intrinsic
+steps:
 
-The paper defines a source-free boundary-germ skeleton of that merged flat
-component. If no core vertex passes the intrinsic bisector-neighbour test, the
-passing skeleton vertices are exactly the hidden reflected apexes, the core is
-recovered by exact halfspace intersection, and every compatible decomposition
-is unique. For each fixed realized core and visible-facet mask, excluded
-centres lie in a finite union of proper spheres and quadrics and therefore
-have Lebesgue measure zero.
+1. a frontier ridge exposes the second **oriented** boundary ray in its normal
+   quotient, even when two supporting rays fuse into one straight line;
+2. projection to that ridge and equality of the reflected radius recover one
+   new site;
+3. the unique strict-bisector component containing that site recovers the full
+   cap and its base;
+4. connectivity of the facet-adjacency graph propagates the reconstruction to
+   every hidden facet.
 
-Beyond the conditional statement, the paper proves two unconditional
-structure results. Uniqueness holds whenever every passing core vertex lies
-on a visible hinge facet (Theorem 7.2). Any two distinct compatible
-decompositions differ in at least five reflected sites on each side
-(Theorem 7.8), so a proper-zero datum with at most four hidden facets is
-unique with no hypothesis on its centre (Corollary 7.9). The five-site bound
-rests on a nonexistence theorem for an eight-point spherical configuration
-(Theorem 7.6), proved by four polynomial certificate identities archived
-under <code>certificates/</code> and re-verified by exact expansion, plus an
-elementary positivity analysis.
+Comparing two arbitrary compatible decompositions under the same intrinsic
+procedure forces them to agree facet by facet. The finite replay below checks
+implementations and adversarial controls; it is not used as the proof.
 
-## Evidence boundary
+## Additional results retained in the paper
 
-- The frozen corpus is the complete six-vertex census: 35 exactly
-  constructed rational realizations of the seven six-vertex core types, four
-  interior centres each, all visible-facet masks — 16,744 rows.
-- E-A60 reconstructs all 16,744 rows in the frozen exact-rational corpus,
-  checks 256 boundary-subdivision mutations (a deterministic corpus prefix),
-  256 independent maximal-sheet extractions, and the swallowed-corner witness.
-- E-A58 reconstructs all 16,744 frozen rows with the steps-4-to-6 flat kernel
-  and exactly certifies 340 deterministic samples with the two-condition
-  certifier (flat-component equality and hinge-facet survival), with zero
-  wrong answers.
-- E-A61 builds six exact exceptional-centre witnesses on which the flat-only
-  comparison accepts a wrong reconstruction and the two-condition certifier
-  rejects it; E-A63 builds three reversed witnesses where the hinge condition
-  holds and the flat comparison fails. Each condition is necessary.
-- E-A69 re-verifies the four certificate identities of Theorem 7.6 by exact
-  expansion (SymPy) and re-runs the elementary endgame with its standing
-  positive controls.
-- These finite replays verify the implementation and the certificates on the
-  frozen domain. The proof is the intrinsic argument in the manuscript.
+- An auxiliary boundary-germ signature reconstructs in one shot away from a
+  finite algebraic exceptional set for each fixed realized core and visible
+  mask. This exceptional set limits the shortcut, not the main theorem.
+- Hypothetical competing decompositions would differ in at least five reflected
+  sites on each side. Its spherical-configuration step is computer-assisted by
+  four exact polynomial identities re-verified from the shipped certificate
+  files.
+- The reference signature implementation has a two-condition certifier. E-A61
+  and E-A63 show independently that neither condition can be discarded.
 
-## What is not claimed
+## Executable evidence
 
-- uniqueness at exceptional centres with five or more hidden facets;
-- a theorem in dimension greater than three;
-- extraction from point clouds, floating-point meshes, or implicit-set oracles;
-- a full end-to-end implementation of conceptual steps 1 to 3;
-- completeness of the two certifier conditions;
-- novelty, priority, or firstness relative to every possible prior work.
+The companion ships the seven audits cited by the manuscript:
 
-## Quick start
+- **E-A58:** auxiliary signature reconstruction on all 16,744 frozen corpus
+  rows and exact two-condition certification on 340 deterministic samples;
+- **E-A60:** intrinsic boundary-germ extraction on all 16,744 rows, including
+  subdivision and independent-extractor controls;
+- **E-A61/E-A63:** the two complementary certifier failure families;
+- **E-A69:** exact expansion of the four polynomial certificate identities and
+  the elementary endgame;
+- **E-A71:** 16,759 exact data and 189,128 oriented local-ridge steps;
+- **E-A72:** an independent source-scrubbed global engine on 16,759 exact data,
+  61,030 BFS/component steps, 34,090 ridge-touch ambiguities disambiguated by
+  the recovered site, zero mismatches, and four deliberate faults killed.
 
-~~~bash
+All geometry and certificate comparisons are exact. E-A69 uses SymPy 1.14 and
+mpmath 1.3.0; the remaining package is standard-library Python.
+
+## Quick verification
+
+```bash
 python scripts/check_manifest.py --closed-tree
 python -m unittest discover -s tests
 python scripts/verify_all.py
 python -O scripts/verify_all.py
 python scripts/check_attestation.py
 python scripts/verify_manifest_only.py
-~~~
+```
 
-The package uses exact rational arithmetic throughout. Its pinned third-party
-dependencies are SymPy, used to re-verify the certificate identities by exact
-expansion, and mpmath, SymPy's arithmetic backend (`pip install -r
-requirements.txt`). The complete replay is intentionally substantial; runtime
-is hardware-dependent.
+Normal and optimized aggregate runs must produce byte-identical receipts. The
+last command copies only source-manifest files into an isolated temporary tree
+and repeats both modes, detecting private-workspace or unmanifested
+dependencies. See [`REPRODUCE.md`](REPRODUCE.md) for the complete contract.
 
-## Layout
+## Claim boundary
 
-~~~text
-paper/        manuscript source, bibliography, and title-named PDF
+The public theorem is exact and three-dimensional. This repository does not
+claim:
+
+- all-zero reconstruction, where no visible hinge initializes propagation;
+- a theorem above dimension three;
+- extraction from point clouds, floating-point meshes, or implicit-set oracles;
+- numerical stability or noise robustness;
+- that E-A72 is an end-to-end general polyhedral component engine;
+- completeness of the auxiliary two-condition certifier;
+- novelty, priority, or firstness relative to all prior work.
+
+Read [`docs/PUBLIC_CLAIM_BOUNDARY.md`](docs/PUBLIC_CLAIM_BOUNDARY.md) before
+citing the result and [`docs/SOURCE_LOCK.md`](docs/SOURCE_LOCK.md) for exact
+source status. Related supplied-tessellation, inverse Voronoi, Laguerre-moment,
+and travel-time models are compared in the paper and
+[`docs/PRIOR_ART.md`](docs/PRIOR_ART.md) without importing their conclusions.
+
+## Repository layout
+
+```text
+paper/        manuscript source, bibliography, and one title-named PDF
 scripts/      exact geometry, replay, integrity, and isolated-replay tools
-certificates/ the four Theorem 7.6 cofactor files and the search/control
-              drivers that produced them
-results/      frozen E-A58/E-A60/E-A61/E-A63/E-A69 receipts and the
-              regenerated package receipt
-tests/        focused source-free, certification, and necessity controls
-docs/         claim, source, prior-art, red-team, artifact, and release boundaries
-~~~
+certificates/ four E-A69 cofactors plus provenance/search drivers
+results/      frozen E-A58/E-A60/E-A61/E-A63/E-A69/E-A71/E-A72 records
+tests/        source-free, certification, propagation, mutation, and trust gates
+docs/         claim, source, prior-art, red-team, artifact, and release records
+```
 
-The replay is standard-library Python except for the certificate
-verification, which uses SymPy for exact polynomial expansion (see
-<code>requirements.txt</code>). Original content is covered by the MIT
-<code>LICENSE</code>; see <code>LICENSE_SCOPE.md</code> and
-<code>THIRD_PARTY_NOTICES.md</code>.
+Original repository content is MIT licensed. `LICENSE_SCOPE.md` and
+`THIRD_PARTY_NOTICES.md` describe the citation-only third-party boundary; no
+third-party paper or dataset is redistributed here.

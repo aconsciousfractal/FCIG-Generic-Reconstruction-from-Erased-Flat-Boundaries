@@ -18,11 +18,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ROOT_REAL = ROOT.resolve(strict=True)
 ATTESTATION = ROOT / "RELEASE_ATTESTATION.json"
-EXPECTED_SCHEMA = "P43-S130-RELEASE-ATTESTATION-v6"
+EXPECTED_SCHEMA = "P43-S136-RELEASE-ATTESTATION-v7"
 EXPECTED_ARTIFACT_PATHS = {
     "source_manifest": "MANIFEST_SHA256.txt",
     "paper_pdf": (
-        "paper/Generic_Exact_Reconstruction_of_Reflected_Cap_Data_"
+        "paper/Exact_Reconstruction_of_Reflected-Cap_Data_"
         "from_an_Erased_Flat_Boundary.pdf"
     ),
     "aggregate_receipt": "results/public_package_verification.json",
@@ -39,9 +39,11 @@ EXPECTED_PAYLOAD_KEYS = {
     "exceptional_centre_witnesses_e_a61": "E_A61_payload",
     "reversed_witnesses_e_a63": "E_A63_payload",
     "certificate_closure_e_a69": "E_A69_payload",
+    "oriented_local_ridge_audit_e_a71": "E_A71_payload",
+    "independent_global_propagation_e_a72": "E_A72_payload",
 }
-EXPECTED_MANIFEST_ENTRIES = 54
-EXPECTED_PDF_PAGES = 16
+EXPECTED_MANIFEST_ENTRIES = 60
+EXPECTED_PDF_PAGES = 20
 EXPECTED_CHECKS = 7
 
 

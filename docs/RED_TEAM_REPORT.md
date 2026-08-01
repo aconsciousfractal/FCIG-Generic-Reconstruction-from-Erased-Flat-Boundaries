@@ -1,21 +1,40 @@
 # Red-team report
 
 Scope: the P43 public companion package and its manuscript.  Maintained by
-the P43 project through five adversarial waves (internal S105--S107 release
+the P43 project through six adversarial waves (internal S105--S107 release
 audit; external manuscript audit with internal adjudication, 2026-07-31;
 external release audit with internal adjudication, 2026-07-31, on the tree
 whose parent is the S108 candidate; independent pre-publication audit and
 closeout, 2026-08-01; post-commit attestation-semantics red team and
-adjudication, 2026-08-01).  Enumeration and mutation checks quoted
+adjudication, 2026-08-01; and S135 hostile audit of the universal
+proper-zero manuscript, 2026-08-01).  Enumeration and mutation checks quoted
 below were executed during the audits; the enumeration scripts are audit
 tooling and are not part of this package.
 
 ## Outcome
 
-The release candidate passed only after repairing multiple claim-critical
-defects. No fatal or high-severity finding remains open inside the published
-theorem and artifact scope. The mathematical open problems listed below are
-explicit exclusions, not hidden release defects.
+The S136 source freeze incorporates the repaired S135 theorem and passed its
+complete local release gate before publication. No fatal or high-severity
+finding remains open from the completed S135 waves. At source-freeze time the
+two requested post-publication audits were, necessarily, not yet applicable;
+their adjudication belongs to the remote release record. The excluded
+questions listed below are scope boundaries, not hidden release defects.
+
+## Sixth wave: universal-manuscript hostile audit
+
+The S135 external audit attacked the four load-bearing stages of the new
+universal proof 27 ways: nonsimple frontier ridges, straight coplanar fusion,
+orientation loss, site antipodes, strict-component topology, ridge-touch
+ambiguity, and simultaneous propagation between two arbitrary compatible
+decompositions. No mathematical break survived.
+
+It did find five real manuscript-surface defects and one governance defect:
+the printed `exceptional- centre` break, an undefined/mislocated skeleton
+reference, an undefined halfspace symbol, no artifact-availability contract,
+ambiguous attribution of three E-A72 metrics, and a stale S131 theorem card.
+All were independently confirmed, repaired, and frozen by regression before
+the S136 public re-lock. The availability repair now resolves to this public
+repository rather than a pre-release placeholder.
 
 ## Second wave: the revised manuscript
 
@@ -97,8 +116,8 @@ PASS, while replacing the PDF role with the manifest and changing its declared
 page count still produced a seven-check PASS.  The path-traversal hardening and
 the mathematical gates were not affected.  The checker now fixes the schema,
 three canonical artifact paths and four certificate names; requires exactly
-seven checks; validates the real 54-entry manifest and 16-page PDF; and binds
-all five exact payloads to the aggregate receipt.  Regression tests kill both
+seven checks; validates the real 60-entry manifest and 20-page PDF; and binds
+all seven exact payloads to the aggregate receipt.  Regression tests kill both
 degradation attacks.  The documentation also states the unavoidable trust
 boundary: the reviewed Git commit, not an in-tree checker by itself, protects
 against a coordinated rewrite of checker and attestation.
@@ -113,11 +132,10 @@ against a coordinated rewrite of checker and attestation.
 - normal and optimized replays must generate identical receipts;
 - the manifest-only replay rejects hidden private-workspace dependencies.
 
-## Open research outside release scope
+## Excluded questions, not scheduled release work
 
-- decide uniqueness or construct an exact ambiguity when a passing core vertex
-  avoids every visible hinge and at least five hidden facets are present;
-- extend the intrinsic-stratum argument above dimension three;
-- prove or refute the historical plane-count shortcut beyond the corpus;
-- build an end-to-end exact extractor from a more primitive raw-set input;
-- continue prior-art tomography without making a firstness claim.
+- all-zero data without a visible hinge;
+- dimension greater than three;
+- the historical plane-count shortcut beyond the frozen corpus;
+- end-to-end exact extraction from a more primitive raw-set input;
+- numerical stability, noise, and unrestricted novelty or priority.

@@ -1,0 +1,301 @@
+{
+  "adversarial_families": [
+    {
+      "category": "exceptional_centre",
+      "datum": "exceptional:(1, 2, 1)",
+      "differences": [],
+      "metrics": {
+        "component_extractions": 4,
+        "hidden_to_hidden_steps": 3,
+        "ridge_touch_ambiguities": 0,
+        "steps": 4,
+        "straight_coplanar_fusions": 0,
+        "visible_to_hidden_steps": 1
+      },
+      "subdivided_presentation": false
+    },
+    {
+      "category": "exceptional_centre",
+      "datum": "exceptional:(1, 3, 1)",
+      "differences": [],
+      "metrics": {
+        "component_extractions": 4,
+        "hidden_to_hidden_steps": 3,
+        "ridge_touch_ambiguities": 0,
+        "steps": 4,
+        "straight_coplanar_fusions": 0,
+        "visible_to_hidden_steps": 1
+      },
+      "subdivided_presentation": false
+    },
+    {
+      "category": "exceptional_centre",
+      "datum": "exceptional:(1, 2, 2)",
+      "differences": [],
+      "metrics": {
+        "component_extractions": 4,
+        "hidden_to_hidden_steps": 3,
+        "ridge_touch_ambiguities": 0,
+        "steps": 4,
+        "straight_coplanar_fusions": 0,
+        "visible_to_hidden_steps": 1
+      },
+      "subdivided_presentation": false
+    },
+    {
+      "category": "exceptional_centre",
+      "datum": "exceptional:(2, 5, 1)",
+      "differences": [],
+      "metrics": {
+        "component_extractions": 4,
+        "hidden_to_hidden_steps": 3,
+        "ridge_touch_ambiguities": 0,
+        "steps": 4,
+        "straight_coplanar_fusions": 0,
+        "visible_to_hidden_steps": 1
+      },
+      "subdivided_presentation": false
+    },
+    {
+      "category": "exceptional_centre",
+      "datum": "exceptional:(1, 4, 3)",
+      "differences": [],
+      "metrics": {
+        "component_extractions": 4,
+        "hidden_to_hidden_steps": 3,
+        "ridge_touch_ambiguities": 0,
+        "steps": 4,
+        "straight_coplanar_fusions": 0,
+        "visible_to_hidden_steps": 1
+      },
+      "subdivided_presentation": false
+    },
+    {
+      "category": "exceptional_centre",
+      "datum": "exceptional:(3, 7, 2)",
+      "differences": [],
+      "metrics": {
+        "component_extractions": 4,
+        "hidden_to_hidden_steps": 3,
+        "ridge_touch_ambiguities": 0,
+        "steps": 4,
+        "straight_coplanar_fusions": 0,
+        "visible_to_hidden_steps": 1
+      },
+      "subdivided_presentation": false
+    },
+    {
+      "category": "volume_branch",
+      "datum": "volume:1",
+      "differences": [],
+      "metrics": {
+        "component_extractions": 4,
+        "hidden_to_hidden_steps": 0,
+        "ridge_touch_ambiguities": 0,
+        "steps": 4,
+        "straight_coplanar_fusions": 0,
+        "visible_to_hidden_steps": 4
+      },
+      "subdivided_presentation": false
+    },
+    {
+      "category": "volume_branch",
+      "datum": "volume:2",
+      "differences": [],
+      "metrics": {
+        "component_extractions": 4,
+        "hidden_to_hidden_steps": 0,
+        "ridge_touch_ambiguities": 0,
+        "steps": 4,
+        "straight_coplanar_fusions": 0,
+        "visible_to_hidden_steps": 4
+      },
+      "subdivided_presentation": false
+    },
+    {
+      "category": "volume_branch",
+      "datum": "volume:3",
+      "differences": [],
+      "metrics": {
+        "component_extractions": 4,
+        "hidden_to_hidden_steps": 0,
+        "ridge_touch_ambiguities": 0,
+        "steps": 4,
+        "straight_coplanar_fusions": 0,
+        "visible_to_hidden_steps": 4
+      },
+      "subdivided_presentation": false
+    },
+    {
+      "category": "multiple_passing",
+      "datum": "multiple:(1, 1, 1)",
+      "differences": [],
+      "metrics": {
+        "component_extractions": 4,
+        "hidden_to_hidden_steps": 3,
+        "ridge_touch_ambiguities": 0,
+        "steps": 4,
+        "straight_coplanar_fusions": 4,
+        "visible_to_hidden_steps": 1
+      },
+      "subdivided_presentation": false
+    },
+    {
+      "category": "multiple_passing",
+      "datum": "multiple:(1, 2, 1)",
+      "differences": [],
+      "metrics": {
+        "component_extractions": 4,
+        "hidden_to_hidden_steps": 3,
+        "ridge_touch_ambiguities": 0,
+        "steps": 4,
+        "straight_coplanar_fusions": 4,
+        "visible_to_hidden_steps": 1
+      },
+      "subdivided_presentation": false
+    },
+    {
+      "category": "multiple_passing",
+      "datum": "multiple:(2, 1, 3)",
+      "differences": [],
+      "metrics": {
+        "component_extractions": 4,
+        "hidden_to_hidden_steps": 3,
+        "ridge_touch_ambiguities": 0,
+        "steps": 4,
+        "straight_coplanar_fusions": 4,
+        "visible_to_hidden_steps": 1
+      },
+      "subdivided_presentation": false
+    },
+    {
+      "category": "multiple_passing",
+      "datum": "multiple:(1, 1, 2)",
+      "differences": [],
+      "metrics": {
+        "component_extractions": 4,
+        "hidden_to_hidden_steps": 3,
+        "ridge_touch_ambiguities": 0,
+        "steps": 4,
+        "straight_coplanar_fusions": 4,
+        "visible_to_hidden_steps": 1
+      },
+      "subdivided_presentation": false
+    },
+    {
+      "category": "multiple_passing",
+      "datum": "multiple:(3, 2, 1)",
+      "differences": [],
+      "metrics": {
+        "component_extractions": 4,
+        "hidden_to_hidden_steps": 3,
+        "ridge_touch_ambiguities": 0,
+        "steps": 4,
+        "straight_coplanar_fusions": 4,
+        "visible_to_hidden_steps": 1
+      },
+      "subdivided_presentation": false
+    },
+    {
+      "category": "swallowed_corner",
+      "datum": "s101:swallowed-corner",
+      "differences": [],
+      "metrics": {
+        "component_extractions": 2,
+        "hidden_to_hidden_steps": 1,
+        "ridge_touch_ambiguities": 0,
+        "steps": 2,
+        "straight_coplanar_fusions": 1,
+        "visible_to_hidden_steps": 1
+      },
+      "subdivided_presentation": false
+    }
+  ],
+  "assertions": {
+    "all_adversarial_families_are_exercised": true,
+    "all_four_deliberate_faults_are_killed": true,
+    "boundary_is_derived_by_exact_tetrahedral_face_cancellation": true,
+    "every_global_reconstruction_matches_sites_caps_facets_and_hidden_count": true,
+    "non_simple_data_are_exercised": true,
+    "presentation_subdivision_is_exercised": true,
+    "raw_engine_contract_contains_no_source_labels_masks_cap_ids_or_kind_fields": true,
+    "ridge_touch_is_shown_to_be_ambiguous_on_exact_data": true,
+    "straight_coplanar_fusions_are_exercised": true,
+    "strict_component_extraction_is_exercised_at_every_step": true,
+    "truth_is_compared_only_after_global_reconstruction": true,
+    "visible_to_hidden_and_hidden_to_hidden_steps_are_both_exercised": true
+  },
+  "canonical_mathematical_payload_sha256": "46F44A8E7444B395AF987C2BA5EA9A0BF1DFBD69E6BA782525FA71822D42D4AA",
+  "claim_boundary": {
+    "established": [
+      "an independent source-scrubbed exact engine reaches global BFS completion on the audited domain",
+      "every reconstructed hidden site cap base and complete facet family equals source truth after reconstruction",
+      "strict-halfspace component selection survives exact ridge-touch ambiguity",
+      "four independent orientation sign component and ridge-owner faults are killed"
+    ],
+    "excluded": [
+      "a replacement for the abstract C093 proof",
+      "all-zero data without a visible anchor",
+      "dimension above three",
+      "a primitive implementation from an arbitrary implicit or noisy point set",
+      "novelty priority or public readiness"
+    ]
+  },
+  "failures": [],
+  "independence_contract": {
+    "does_not_import_E_A71": true,
+    "internal_source_interfaces_are_presentation_only": true,
+    "raw_fields": [
+      "boundary_triangles",
+      "center",
+      "tetrahedra",
+      "visible_facets"
+    ],
+    "source_truth_read_after_reconstruction_only": true
+  },
+  "metrics": {
+    "categories": {
+      "exceptional_centre": 6,
+      "frozen_corpus": 16744,
+      "multiple_passing": 5,
+      "swallowed_corner": 1,
+      "volume_branch": 3
+    },
+    "component_extractions": 61030,
+    "data": 16759,
+    "failures": 0,
+    "global_bfs_steps": 61030,
+    "hidden_to_hidden_steps": 25802,
+    "non_simple_data": 15918,
+    "presentation_subdivision_data": 256,
+    "ridge_touch_ambiguities": 34090,
+    "straight_coplanar_fusions": 445,
+    "visible_to_hidden_steps": 35228
+  },
+  "mutation_kills": {
+    "reversed_halfspace": {
+      "datum": "corpus:S6-01:centroid:1",
+      "killed": true,
+      "mechanism": "fail_closed:RuntimeError:site does not select exactly one strict component"
+    },
+    "ridge_touch_component": {
+      "datum": "corpus:S6-01:toward_vertex:1",
+      "killed": true,
+      "mechanism": "fail_closed:RuntimeError:fewer than three base points"
+    },
+    "unoriented_ray": {
+      "datum": "corpus:S6-01:centroid:1",
+      "killed": true,
+      "mechanism": "fail_closed:RuntimeError:frontier ridge does not expose exactly one new oriented ray"
+    },
+    "wrong_ridge_owner": {
+      "datum": "corpus:S6-01:centroid:1",
+      "killed": true,
+      "mechanism": "fail_closed:RuntimeError:propagation recovered a duplicate hidden site"
+    }
+  },
+  "phase": "S133_E_A72_independent_global_propagation",
+  "project": "P43",
+  "schema_version": "P43-E-A72-INDEPENDENT-GLOBAL-PROPAGATION-v1",
+  "status": "pass_no_global_counterexample_in_exact_domain"
+}

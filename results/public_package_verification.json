@@ -5,6 +5,8 @@
     "E_A61_payload": "76956805B0BA304142CB08D833FA1179876A9F2154A76CE6C5A232BEF9E3F7F1",
     "E_A63_payload": "50B26633575C81C67AD3A9857DC5BE1227B512E21CC98168EECEC37B360DB1A8",
     "E_A69_payload": "5DC4C5800572C64F07C7A815CE7BEFFB930FEF03E04CC71679FB9501606F1D92",
+    "E_A71_payload": "3EA0CA24EB09B31099F9503B0DCF84C1D7D02EB9894C73F0C299E08CF4732BC3",
+    "E_A72_payload": "46F44A8E7444B395AF987C2BA5EA9A0BF1DFBD69E6BA782525FA71822D42D4AA",
     "focused_unit_tests": "PASS"
   },
   "finite_evidence": {
@@ -14,25 +16,29 @@
     "E_A61_exceptional_witnesses": 6,
     "E_A63_reversed_witnesses": 3,
     "E_A69_certificate_identities_verified": 4,
+    "E_A71_oriented_local_steps": 189128,
+    "E_A72_global_BFS_component_steps": 61030,
+    "E_A72_mutation_kills": 4,
+    "E_A72_ridge_touch_ambiguities": 34090,
     "rows": 16744,
     "wrong_and_certified": 0,
     "wrong_answers": 0
   },
-  "manifest_sha256": "56B3E1479AFA8435955A927B1514F65A3EC91ADD8AB75A1F73A32612B245FB7F",
-  "schema": "P43-PUBLIC-PACKAGE-VERIFICATION-v2",
+  "manifest_sha256": "D5A6734D45D162AFC8BA20F35AD05FC2E023C7A95A838F3C9FBFF50BC80B0789",
+  "schema": "P43-PUBLIC-PACKAGE-VERIFICATION-v3",
   "status": "PASS",
   "theorem_boundary": {
+    "all_zero_data": "OUT_OF_SCOPE",
     "certificates": "Theorem 7.6 is computer-assisted; four identities archived under certificates/ and re-verified by exact expansion",
     "certifier": "two conditions, each provably necessary; completeness not claimed",
-    "conditional_hypothesis": "no core vertex passes the intrinsic bisector-neighbour test",
     "dimension": 3,
     "end_to_end_input_extraction": "NOT_IMPLEMENTED",
-    "exceptional_centres": "OPEN_FOR_FIVE_OR_MORE_HIDDEN_FACETS",
     "exchange_bound": "two distinct compatible decompositions differ in at least five reflected sites per side (Theorem 7.8)",
-    "genericity": "fixed realized core and fixed visible mask",
-    "higher_dimensions": "OPEN",
+    "higher_dimensions": "OUT_OF_SCOPE",
     "novelty_or_priority": "NOT_CLAIMED",
+    "proof": "oriented frontier-ridge exposure, projection/radius site recovery, site-anchored strict-component recovery, and finite facet-adjacency propagation",
     "regime": "proper-zero reflected-cap data",
-    "unconditional_uniqueness": "hinge-anchored (Theorem 7.2) and at most four hidden facets (Corollary 7.9)"
+    "signature_shortcut_genericity": "fixed realized core and fixed visible mask; auxiliary only",
+    "uniqueness": "UNIVERSAL_IN_THE_STATED_PROPER_ZERO_MODEL"
   }
 }

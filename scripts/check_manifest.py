@@ -14,7 +14,7 @@ ROOT_REAL = ROOT.resolve(strict=True)
 MANIFEST = ROOT / "MANIFEST_SHA256.txt"
 LINE = re.compile(r"^([0-9A-Fa-f]{64})  ([^\r\n]+)$")
 PAPER_PDF = (
-    "paper/Generic_Exact_Reconstruction_of_Reflected_Cap_Data_"
+    "paper/Exact_Reconstruction_of_Reflected-Cap_Data_"
     "from_an_Erased_Flat_Boundary.pdf"
 )
 EXCLUDED = {

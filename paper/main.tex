@@ -10,7 +10,7 @@
 \usepackage{xcolor}
 \usepackage[pdfusetitle,hidelinks]{hyperref}
 \hypersetup{
-  pdftitle={Generic Exact Reconstruction of Reflected-Cap Data from an Erased Flat Boundary},
+  pdftitle={Exact Reconstruction of Reflected-Cap Data from an Erased Flat Boundary},
   pdfauthor={Oleksiy Babanskyy},
   pdfsubject={Exact inverse reconstruction for proper-zero reflected-cap data},
   pdfkeywords={convex polytopes, inverse geometry, Voronoi reconstruction, exact computation}
@@ -20,6 +20,7 @@
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem*{informaltheorem}{Informal theorem}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{remark}[theorem]{Remark}
@@ -32,12 +33,12 @@
 \newcommand{\dist}{\operatorname{dist}}
 \newcommand{\GammaM}{\Gamma(M_J)}
 
-\title[Reconstruction from an erased flat boundary]{Generic exact reconstruction of reflected-cap data\\from an erased flat boundary}
+\title[Reconstruction from an erased flat boundary]{Exact reconstruction of reflected-cap data\\from an erased flat boundary}
 \author{Oleksiy Babanskyy}
 \address{Independent researcher}
 \email{aconsciousfractal@users.noreply.github.com}
 \urladdr{https://orcid.org/0009-0001-6176-6208}
-\date{August 1, 2026}
+\date{}
 
 \raggedbottom
 
@@ -50,29 +51,30 @@ facets.  We study the proper-zero regime: at least one cap remains nonflat and
 at least one cap returns to the core hyperplane.  The flat caps then merge with
 the core and erase their internal source-layer boundaries.
 
-We define an intrinsic boundary-germ skeleton of the merged flat component.
-Its vertices satisfying a perpendicular-bisector neighbour test are exactly
-the hidden reflected apexes, provided no core vertex satisfies the same test.
-This yields exact reconstruction and uniqueness of every compatible
-decomposition.  For each fixed realized core and visible-facet mask, centres
-violating the hypothesis lie in a finite union of proper spheres and quadrics,
-and hence form a measure-zero set.
+We prove that every such three-dimensional proper-zero raw union has exactly
+one compatible decomposition.  Starting from any recovered visible hinge, a
+frontier ridge exposes one new oriented wall ray.  Its common ridge projection
+and distance from the recovered centre determine the reflected site; the
+unique strict-bisector component containing that site recovers the complete
+flat cap and its base.  Connectivity of the facet-adjacency graph propagates
+the construction to every hidden facet.  No genericity or bound on the number
+of facets is required.
 
-Beyond the generic statement we prove two unconditional structure results.
-Uniqueness holds whenever every core vertex that passes the test lies on a
-visible hinge facet.  Moreover, any two distinct compatible decompositions
-must differ in at least five reflected sites on each side; consequently a
-proper-zero datum with at most four hidden facets is unique without any
-genericity hypothesis.  The five-site bound rests on a nonexistence theorem
-for an eight-point spherical configuration, proved by four polynomial
-certificate identities that are re-verified by exact expansion, together with
-an elementary positivity analysis.
+For each fixed realized core and visible-facet mask, an auxiliary intrinsic
+boundary-germ skeleton gives a one-shot signature reconstruction away from a
+finite union of proper spheres and quadrics in the centre.  We retain two
+independent structural consequences for hypothetical competing
+decompositions: differing sites avoid visible hinges and must number at least
+five on each side.  The latter rests on a nonexistence theorem for an
+eight-point spherical configuration, proved by four polynomial certificate
+identities and an elementary positivity analysis.
 
-We also give an exact rational reference algorithm, a certifying variant
-whose two comparison conditions are each provably necessary, and a
-16,744-instance finite replay: reconstruction on every instance, exact
-certification on a deterministic 340-instance sample.  The finite replay
-supports the implementation; it is not used as the proof.
+We give exact rational implementations of the signature kernel and of the
+global propagation kernel.  The independent audit completes 61,030 global
+propagation/component steps over 16,759 exact data with no mismatch, including
+exceptional centres and erased straight ridges; four deliberate orientation,
+halfspace, component and ridge-owner faults are rejected.  Finite replay
+supports the implementation and is not used as the proof.
 \end{abstract}
 
 \maketitle
@@ -99,35 +101,35 @@ Theorem~2~\cite{AshBolker1985}.  The issue is whether the hidden reflected
 sites can be identified from the exposed boundary after the internal seams
 have disappeared.
 
-A naive graph is insufficient.  Taking the polygonal one-skeleton after every
-coplanar merge can swallow a collinear point at which the local boundary germ
-changes.  Retaining the sides of the original pyramids repairs that example but
-illegitimately remembers the unknown decomposition.  We instead use the
-noncoplanar crease graph of the maximal exposed planar sheet germs.  It keeps a
-collinear point exactly when the local incident-sheet germ changes, and removes
-it when it is only a presentation subdivision.
+A visible hinge supplies more than an initial site estimate: it orients one
+side of every frontier ridge.  In a normal two-dimensional section the bare
+boundary then has exactly one other oriented ray, even when the two rays form
+one straight line after a coplanar merger.  This observation supports a finite
+propagation through the facet-adjacency graph and removes the
+exceptional-centre hypothesis from uniqueness.
 
-Our main result is conditional but size-uniform.
+\begin{informaltheorem}
+Every three-dimensional proper-zero reflected-cap raw union determines its
+core, centre, hidden reflected sites, flat facets and caps uniquely.  Hence
+congruent raw unions arise from congruent data.  No genericity hypothesis and
+no bound on the number of hidden facets is required.
+\end{informaltheorem}
 
-\begin{theorem}[informal]
-In dimension three, suppose a reflected-cap datum is proper-zero and no core
-vertex passes the intrinsic bisector-neighbour test.  Then the passing vertices
-are precisely the hidden reflected apexes, the core is recovered by their
-bisector halfspaces together with the visible hinge halfspaces, and the datum
-is unique up to ambient Euclidean congruence.  For a fixed realized core and
-visible mask, the excluded centres form a measure-zero subset of the core.
-\end{theorem}
+A second, one-shot reconstruction uses the noncoplanar crease graph of maximal
+exposed planar sheet germs.  It keeps a collinear point exactly when its local
+incident-sheet germ changes and removes a pure presentation subdivision.  If
+no core vertex passes its perpendicular-bisector neighbour test, the passing
+vertices are precisely the hidden reflected sites.  For a fixed realized core
+and visible mask, the centres at which this shortcut can acquire a false
+candidate lie in a measure-zero algebraic set.
 
-At excluded centres the conditional theorem is silent, but the ambiguity it
-leaves open is strongly constrained.
-
-\begin{theorem}[informal]
-Uniqueness already holds whenever every core vertex that passes the test lies
-on at least one visible hinge facet.  In general, two distinct compatible
-decompositions of one proper-zero raw union must differ in at least five
-reflected sites on each side.  Hence a proper-zero datum with at most four
-hidden facets is unique, with no hypothesis on its centre.
-\end{theorem}
+\begin{informaltheorem}
+Under a hypothetical pair of distinct compatible decompositions, every
+differing site avoids all visible hinges and the two site sets differ by at
+least five elements on each side.  These implications provide independent
+structural checks, although the universal theorem rules out the antecedent in
+the present model.
+\end{informaltheorem}
 
 The five-site bound reduces, through an exchange graph and an elementary
 incidence count, to the nonexistence of a specific eight-point spherical
@@ -138,9 +140,11 @@ re-verified independently by exact expansion, force the configuration into a
 one-parameter family that an elementary positivity analysis then empties.
 Section~\ref{sec:exchange} contains the complete argument.
 
-The theorems do not assert uniqueness for all data, a result in higher
-dimension, or novelty or priority relative to all possible prior art.  Those
-boundaries are repeated in Section~\ref{sec:limitations}.
+The theorem is specific to the proper-zero regime: at least one visible
+nonflat cap is needed to recover the initial hinge and centre.  We do not claim
+all-zero uniqueness, a result in higher dimension, stability under noise, or
+novelty or priority relative to all possible prior art.  Those boundaries are
+repeated in Section~\ref{sec:limitations}.
 
 \section{The reflected-cap model and exact contacts}
 \label{sec:model}
@@ -150,10 +154,15 @@ to $H$.  Let $P\subset H$ be a full-dimensional convex polytope and
 $o\in\operatorname{int}P$.  Translate $o$ to the origin and write the
 irredundant unit-normal description
 \[
- P=\{x\in H:n_i\cdot x\le h_i,\ i=1,\ldots,m\},
+P=\{x\in H:n_i\cdot x\le h_i,\ i=1,\ldots,m\},
  \qquad \|n_i\|=1,\quad h_i>0,
 \]
 with facets $F_i=P\cap\{n_i\cdot x=h_i\}$.
+Write
+\[
+ H_i^-=\{x\in H:n_i\cdot x\le h_i\}
+\]
+for the inward closed halfspace of the $i$th facet.
 For $\theta_i\in(-\pi,\pi)$ set
 \[
  a_i(\theta_i)=h_i(1+\cos\theta_i)n_i+h_i\sin\theta_i e,
@@ -268,8 +277,183 @@ $o$ in the recovered hinge then gives the fully reflected site.
 Every compatible decomposition of a given proper-zero raw union therefore has
 the same $M_J$, centre, nonflat caps, and visible hinge facets.
 
-\section{The intrinsic boundary-germ skeleton}
+\section{Universal ridge propagation and the intrinsic boundary-germ skeleton}
 \label{sec:skeleton}
+
+\begin{definition}[compatible decomposition]
+\label{def:compatible}
+A compatible decomposition of $M_J$ consists of a full-dimensional convex
+core $P'$ with $o\in\operatorname{int}P'$ and hidden facets $G_a$ indexed by
+sites $a$, where the facet set of $P'$ is exactly the already recovered
+visible hinge facets together with the pairwise distinct facets $G_a$, each
+site $a$ is the reflection of the recovered centre $o$ in $\aff G_a$, and
+\[
+ M_J=P'\cup\bigcup_{a\in A}\conv(G_a\cup\{a\})
+\]
+with pairwise disjoint cell interiors.  The original datum is one such
+decomposition.  For an edge $f$ of $G_a$, write
+$W(a,f)=\conv(\{a\}\cup f)$ for the corresponding wall.
+\end{definition}
+
+In what follows, a \emph{proper-zero raw union} means $X(D)$ for a proper-zero
+datum $D$.  A compatible decomposition of $X(D)$ means a compatible
+decomposition of its intrinsically recovered $M_J$, together with the
+nonflat caps recovered by Proposition~\ref{prop:intrinsic-recovery}.  Thus the
+phrases used for a datum, its raw union, and its merged flat component do not
+denote different inverse problems.
+
+\begin{lemma}[boundary inventory]
+\label{lem:inventory}
+For every compatible decomposition,
+\[
+ \partial M_J
+ =\bigcup_{i\in I}F_i\ \cup\
+   \bigcup_{a\in A}\ \bigcup_{f\in E(G_a)}W(a,f).
+\]
+\end{lemma}
+
+\begin{proof}
+The boundary of $P'$ is the union of its visible facets and hidden facets.
+Each hidden facet is shared with its cap and becomes internal to $M_J$.  The
+remaining cap faces are the walls.  Proposition~\ref{prop:contacts} says that
+a wall meets another cell only in a lower-dimensional face.
+\end{proof}
+
+\subsection{Universal propagation from a visible hinge}
+
+The next argument works directly with the oriented local boundary of $M_J$.
+It does not classify a point by the size of an angle and does not use the
+auxiliary intrinsic germ skeleton of
+Subsection~\ref{subsec:auxiliary-skeleton}.
+
+\begin{lemma}[frontier-ridge exposure]
+\label{lem:ridge-exposure}
+Suppose a facet $F$ of a compatible core, and the flat cap over $F$ when it
+exists, have already been recovered.  Let $R$ be an edge of $F$ whose other
+incident core facet $G$ is hidden and has not yet been recovered.  For
+$x\in\relint R$, the local boundary of $M_J$ in the oriented two-dimensional
+normal quotient to $R$ determines the transverse wall ray of the cap over
+$G$.  This remains true when that ray and the known boundary ray are opposite
+rays of one line.
+\end{lemma}
+
+\begin{proof}
+Proposition~\ref{prop:contacts} excludes a third cell from a neighbourhood of
+$x$ away from the common ridge.  The quotient origin is the image of $R$
+(equivalently of the recovered point $x$), so it is intrinsic and splits even
+a straight boundary line canonically into two oriented rays.  Orient the ray
+of $F$ at angle $0$, put the ray of $G$ at angle
+$\alpha\in(0,\pi)$, and write the direction of the projected centre as
+$\beta\in(0,\alpha)$.  Reflection in the line of $G$ puts its flat-cap ray at
+angle $2\alpha-\beta$.
+
+If $F$ is visible, the local union occupies the angular interval
+$[0,2\alpha-\beta]$; its known boundary ray is the ray at $0$.  If $F$ is
+hidden, its already recovered cap extends the interval to
+$[-\beta,2\alpha-\beta]$; its known boundary ray is the ray at $-\beta$.
+Thus the other oriented boundary ray is always the transverse wall ray of
+the cap over $G$.  It cannot have the same orientation as the known ray:
+$2\alpha-\beta=0$ is incompatible with $0<\beta<\alpha$ in the visible case,
+and $2\alpha-\beta=-\beta$ would give $\alpha=0$ in the hidden case.  The two
+rays may be opposite, so their supporting lines may merge into one straight
+line; retaining ray orientation still distinguishes them.  No erased source
+seam is used.
+\end{proof}
+
+\begin{lemma}[site recovery from a ridge ray]
+\label{lem:ridge-site}
+In the setting of Lemma~\ref{lem:ridge-exposure}, let $q$ be the orthogonal
+projection of $o$ onto $\aff R$, let $r=\dist(o,\aff R)$, and let $u$ be the
+unit transverse direction of the newly exposed wall ray.  Then the reflected
+site over $G$ is
+\[
+ a_G=q+ru.
+\]
+\end{lemma}
+
+\begin{proof}
+Both reflection in $\aff G$ and orthogonal projection to the quotient normal
+to $\aff R$ fix $R$.  Hence $o$ and its reflection $a_G$ have the same
+projection $q$ on $\aff R$ and the same distance $r$ from it.  The wall
+$\conv(R\cup\{a_G\})$ supplies the oriented quotient direction $u$, which
+selects the displayed point rather than its antipode.
+\end{proof}
+
+\begin{lemma}[site-anchored cap component]
+\label{lem:site-component}
+Let $a$ be a recovered hidden site and put
+\[
+ B_a=\{y\in H:\|y-a\|=\|y-o\|\},\qquad
+ H_a^+=\{y\in H:\|y-a\|<\|y-o\|\}.
+\]
+Then the unique connected component of $M_J\cap H_a^+$ containing $a$ is
+$C_a\setminus G_a$.  Its closure is the entire flat cap $C_a$, and
+\[
+ G_a=\overline{\operatorname{Comp}_a(M_J\cap H_a^+)}\cap B_a.
+\]
+Consequently the raw set, $o$, and $a$ determine both the cap and its base.
+\end{lemma}
+
+\begin{proof}
+The bisector $B_a$ is $\aff G_a$.  The core lies in the closed halfspace on
+the $o$-side, whereas every point of $C_a\setminus G_a$ lies strictly on the
+$a$-side.  Therefore
+$C_a\cap H_a^+=C_a\setminus G_a$, which is connected and contains $a$.
+By Proposition~\ref{prop:contacts}, every contact of $C_a$ with another cell
+is contained in $G_a\subset B_a$.  Inside the strict halfspace $H_a^+$ its
+piece is consequently disjoint from all other cell pieces.  Because the cell
+family is finite and each cell is closed, this piece and its complement are
+both closed relative to $M_J\cap H_a^+$; hence it is a connected component.
+No other component contains $a$.  Every point of the base is approached along
+its segment to $a$, so the closure of the component is $C_a$, and intersecting
+that closure with the bisector recovers exactly $G_a$.
+\end{proof}
+
+\begin{theorem}[exact reconstruction]
+\label{thm:main}
+Every three-dimensional proper-zero datum has exactly one compatible
+decomposition.  More precisely, its raw union determines $M_J$, the centre,
+the core, every reflected site, and every flat and nonflat cap.  Consequently,
+$X(D)$ congruent to $X(D')$ implies $D$ congruent to $D'$.
+\end{theorem}
+
+\begin{proof}
+Proposition~\ref{prop:intrinsic-recovery} supplies $M_J$, $o$, all nonflat
+caps, and their visible hinge facets.  At least one such facet exists.  Begin
+with all visible facets marked as recovered.  Maintain the invariant that a
+marked hidden facet comes with its complete recovered cap, hence with the
+known wall ray at every one of its edges.  The facet-adjacency graph of a
+three-polytope is connected.  If not every facet has been recovered, it has a
+frontier edge $R$ belonging to a recovered facet $F$ and to an unrecovered
+hidden facet $G$.  Lemma~\ref{lem:ridge-exposure} obtains the oriented new
+wall ray from the bare local boundary, Lemma~\ref{lem:ridge-site} recovers the
+site, and Lemma~\ref{lem:site-component} recovers the full cap and its base
+$G$, preserving the invariant.  Marking $G$ recovered and repeating
+terminates after finitely many facets.
+
+To see that this construction is independent of a chosen compatible
+decomposition, compare any two of them.  Their initial visible facets and
+centre agree by Proposition~\ref{prop:intrinsic-recovery}.  At a frontier edge
+of the first decomposition, the other facet of the second cannot already be a
+different recovered facet.  Indeed, recovered polygons are common to both
+decompositions; such a facet would also contain $R$ in the first
+decomposition, producing a third facet incident to one polyhedral edge, which
+is impossible.  The same intrinsic oriented ray therefore gives the same
+site, cap, and base in both decompositions.  Induction through the connected
+facet-adjacency graph makes every facet, site, and cap of the first
+decomposition a facet, site, and cap of the second.
+
+The recovered facet polygons form the complete boundary of the first convex
+core.  The second core contains every one of their vertices and lies in every
+corresponding inward halfspace, so convexity gives both inclusions and the
+cores coincide.  Its irredundant facet set admits no additional facet.  Thus
+the two decompositions are equal.  Finally, an ambient isometry carrying one
+raw union to another transports the intrinsic construction and hence the
+complete datum.
+\end{proof}
+
+\subsection{The auxiliary intrinsic germ skeleton}
+\label{subsec:auxiliary-skeleton}
 
 Let an \emph{exposed planar sheet} of $\partial M_J$ be the closure of a
 maximal connected planar piece of its relative-regular locus.  Internal
@@ -291,35 +475,6 @@ of $a$ in $\GammaM$ belongs to the perpendicular bisector
 The definition is intrinsic: exposed sheet subsets, their supporting planes,
 and their local germs are properties of $M_J$ as a point set.  In particular,
 the graph stores neither a hidden cap label nor an erased internal seam.
-
-A compatible decomposition of $M_J$ consists of a convex core $P'$ and hidden
-facets $G_a$ indexed by sites $a$, where the facet set of $P'$ is exactly the
-already recovered visible hinge facets together with the pairwise distinct
-facets $G_a$, each site $a$ is the reflection of the recovered centre $o$ in
-$\aff G_a$, and
-\[
- M_J=P'\cup\bigcup_{a\in A}\conv(G_a\cup\{a\})
-\]
-with pairwise disjoint cell interiors.  The original datum is one such
-decomposition.  For an edge $f$ of $G_a$, write
-$W(a,f)=\conv(\{a\}\cup f)$ for the corresponding wall.
-
-\begin{lemma}[boundary inventory]
-\label{lem:inventory}
-For every compatible decomposition,
-\[
- \partial M_J
- =\bigcup_{i\in I}F_i\ \cup\
-   \bigcup_{a\in A}\ \bigcup_{f\in E(G_a)}W(a,f).
-\]
-\end{lemma}
-
-\begin{proof}
-The boundary of $P'$ is the union of its visible facets and hidden facets.
-Each hidden facet is shared with its cap and becomes internal to $M_J$.  The
-remaining cap faces are the walls.  Proposition~\ref{prop:contacts} says that
-a wall meets another cell only in a lower-dimensional face.
-\end{proof}
 
 \begin{lemma}[decomposition computation of the intrinsic graph]
 \label{lem:graph-intrinsic}
@@ -411,18 +566,19 @@ $v_f=\vol_3\conv(\{o\}\cup f)$.
 
 \begin{lemma}[volume identity]
 \label{lem:volume}
-Let $W=\sum_{i\in I}v_{F_i}$.  Every compatible decomposition satisfies
+Let $V_{\mathrm{vis}}=\sum_{i\in I}v_{F_i}$.  Every compatible decomposition satisfies
 \[
- \vol_3(M_J)=W+2\sum_{a\in A}v_{G_a}.
+ \vol_3(M_J)=V_{\mathrm{vis}}+2\sum_{a\in A}v_{G_a}.
 \]
 Consequently all compatible cores have the same volume.
 \end{lemma}
 
 \begin{proof}
 The radial pyramids from $o$ to the facets tile a convex core, so
-$\vol_3(P')=W+\sum_av_{G_a}$.  The cap over $G_a$ is a reflection of its radial
+$\vol_3(P')=V_{\mathrm{vis}}+\sum_av_{G_a}$.  The cap over $G_a$ is a reflection of its radial
 pyramid and has the same volume.  Exact contacts give pairwise disjoint cell
-interiors, proving the displayed identity.  Both $M_J$ and $W$ are intrinsic,
+interiors, proving the displayed identity.  Both $M_J$ and
+$V_{\mathrm{vis}}$ are intrinsic,
 so $\sum_av_{G_a}$ and then the core volume are common to all decompositions.
 \end{proof}
 
@@ -446,8 +602,8 @@ two closed convex bodies agree.  Their active facets and reflected sites then
 agree.
 \end{proof}
 
-\begin{theorem}[exact reconstruction]
-\label{thm:main}
+\begin{theorem}[signature reconstruction]
+\label{thm:signature}
 Let $D$ be a three-dimensional proper-zero datum.  Suppose no vertex of its
 core passes in $\GammaM$.  Then the passing vertices of $\GammaM$ are exactly
 the hidden reflected apexes, the core is
@@ -474,7 +630,7 @@ datum to a compatible decomposition of the second raw union, which uniqueness
 identifies with the second datum.
 \end{proof}
 
-\section{The exceptional centre set}
+\section{The exceptional centre set for the signature shortcut}
 \label{sec:genericity}
 
 \begin{theorem}[fixed-realization genericity]
@@ -514,14 +670,21 @@ contained in at least one of the displayed proper algebraic hypersurfaces, and
 a finite union of such zero sets has measure zero.
 \end{proof}
 
+This exceptional set limits only the one-shot signature shortcut of
+Theorem~\ref{thm:signature}; it is not an exceptional set for uniqueness,
+which is unconditional in the proper-zero regime by Theorem~\ref{thm:main}.
 The theorem deliberately does not assert that the bad-centre set itself is
 closed.  A subset of a closed algebraic union need not be closed.  Nor does the
 argument define a measure on simultaneously varying realizations of $P$.
 
-\section{Ambiguities require five hidden sites per side}
+\section{Structure of a hypothetical competing decomposition}
 \label{sec:exchange}
 
-This section studies what a failure of uniqueness would have to look like.
+Theorem~\ref{thm:main} rules out a failure of uniqueness in the present
+proper-zero model.  This section retains an independent conditional route:
+it studies the structure that a hypothetical pair of compatible
+decompositions would have and supplies checks that do not use ridge
+propagation.
 Throughout, $D$ is a three-dimensional proper-zero datum with decomposition
 $(P,A)$ and centre $o$, and $(P'',A'')$ is a second compatible decomposition
 of the same raw union.  By Section~\ref{sec:intrinsic-recovery} the two
@@ -551,7 +714,9 @@ wall of the cap of $a$, and hence $a\notin F_i$.
 \label{thm:hinge-anchored}
 Suppose every vertex of the core that passes in $\GammaM$ lies on at least one
 visible hinge facet.  Then the compatible decomposition is unique.
-Theorem~\ref{thm:main} is the special case in which no core vertex passes.
+Theorem~\ref{thm:signature} is the special case in which no core vertex
+passes.  This criterion is independent of the universal propagation proof in
+Theorem~\ref{thm:main}.
 \end{theorem}
 
 \begin{proof}
@@ -592,8 +757,9 @@ outside $P''$.
 
 \begin{lemma}[two common neighbours]
 \label{lem:common}
-Let $X$ be the graph on $(A\setminus A'')\cup(A''\setminus A)$ whose edges are
-the pairs $\{a,c\}$ of Lemma~\ref{lem:exchange-edges}.  Then $X$ is simple and
+Let $\mathcal E$ be the graph on
+$(A\setminus A'')\cup(A''\setminus A)$ whose edges are the pairs $\{a,c\}$
+of Lemma~\ref{lem:exchange-edges}.  Then $\mathcal E$ is simple and
 bipartite between the two difference sets, with minimum degree at least three,
 and two distinct sites on one side have at most two common neighbours.
 \end{lemma}
@@ -611,8 +777,8 @@ meet in a line or not at all, and a line meets a sphere in at most two points.
 
 \begin{lemma}[incidence count]
 \label{lem:count}
-Each side of $X$ has at least four sites.  If some side has exactly four,
-then both do, $X$ is $3$-regular, that is, $K_{4,4}$ minus a perfect
+Each side of $\mathcal E$ has at least four sites.  If some side has exactly
+four, then both do, $\mathcal E$ is $3$-regular, that is, $K_{4,4}$ minus a perfect
 matching, and all eight sites lie at one common distance $R>0$ from $o$ with
 every edge a chord of length $R$.
 \end{lemma}
@@ -704,10 +870,11 @@ for each of the four linear forms
  \ell\in\{\,x_{12}-x_{34},\;x_{13}-x_{24},\;x_{14}-x_{23},\;
           x_{23}+x_{24}+x_{34}+1\,\}.
 \]
-The cofactors are archived, with the verification script, alongside the
-reference implementation; each identity is re-verified by expanding the
-difference of the two sides to the zero polynomial in exact rational
-arithmetic, independently of the software that found it.  At the configuration all
+The cofactors are included, with the verification script, in the companion
+artifact described in Section~\ref{sec:algorithm}; each identity is
+re-verified by expanding the difference of the two sides to the zero polynomial
+in exact rational arithmetic, independently of the software that found it.
+At the configuration all
 $g_i$ vanish and $s_1s_2\neq0$, so all four linear forms vanish:
 \[
  x_{12}=x_{34}=:a,\qquad
@@ -774,8 +941,9 @@ $|A\setminus A''|\ge5$ and $|A''\setminus A|\ge5$.
 
 \begin{proof}
 As in Theorem~\ref{thm:hinge-anchored}, distinctness makes both difference
-sets nonempty.  By Lemma~\ref{lem:count} each side of the exchange graph $X$
-has at least four sites, and if some side had exactly four, $X$ would be
+sets nonempty.  By Lemma~\ref{lem:count} each side of the exchange graph
+$\mathcal E$ has at least four sites, and if some side had exactly four,
+$\mathcal E$ would be
 $K_{4,4}$ minus a perfect matching with all eight sites at one distance
 $R>0$ from $o$ and all twelve edges of length $R$.  Translating $o$ to the
 origin and scaling by $R^{-1}$ makes the sites unit vectors with
@@ -796,12 +964,18 @@ A second decomposition would give $|A\setminus A''|\ge5$, while
 $|A|\le4$.
 \end{proof}
 
+The corollary is now also immediate from Theorem~\ref{thm:main}; it is retained
+because it is the sharp conclusion supplied by the independent exchange
+route before ridge propagation is invoked.
+
 \section{Exact reconstruction algorithm and evidence}
 \label{sec:algorithm}
 
-Assume an exact rational polygonal presentation of the exposed boundary.
-Coplanar subdivisions are presentation data and may be inserted or removed.
-The conceptual algorithm is:
+Assume an exact rational polyhedral presentation from which the exposed
+polygonal boundary can be computed.  Coplanar subdivisions are presentation
+data and may be inserted or removed.  In E-A72 the same boundary is obtained
+by exact face cancellation from a tetrahedral presentation.  The universal
+conceptual algorithm is:
 
 \begin{enumerate}[label=\arabic*.]
 \item Compute the closures of the connected components of the local-flat
@@ -812,19 +986,37 @@ larger intrinsic volume.  This is $M_J$.
 and their cap geometry.
 \item Recover $o$ from either nonflat cap by the two-candidate construction in
 Proposition~\ref{prop:intrinsic-recovery}.
-\item Construct $\GammaM$ from exposed sheet germs.
-\item Keep exactly the graph vertices that pass.
-\item Intersect the visible hinge halfspaces with the bisector halfspaces of
-the passing vertices, the Dirichlet-cell construction
-of~\cite{AshBolker1985}.
+\item Mark every recovered visible hinge facet.  For every edge shared by two
+already marked facets, record the pairing.
+\item Choose an unpaired edge $R$ of a marked facet.  In its oriented normal
+quotient, remove the known boundary ray and retain the other ray, including
+when the two form one straight line.
+\item With $q=\operatorname{proj}_{\aff R}(o)$ and
+$r=\dist(o,\aff R)$, recover the new site as $a=q+ru$ from that oriented unit
+ray $u$.
+\item In the strict $a$-side of the bisector $B(o,a)$, select the connected
+component of $M_J$ containing $a$.  Its closure is the new cap and its
+intersection with $B(o,a)$ is the new facet.  Mark it and repeat until every
+facet has been recovered, equivalently until no unpaired frontier edge remains.
 \end{enumerate}
 
-Under the hypothesis of Theorem~\ref{thm:main}, correctness is immediate from
-Lemmas~\ref{lem:candidate-types} and~\ref{lem:apexes-pass}.  A full certifier
-may rebuild the entire raw union, including the observed nonflat caps, and
-compare it exactly with the input.  The reference code implements the flat
-reconstruction kernel in steps 4--6; it is not an end-to-end implementation of
-steps 1--3 or of the full raw-union certifier.
+Correctness and termination follow from Lemmas~\ref{lem:ridge-exposure},
+\ref{lem:ridge-site}, and~\ref{lem:site-component}, together with connectivity
+of the facet-adjacency graph, exactly as in Theorem~\ref{thm:main}.  E-A72 is
+an independent exact implementation of this propagation kernel on rational
+tetrahedral raw presentations.  It deliberately does not implement the
+end-to-end extraction of flat components, nonflat hinges, and the centre in
+steps 1--3.
+
+There is also an auxiliary one-shot algorithm: construct $\GammaM$, keep its
+passing vertices, and intersect the visible hinge halfspaces with their
+bisector halfspaces, as in the Dirichlet-cell construction
+of~\cite{AshBolker1985}.  It is correct under Theorem~\ref{thm:signature} and
+is useful as an independent implementation check, but it is not the basis of
+the universal theorem.  A full certifier may rebuild the entire raw union,
+including the observed nonflat caps, and compare it exactly with the input.
+The reference signature code implements this flat reconstruction kernel, not
+steps 1--3 or a full raw-union certifier.
 
 The certifying variant compares two intrinsic conditions, and each is provably
 necessary.  There are constructed exact data, at exceptional centres, on
@@ -840,8 +1032,9 @@ family (three exact witnesses) the situation is reversed: the hinge facets
 survive while the flat components differ.  Hence neither condition alone
 suffices, and the certifier checks both.
 
-Let $N$ be the number of input boundary corners and $k$ the number of returned
-core facets.  The reference germ extractor atomises each segment against all
+For the signature reference implementation, let $N$ be the number of input
+boundary corners and $k$ the number of returned core facets.  Its germ
+extractor atomises each segment against all
 exact endpoints and builds carrier labels during atomisation.  Its conservative
 bound is $O(N^2\log N)$ exact field operations and $O(N^2)$ crease atoms.  The
 reference three-dimensional halfspace kernel enumerates the $\binom k3$ plane
@@ -851,10 +1044,15 @@ costs $O(k^4)$.  Thus the proved reference bound is
  O(N^2\log N+k^4).
 \]
 No sharper literature bound is imported into this statement.
+No corresponding worst-case bound is claimed here for the independent
+propagation engine.
 
-The executable audit has two layers.  E-A60 runs the intrinsic germ skeleton
-on every frozen six-vertex row.  E-A58 runs the reconstruction/flat
-certification kernel.  The frozen measurements are:
+The executable audit has two signature layers and two propagation layers.
+E-A60 runs the intrinsic germ skeleton on every frozen six-vertex row, and
+E-A58 runs the reconstruction/flat certification kernel.  E-A71 checks the
+oriented local ridge lemma; E-A72 independently implements full facet-graph
+propagation with site-anchored component selection.  The frozen measurements
+are:
 
 \begin{center}
 \begin{tabular}{lr}
@@ -873,6 +1071,15 @@ flat-only accepts / two-condition rejects & 6/6\\
 reversed witnesses (hinges survive, flat differs) & 3/3\\
 corpus disagreements between the two certifier variants & 0/340\\
 certificate identities of Theorem~\ref{thm:fourbyfour} verified & 4/4\\
+oriented local data (E-A71) & 16,759\\
+oriented local ridge steps (E-A71) & 189,128\\
+global propagation data (E-A72) & 16,759\\
+global BFS/component steps (E-A72) & 61,030\\
+visible--hidden / hidden--hidden (E-A72) & 35,228 / 25,802\\
+straight coplanar fusions (E-A72) & 445\\
+ridge-touch cases, site-disambiguated (E-A72) & 34,090\\
+global propagation mismatches & 0\\
+propagation mutation kills & 4/4\\
 \hline
 \end{tabular}
 \end{center}
@@ -898,11 +1105,28 @@ payload pins the SHA-256 of all four cofactor files, E-A69,
 \begin{center}
 \small\texttt{5DC4C5800572C64F07C7A815CE7BEFFB930FEF03E04CC71679FB9501606F1D92}.
 \end{center}
+The oriented local-ridge audit E-A71 has payload
+\begin{center}
+\small\texttt{3EA0CA24EB09B31099F9503B0DCF84C1D7D02EB9894C73F0C299E08CF4732BC3},
+\end{center}
+and the independent global propagation audit E-A72 has payload
+\begin{center}
+\small\texttt{46F44A8E7444B395AF987C2BA5EA9A0BF1DFBD69E6BA782525FA71822D42D4AA}.
+\end{center}
+\paragraph{Artifact availability.}
+The exact source, scripts, frozen result records, certificate files, tests,
+and verification instructions underlying the cited E-A58, E-A60, E-A61,
+E-A63, E-A69, E-A71, and E-A72 audits are bundled in the companion repository
+\url{https://github.com/aconsciousfractal/FCIG-Generic-Reconstruction-from-Erased-Flat-Boundaries}.
+The E-A identifiers are local experiment locators, and the displayed SHA-256
+values bind their canonical contents; they are not literature citations.
+
 Finite replay is evidence about the implementation and its frozen domain.  The
 proof of Theorem~\ref{thm:main} is the intrinsic argument in the preceding
-sections, and the proof of Theorem~\ref{thm:fourbyfour} rests on the verified
-identities and the elementary analysis of Section~\ref{sec:exchange}, not on
-the replay.
+ridge-propagation section.  The signature audit separately supports
+Theorem~\ref{thm:signature}, and the proof of Theorem~\ref{thm:fourbyfour}
+rests on the verified identities and the elementary analysis of
+Section~\ref{sec:exchange}, not on replay.
 
 \section{Relation to supplied-boundary inverse problems}
 \label{sec:related}
@@ -915,7 +1139,7 @@ is exactly the forward reflection construction used in Section~\ref{sec:model}
 and is cited as such.
 
 Subsequent recognition algorithms also begin with substantially visible
-boundary data.  Aurenhammer takes a supplied polytopical cell
+boundary data.  Aurenhammer takes a supplied polytopal cell
 complex~\cite{Aurenhammer1987}; Hartvigsen takes a tessellation of Euclidean
 space into polyhedra and uses linear programming~\cite{Hartvigsen1992}; and
 Schoenberg, Ferguson, and Li recover generators from segments demarcating cell
@@ -928,19 +1152,6 @@ start from a supplied complex, partition, or geometric graph
 \cite{BorgwardtFrongillo2017,EderEtAl2023}.  The generalized inverse Voronoi
 problem studied by Aloupis et al. permits added edges while retaining the
 original input edges~\cite{AloupisEtAl2013}.
-
-Several further inverse-tessellation methods reinforce this distinction.
-Suzuki and Iri approximate a supplied planar tessellation by a Voronoi diagram,
-with exact generator restoration included as a special case
-\cite{SuzukiIri1986}.  Duan et al. recover weighted generators from a supplied
-Laguerre tessellation and show that those generators are generally nonunique
-\cite{DuanEtAl2014}.  Chaidee and Sugihara recognise spherical Laguerre
-Voronoi diagrams from a supplied spherical tessellation
-\cite{ChaideeSugihara2017}.  Most recently, Hernandez-Suarez reconstructs the
-generators of a supplied planar Voronoi tessellation from one interior cell and
-its neighbours, then propagates them by successive reflections
-\cite{HernandezSuarez2025}.  In every case the diagram, partition, or
-tessellation boundaries remain part of the input.
 
 Not every inverse tessellation problem receives boundary edges.  Bourne,
 Pearce, and Roper prove that labelled Laguerre cells are uniquely determined
@@ -975,13 +1186,13 @@ related erased-boundary problem.
 The following questions are not resolved here.
 
 \begin{itemize}
-\item Whether an exact ambiguity exists at all remains open.
-Theorems~\ref{thm:hinge-anchored} and~\ref{thm:five} constrain it: every
-ambiguous datum needs a passing core vertex avoiding all visible hinge facets
-and at least five differing sites on each side, hence at least five hidden
-facets.  Data with five or more hidden facets are not decided here.
-\item The proof is three-dimensional.  Higher-dimensional analogues require a
-new analysis of the boundary-germ strata and candidate types.
+\item All-zero data lie outside the theorem: with no nonflat cap there is no
+visible hinge from which to recover the centre and start propagation.  Whether
+a three-dimensional all-zero raw union can conceal two noncongruent structural
+histories remains open.
+\item The proof is three-dimensional.  The normal-section calculation itself
+is dimension-independent, but intrinsic initialization and global recovery
+have not been promoted beyond dimension three.
 \item Theorem~\ref{thm:fourbyfour} is computer-assisted: the four certificate
 identities were found by machine and are re-verified by exact expansion.  The
 verification chain ships with the reference implementation; the remaining
@@ -989,12 +1200,16 @@ steps are hand-checkable.
 \item The reference implementation assumes an exact polygonal presentation.
 It does not extract such a presentation from a point cloud, floating-point
 mesh, or arbitrary implicit-set oracle.
-\item E-A58 implements the flat reconstruction kernel and the two-condition
-certifier; it is not the full six-step pipeline or a raw-union certifier.
+\item E-A72 implements the exact propagation kernel on a tetrahedral corpus;
+it is not the end-to-end extraction in steps 1--3 or a general polyhedral
+component engine.  No numerical-stability or noise theorem is claimed.
+\item E-A58 implements the auxiliary signature reconstruction kernel and its
+two-condition certifier; it is not the full pipeline or a raw-union certifier.
 Completeness of the two conditions is not claimed; each is necessary, and
 their conjunction rejects every constructed wrong reconstruction.
-\item The finite corpus and deterministic mutation sample do not establish
-novelty, priority, or unrestricted-domain behaviour.
+\item Neither the finite corpus, the deterministic mutation sample, nor the
+mathematical proof establishes novelty or priority.  The finite evidence also
+does not establish unrestricted-domain behaviour.
 \end{itemize}
 
 \begingroup

@@ -40,8 +40,9 @@ the diagram, partition, or tessellation boundaries as input.
 
 ## Mathematical source boundary
 
-The paper is self-contained for its reconstruction, uniqueness, genericity,
-and complexity claims. One classical construction is imported with explicit
+The paper is self-contained for its universal proper-zero reconstruction and
+uniqueness proof, its auxiliary fixed-realization signature theorem, and its
+stated complexity bound. One classical construction is imported with explicit
 attribution: Ash and Bolker reflect a supplied interior point across known cell
 facets when constructing a Dirichlet cell. The present paper re-proves the
 exact contact statement needed for its model.
@@ -90,6 +91,10 @@ No third-party PDF is distributed in this repository.
 - E-A61 canonical payload: <code>76956805B0BA304142CB08D833FA1179876A9F2154A76CE6C5A232BEF9E3F7F1</code>.
 - E-A63 canonical payload: <code>50B26633575C81C67AD3A9857DC5BE1227B512E21CC98168EECEC37B360DB1A8</code>.
 - E-A69 canonical payload: <code>5DC4C5800572C64F07C7A815CE7BEFFB930FEF03E04CC71679FB9501606F1D92</code>.
+- E-A71 schema: <code>P43-E-A71-RIDGE-GERM-PROPAGATION-v1</code>.
+- E-A71 canonical payload: <code>3EA0CA24EB09B31099F9503B0DCF84C1D7D02EB9894C73F0C299E08CF4732BC3</code>.
+- E-A72 schema: <code>P43-E-A72-INDEPENDENT-GLOBAL-PROPAGATION-v1</code>.
+- E-A72 canonical payload: <code>46F44A8E7444B395AF987C2BA5EA9A0BF1DFBD69E6BA782525FA71822D42D4AA</code>.
 - The manifest pins the exact scripts, tests, prose, bibliography, certificate
   files, and frozen JSON receipts used by the release.
 
@@ -100,6 +105,17 @@ keys. It does not read source-kind fields or hidden-cap identities. Coplanar
 internal seams contribute only one supporting plane and are discarded;
 noncoplanar sheet-carrier changes remain. Deterministic subdivision mutations
 and an independent maximal-sheet implementation are explicit controls.
+
+E-A71 deletes source labels before extracting oriented local rays. E-A72 is a
+separate implementation that receives a source-scrubbed tetrahedral
+presentation, derives the boundary by exact face cancellation, reconstructs
+globally, and consults source truth only after completion. Neither finite audit
+is promoted to theorem evidence; the proof authority is Theorem 4.6.
+
+The permanent companion locator is
+<https://github.com/aconsciousfractal/FCIG-Generic-Reconstruction-from-Erased-Flat-Boundaries>.
+No DOI, archive deposit, journal submission, or acceptance is inferred from
+that repository URL.
 
 ## Open prior-art gap
 

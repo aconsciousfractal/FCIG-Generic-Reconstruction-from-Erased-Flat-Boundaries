@@ -201,13 +201,24 @@ class AttestationSemantics(unittest.TestCase):
             manifest = temp_root / "manifest.txt"
             manifest.write_text(
                 "# synthetic closed manifest\n"
-                + "".join(f"{'0' * 64}  file-{i}\n" for i in range(54)),
+                + "".join(
+                    f"{'0' * 64}  file-{i}\n"
+                    for i in range(ATT.EXPECTED_MANIFEST_ENTRIES)
+                ),
                 encoding="utf-8",
             )
             paper = temp_root / "paper.pdf"
-            paper.write_bytes(b"%PDF-1.7\n" + b"/Type /Page\n" * 16)
-            self.assertEqual(ATT.manifest_entry_count(manifest), 54)
-            self.assertEqual(ATT.pdf_page_count(paper), 16)
+            paper.write_bytes(
+                b"%PDF-1.7\n" + b"/Type /Page\n" * ATT.EXPECTED_PDF_PAGES
+            )
+            self.assertEqual(
+                ATT.manifest_entry_count(manifest),
+                ATT.EXPECTED_MANIFEST_ENTRIES,
+            )
+            self.assertEqual(
+                ATT.pdf_page_count(paper),
+                ATT.EXPECTED_PDF_PAGES,
+            )
 
 
 if __name__ == "__main__":

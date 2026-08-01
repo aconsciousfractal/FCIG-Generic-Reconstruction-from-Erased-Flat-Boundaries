@@ -2,40 +2,51 @@
 
 ## Licensed public statement
 
-The package may state the conditional three-dimensional reconstruction theorem
-and the fixed-realization measure-zero exceptional-centre result exactly as in
-the manuscript. It may state the hinge-anchored uniqueness theorem, the
-five-sites-per-side exchange bound and the at-most-four-hidden-facets
-uniqueness corollary exactly as printed (Theorems 7.2, 7.6, 7.8 and Corollary
-7.9), declaring Theorem 7.6 computer-assisted with archived, re-verified
-certificates. It may report the E-A58, E-A60, E-A61, E-A63 and E-A69 metrics
-as implementation and certificate evidence on their frozen exact-rational
-domain.
+The repository and paper may state:
 
-## Required qualifications
+> Every exact three-dimensional proper-zero reflected-cap raw union has
+> exactly one compatible decomposition in the model of Definition 4.1.
 
-- The graph is intrinsic to the observed merged component; original cap patch
-  IDs and erased seams are forbidden inputs.
-- E-A58 is a steps-4-to-6 flat kernel, not an end-to-end raw-union system.
-- The 16,744-row shortcut agreement is not an equivalence theorem.
-- Genericity fixes both the realization and the visible-facet mask.
-- Finite replay supports but does not replace the proof.
+The domain includes all rotation angles in `(-pi,pi)`, at least one flat and
+one nonflat facet, and compatible full-dimensional cores containing the
+recovered centre in their interior. The theorem has no genericity hypothesis
+and no bound on the number of facets.
 
-## Application language
+The proof may be summarized as intrinsic oriented ridge propagation with
+metric site recovery and site-anchored strict-component selection. E-A71 and
+E-A72 may be described as independent exact finite falsification audits of the
+local and global implementations, never as the proof.
 
-It is licensed to say that Brillouin zones share the local perpendicular-
-bisector/Voronoi construction and that moment-based Laguerre inversion and
-travel-time-based Voronoi inversion are relevant partial-data comparators. It is
-not licensed to call EBSD, NDT, crystallographic extinction or origami a solved
-application of this theorem.
+The paper may also state its auxiliary signature theorem, the
+fixed-realization measure-zero exceptional set for that shortcut, the
+hypothetical exchange/five-site consequences, and the computer-assisted status
+of the four E-A69 polynomial identities.
 
-## Forbidden widening
+## Required evidence language
 
-No public text may claim exceptional-centre uniqueness beyond the printed
-theorems (hinge-anchored, and at most four hidden facets — five or more stays
-open), a closed bad set, a joint measure theorem over varying realizations,
-validity above dimension three, O(N) total complexity, certifier
-completeness, unrestricted presentation invariance, complete
-point-cloud/implicit-set extraction, novelty, priority, or firstness. The
-general equal-face-circumradius characterisation of tetrahedra is not
-claimed; only the two ratios used are decided, over the complex numbers.
+- E-A identifiers are local experiment locators, not citations.
+- The companion repository contains the exact scripts, frozen records,
+  certificates, tests, and verification instructions for every cited audit.
+- Finite corpus agreement and deterministic mutation kills support the
+  implementation only.
+- The E-A69 certificate statement is limited to the four archived identities
+  and the printed elementary endgame.
+- Prior-art comparisons are input-model distinctions unless a primary source
+  was inspected at theorem level.
+
+## Forbidden overclaims
+
+No public text may claim:
+
+- all-zero reconstruction, where no visible hinge initializes the proof;
+- a higher-dimensional theorem;
+- primitive extraction from arbitrary raw-set, point-cloud, floating-point,
+  mesh, or implicit-set representations;
+- numerical stability, noise robustness, or industrial deployment;
+- that E-A72 is a complete general polyhedral component engine;
+- completeness of the auxiliary two-condition certifier;
+- novelty, priority, firstness, DOI, arXiv deposit, journal submission,
+  acceptance, or formal-machine verification.
+
+GitHub publication establishes availability of this companion package only.
+It does not change the mathematical claim level or create any venue status.

@@ -1,0 +1,186 @@
+{
+  "adversarial_families": [
+    {
+      "category": "exceptional_centre",
+      "datum": "exceptional:(1, 2, 1)",
+      "failures": [],
+      "hidden_hidden_steps": 8,
+      "steps": 12,
+      "straight_coplanar_fusions": 0,
+      "visible_hidden_steps": 4
+    },
+    {
+      "category": "exceptional_centre",
+      "datum": "exceptional:(1, 3, 1)",
+      "failures": [],
+      "hidden_hidden_steps": 8,
+      "steps": 12,
+      "straight_coplanar_fusions": 0,
+      "visible_hidden_steps": 4
+    },
+    {
+      "category": "exceptional_centre",
+      "datum": "exceptional:(1, 2, 2)",
+      "failures": [],
+      "hidden_hidden_steps": 8,
+      "steps": 12,
+      "straight_coplanar_fusions": 0,
+      "visible_hidden_steps": 4
+    },
+    {
+      "category": "exceptional_centre",
+      "datum": "exceptional:(2, 5, 1)",
+      "failures": [],
+      "hidden_hidden_steps": 8,
+      "steps": 12,
+      "straight_coplanar_fusions": 0,
+      "visible_hidden_steps": 4
+    },
+    {
+      "category": "exceptional_centre",
+      "datum": "exceptional:(1, 4, 3)",
+      "failures": [],
+      "hidden_hidden_steps": 8,
+      "steps": 12,
+      "straight_coplanar_fusions": 0,
+      "visible_hidden_steps": 4
+    },
+    {
+      "category": "exceptional_centre",
+      "datum": "exceptional:(3, 7, 2)",
+      "failures": [],
+      "hidden_hidden_steps": 8,
+      "steps": 12,
+      "straight_coplanar_fusions": 0,
+      "visible_hidden_steps": 4
+    },
+    {
+      "category": "volume_branch",
+      "datum": "volume:1",
+      "failures": [],
+      "hidden_hidden_steps": 8,
+      "steps": 16,
+      "straight_coplanar_fusions": 4,
+      "visible_hidden_steps": 8
+    },
+    {
+      "category": "volume_branch",
+      "datum": "volume:2",
+      "failures": [],
+      "hidden_hidden_steps": 8,
+      "steps": 16,
+      "straight_coplanar_fusions": 4,
+      "visible_hidden_steps": 8
+    },
+    {
+      "category": "volume_branch",
+      "datum": "volume:3",
+      "failures": [],
+      "hidden_hidden_steps": 8,
+      "steps": 16,
+      "straight_coplanar_fusions": 4,
+      "visible_hidden_steps": 8
+    },
+    {
+      "category": "multiple_passing",
+      "datum": "multiple:(1, 1, 1)",
+      "failures": [],
+      "hidden_hidden_steps": 8,
+      "steps": 16,
+      "straight_coplanar_fusions": 16,
+      "visible_hidden_steps": 8
+    },
+    {
+      "category": "multiple_passing",
+      "datum": "multiple:(1, 2, 1)",
+      "failures": [],
+      "hidden_hidden_steps": 8,
+      "steps": 16,
+      "straight_coplanar_fusions": 16,
+      "visible_hidden_steps": 8
+    },
+    {
+      "category": "multiple_passing",
+      "datum": "multiple:(2, 1, 3)",
+      "failures": [],
+      "hidden_hidden_steps": 8,
+      "steps": 16,
+      "straight_coplanar_fusions": 16,
+      "visible_hidden_steps": 8
+    },
+    {
+      "category": "multiple_passing",
+      "datum": "multiple:(1, 1, 2)",
+      "failures": [],
+      "hidden_hidden_steps": 8,
+      "steps": 16,
+      "straight_coplanar_fusions": 16,
+      "visible_hidden_steps": 8
+    },
+    {
+      "category": "multiple_passing",
+      "datum": "multiple:(3, 2, 1)",
+      "failures": [],
+      "hidden_hidden_steps": 8,
+      "steps": 16,
+      "straight_coplanar_fusions": 16,
+      "visible_hidden_steps": 8
+    },
+    {
+      "category": "swallowed_corner",
+      "datum": "s101:swallowed-corner",
+      "failures": [],
+      "hidden_hidden_steps": 2,
+      "steps": 8,
+      "straight_coplanar_fusions": 2,
+      "visible_hidden_steps": 6
+    }
+  ],
+  "assertions": {
+    "both_visible_hidden_and_hidden_hidden_steps_are_exercised": true,
+    "coplanar_erased_ridges_are_exercised": true,
+    "every_oriented_propagation_step_has_exactly_the_expected_two_rays": true,
+    "every_target_site_has_the_same_ridge_projection_and_radius_as_the_centre": true,
+    "exceptional_centre_families_are_exercised": true,
+    "presentation_subdivision_mutation_is_exercised": true,
+    "source_labels_are_not_read": true
+  },
+  "canonical_mathematical_payload_sha256": "3EA0CA24EB09B31099F9503B0DCF84C1D7D02EB9894C73F0C299E08CF4732BC3",
+  "claim_boundary": {
+    "established": [
+      "the local two-ray statement survives every propagation orientation in the frozen exact rational domain",
+      "the statement survives the S101 swallowed-corner witness and all constructed exceptional-centre families",
+      "the remaining ray has the exact projection and squared radius required to recover the true reflected site",
+      "the extractor reads geometric polygon coordinates and carrier planes but no source kind or cap identity"
+    ],
+    "excluded": [
+      "a proof of the intrinsic ridge-germ lemma for arbitrary raw subsets",
+      "a proof of global cap-component extraction and propagation termination",
+      "dimension above three",
+      "proper-zero universal uniqueness",
+      "novelty or priority"
+    ]
+  },
+  "metrics": {
+    "categories": {
+      "exceptional_centre": 6,
+      "frozen_corpus": 16744,
+      "multiple_passing": 5,
+      "swallowed_corner": 1,
+      "volume_branch": 3
+    },
+    "data": 16759,
+    "failures": 0,
+    "hidden_to_hidden_steps": 93098,
+    "oriented_propagation_steps": 189128,
+    "presentation_mutation_rows": 256,
+    "presentation_mutation_steps": 2332,
+    "rows_with_straight_coplanar_fusion": 545,
+    "straight_coplanar_fusions": 1798,
+    "visible_to_hidden_steps": 96030
+  },
+  "phase": "S131_E_A71_ridge_germ_propagation_audit",
+  "project": "P43",
+  "schema_version": "P43-E-A71-RIDGE-GERM-PROPAGATION-v1",
+  "status": "pass_no_local_counterexample_in_exact_domain"
+}

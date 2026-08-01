@@ -1,37 +1,40 @@
 {
-  "schema": "P43-S130-RELEASE-ATTESTATION-v6",
-  "status": "VERIFIED_LOCAL_CANDIDATE",
+  "schema": "P43-S136-RELEASE-ATTESTATION-v7",
+  "status": "VERIFIED_LOCAL_SOURCE_FREEZE",
   "audit_date": "2026-08-01",
-  "source_base_commit": "0e8411f2c9ddbaa6a6288a4307118e6dd2e771b9",
+  "source_base_commit": "37de333aaa41986e9c66de56b7cacd924b0ff17e",
   "artifacts": {
     "source_manifest": {
       "path": "MANIFEST_SHA256.txt",
-      "sha256": "56B3E1479AFA8435955A927B1514F65A3EC91ADD8AB75A1F73A32612B245FB7F",
-      "entries": 54
+      "sha256": "D5A6734D45D162AFC8BA20F35AD05FC2E023C7A95A838F3C9FBFF50BC80B0789",
+      "entries": 60,
+      "bytes": 6300
     },
     "paper_pdf": {
-      "path": "paper/Generic_Exact_Reconstruction_of_Reflected_Cap_Data_from_an_Erased_Flat_Boundary.pdf",
-      "sha256": "ACD385B4172B4617884F7AD76927F24F3D927CF46EF18924EBABB9FACBFB54A9",
-      "pages": 16,
-      "bytes": 464673
+      "path": "paper/Exact_Reconstruction_of_Reflected-Cap_Data_from_an_Erased_Flat_Boundary.pdf",
+      "sha256": "6923644E94465048DFA4F4C2DD00D13E75FFDB6AF36078E944D030410741BD06",
+      "pages": 20,
+      "bytes": 492933
     },
     "aggregate_receipt": {
       "path": "results/public_package_verification.json",
-      "sha256": "8F7E1CB47C12375DF9E2D4FFDB0FE41DFC616B1D04616CF133D62C162F6159EC",
-      "bytes": 1915
+      "sha256": "D745025E21E0377D6922F27197A1FC4302849EB283478A855991F40388B3C795",
+      "bytes": 2293
     },
     "exact_payloads": {
       "intrinsic_germ_skeleton_e_a60": "D18C07176BAF7B729A550E9B9B8B9D9E04BB58A0C52D295243108417C9BE785A",
       "two_condition_flat_kernel_e_a58_v3": "3C58C0B88081380C7D22993A6FEE3B4EC9FE1A8C3D0CDC107BE9D40C33BA4ACC",
       "exceptional_centre_witnesses_e_a61": "76956805B0BA304142CB08D833FA1179876A9F2154A76CE6C5A232BEF9E3F7F1",
       "reversed_witnesses_e_a63": "50B26633575C81C67AD3A9857DC5BE1227B512E21CC98168EECEC37B360DB1A8",
-      "certificate_closure_e_a69": "5DC4C5800572C64F07C7A815CE7BEFFB930FEF03E04CC71679FB9501606F1D92"
+      "certificate_closure_e_a69": "5DC4C5800572C64F07C7A815CE7BEFFB930FEF03E04CC71679FB9501606F1D92",
+      "oriented_local_ridge_audit_e_a71": "3EA0CA24EB09B31099F9503B0DCF84C1D7D02EB9894C73F0C299E08CF4732BC3",
+      "independent_global_propagation_e_a72": "46F44A8E7444B395AF987C2BA5EA9A0BF1DFBD69E6BA782525FA71822D42D4AA"
     },
     "theorem_7_6_certificates": {
+      "P43_S122_E_A69_COFACTORS_G1.txt": "5C2DF9BE8D84B2BD1BE83056B684025E6777D99AD150852EFB1DB799D527545D",
       "P43_S122_E_A69_COFACTORS_L12_34.txt": "732F9F6F7E0E7EC2CDACEA719737D29B42D0310AE6983EE618A7C47E9EE330C8",
       "P43_S122_E_A69_COFACTORS_L13_24.txt": "16A52151712A57F4DF291F4AD061CE4E17662935F886909AE651E0F66429D1F8",
-      "P43_S122_E_A69_COFACTORS_L14_23.txt": "4258FCF017881C2C05E66B327BD6121D6A2FE240DDF35D116407E02FD86D88AE",
-      "P43_S122_E_A69_COFACTORS_G1.txt": "5C2DF9BE8D84B2BD1BE83056B684025E6777D99AD150852EFB1DB799D527545D"
+      "P43_S122_E_A69_COFACTORS_L14_23.txt": "4258FCF017881C2C05E66B327BD6121D6A2FE240DDF35D116407E02FD86D88AE"
     }
   },
   "toolchain": {
@@ -39,27 +42,25 @@
     "sympy": "1.14.0",
     "mpmath": "1.3.0",
     "tex": "MiKTeX-pdfTeX 4.23 (MiKTeX 25.12)",
-    "pdf_renderer": "local page rasterization for visual QA"
+    "pdf_renderer": "Poppler 26.05.0"
   },
   "gates": {
-    "private_regression_662_tests": true,
-    "public_focused_12_tests": true,
-    "public_replay_normal": true,
-    "public_replay_optimized": true,
-    "receipts_byte_identical": true,
-    "manifest_closed_tree_54_files": true,
+    "public_focused_19_tests_normal": true,
+    "public_focused_19_tests_optimized": true,
+    "seven_exact_audits_replayed_normal": true,
+    "seven_exact_audits_replayed_optimized": true,
+    "normal_and_optimized_receipts_byte_identical": true,
+    "manifest_closed_tree_60_files": true,
     "manifest_only_isolated_replay_normal_and_optimized": true,
     "certificate_files_hash_checked_against_e69_payload": true,
-    "certificate_gate_hard_fails_under_python_O_tamper_test": true,
-    "flat_only_constant_mutation_killed_by_test_suite": true,
+    "fail_closed_and_mutation_controls_pass": true,
     "attestation_anchor_check_shipped_and_wired": true,
     "latex_build_no_layout_or_reference_warnings": true,
-    "pdf_rendered_16_pages": true,
-    "visual_qa_new_material_pages": true,
-    "private_path_secret_placeholder_scan_clean": true,
+    "pdf_rendered_and_visually_inspected_20_pages": true,
+    "paper_has_no_printed_date_below_author": true,
+    "private_path_secret_placeholder_and_email_scans_clean": true,
     "git_history_carries_only_the_noreply_identity": true,
     "claim_source_and_prior_art_boundaries_present": true,
-    "release_red_team_adjudicated": true,
     "python_3_10_and_3_14_remote_ci": false
   },
   "publication_actions_at_audit_time": {
@@ -69,14 +70,11 @@
     "released": false
   },
   "notes": [
-    "The source manifest excludes this attestation, the title-named PDF and the regenerated aggregate receipt to avoid circular hashes.",
-    "This attestation is written before the release commit and therefore cannot contain that commit's hash; source_base_commit names the parent, and the release commit is its immediate child, recorded in the project ledgers and in any eventual tag.",
-    "This candidate incorporates the independent S128 prepublication audit: it adds and accurately scopes the closest supplied-tessellation comparators, corrects Aurenhammer's official title, omits a premature CFF release date, declares both pinned direct dependencies and their BSD-3-Clause notices, and narrows the remaining open problem to the actual unresolved passing-vertex regime.",
-    "Release hardening in this candidate rejects unsafe attested paths, fixes the three artifact roles and four certificate names, validates the real manifest/PDF counts and all five payload bindings, requires exactly seven checks, strengthens the E-A69 critical-ideal check to the explicit leading-exponent pattern certifying vector-space dimension four, and adds Python 3.10/3.14 compatibility smoke jobs without claiming that remote CI has already run.",
-    "The Git commit is the root of trust against a coordinated rewrite of this checker and its attestation; check_attestation.py detects degradation or role substitution of the attestation inside a trusted commit, rather than making an untrusted commit self-authenticating.",
-    "Known benign identifier: the frozen S50 census receipt contains the internal claim label C047 as inert provenance; the payload is hash-frozen and is retained unchanged.",
-    "Replay scripts overwrite frozen receipts when run outside the documented gates; see the warning in REPRODUCE.md.",
-    "Normal and optimized replays passed in the candidate tree and in the isolated 54-file manifest-only tree, all producing the same receipt bytes; fresh E-A69 tamper and E-A63 certifier mutations were rejected as required.",
-    "The present task authorizes a scoped local commit only. No remote, tag, GitHub Release, DOI, arXiv submission or journal submission is created."
+    "The source manifest excludes this attestation, the title-named PDF, and the regenerated aggregate receipt to avoid circular hashes.",
+    "This attestation is written before the release commit and therefore cannot contain that commit's hash. The source_base_commit names the parent of the source freeze; the actual release commit and remote state are checked independently after commit and push.",
+    "The universal theorem applies exactly to the three-dimensional proper-zero reflected-cap model stated in the paper. All-zero data, higher dimensions, arbitrary or noisy input extraction, numerical stability, novelty, and priority remain outside the claim.",
+    "The main proof is intrinsic. E-A71 and E-A72 are independent exact-rational falsification audits of the oriented local and global propagation route; finite replay is not presented as the proof.",
+    "The final 60-file source tree passed normal and optimized replay and then passed both modes again in a manifest-only isolated tree. All four runs produced receipt SHA-256 D745025E21E0377D6922F27197A1FC4302849EB283478A855991F40388B3C795.",
+    "At attestation time no remote, tag, GitHub Release, DOI, arXiv submission, or journal submission had been created. Those are external publication actions and are not self-attested by this file."
   ]
 }

@@ -1,73 +1,112 @@
-# Reproducing the P43 public package
+# Reproducing the P43 companion package
 
 ## Requirements
 
 - Python 3.10 or newer;
-- SymPy and its mpmath arithmetic backend (see <code>requirements.txt</code>),
-  used only by the certificate verification E-A69 for exact polynomial
-  expansion; everything else is standard-library;
-- to build the paper: a LaTeX installation with <code>amsart</code>,
-  <code>lmodern</code>, <code>microtype</code>, <code>mathtools</code>,
-  <code>enumitem</code>, <code>xcolor</code>, <code>hyperref</code>, and BibTeX.
+- SymPy 1.14.0 and mpmath 1.3.0 from `requirements.txt`;
+- for the paper only: LaTeX with `amsart`, `lmodern`, `microtype`,
+  `mathtools`, `enumitem`, `xcolor`, `hyperref`, and BibTeX.
 
-All geometry and certification arithmetic is exact. There is no random seed
-and no floating-point predicate in the public gate.
+All geometry and certification predicates are exact. There is no randomness
+and no floating-point geometric decision in the release gate.
 
-## Package and mathematical gates
+## Install
 
-From the repository root:
+```bash
+python -m pip install -r requirements.txt
+```
 
-~~~bash
+## Complete package gate
+
+Run from the repository root, in this order:
+
+```bash
 python scripts/check_manifest.py --closed-tree
 python -m unittest discover -s tests
 python scripts/verify_all.py
 python -O scripts/verify_all.py
 python scripts/check_attestation.py
 python scripts/verify_manifest_only.py
-~~~
+```
 
-**Warning:** the replay scripts write their receipts by default.  Run them
-only through the gates above, or with the `--verify-existing` flag, unless
-you intend to regenerate a frozen receipt: a direct run (for example with
-`--limit`) overwrites the pinned JSON and the manifest gate will then fail
-until you restore the tree (`git checkout -- results/`).
+Expected terminal markers are:
 
-<code>verify_all.py</code> first verifies the source manifest, runs the focused
-unit tests, regenerates E-A60, E-A58, E-A61, E-A63 and E-A69 in
-verify-existing mode, checks their canonical payloads, frozen metrics and the
-four certificate-file hashes, and writes
-<code>results/public_package_verification.json</code>. Normal and optimized
-runs must produce identical bytes.
+```text
+PASS_MANIFEST_60_FILES_CLOSED_TREE
+Ran 19 tests ... OK
+PASS_P43_PUBLIC_PACKAGE
+PASS_P43_PUBLIC_PACKAGE
+PASS_ATTESTATION_ANCHORED checks=7
+PASS_MANIFEST_ONLY_REPLAY files=60 ...
+```
 
-The manifest-only command copies exactly the source-manifest files into an
-isolated temporary directory and repeats both aggregate runs. This detects
-hidden dependencies on the private workspace or unmanifested files.
+`verify_all.py` runs the focused unit suite and rebuilds the seven cited frozen
+audits in verify-existing mode:
 
-## Evidence boundary
+- E-A58, E-A60, E-A61, E-A63, E-A69, E-A71, and E-A72.
 
-E-A60 exercises the observable skeleton on every frozen corpus row and on the
-degenerate swallowed-corner witness. E-A58 exercises the flat kernel on every
-frozen row and samples the more expensive exact union certification. Neither
-finite replay replaces the manuscript proof, and neither implements the input
-extraction steps from an arbitrary raw-set representation.
+It requires their canonical payloads, exact counts, assertions, certificate
+hashes, and mutation kills. It writes
+`results/public_package_verification.json`. Normal and optimized runs must
+produce identical bytes.
+
+`verify_manifest_only.py` copies exactly the source-manifest files to an
+isolated temporary directory and repeats both aggregate modes. This is the
+closed-world check against a hidden dependency on the private workspace or an
+unmanifested local file.
+
+## Important receipt warning
+
+Several historical experiment scripts write their result JSON by default. The
+supported release route is `verify_all.py`, which invokes them with
+`--verify-existing`. Do not run a historical script without that flag unless
+you intend to regenerate its frozen record. A changed record will correctly
+make the manifest and attestation gates fail.
 
 ## Build the paper
 
-From <code>paper/</code>:
+From `paper/`:
 
-~~~bash
-job="Generic_Exact_Reconstruction_of_Reflected_Cap_Data_from_an_Erased_Flat_Boundary"
+```bash
+job="Exact_Reconstruction_of_Reflected-Cap_Data_from_an_Erased_Flat_Boundary"
 pdflatex -interaction=nonstopmode -halt-on-error -jobname="$job" main.tex
 bibtex "$job"
 pdflatex -interaction=nonstopmode -halt-on-error -jobname="$job" main.tex
 pdflatex -interaction=nonstopmode -halt-on-error -jobname="$job" main.tex
-~~~
+```
 
-The source suppresses volatile PDF dates and trailer IDs. The source manifest
-does not hash-pin the PDF; <code>RELEASE_ATTESTATION.json</code> binds the
-actual release-candidate PDF.
+The repository ships only
+`Exact_Reconstruction_of_Reflected-Cap_Data_from_an_Erased_Flat_Boundary.pdf`.
+The source contains `\date{}` and suppresses volatile PDF dates and trailer
+IDs. A temporary `main.pdf` is ignored and must not be retained.
 
-## Manifest exclusions
+The final log must contain no undefined references, citation failures,
+overfull boxes, or underfull boxes. Render and inspect all 20 pages; a clean log
+alone is not a visual gate.
 
-The manifest itself, release attestation, title-named PDF, regenerated package
-receipt, and LaTeX auxiliary files are excluded to avoid circular hashing.
+## Manifest and attestation model
+
+`MANIFEST_SHA256.txt` pins every shipped source/evidence byte except itself,
+the title-named PDF, the regenerated aggregate receipt, and
+`RELEASE_ATTESTATION.json`. Those exclusions avoid circular hashing.
+
+`RELEASE_ATTESTATION.json` then binds:
+
+- the source-manifest hash and 60-entry count;
+- the exact title-named 20-page PDF hash and byte count;
+- the aggregate receipt hash and byte count;
+- all seven canonical experiment payloads;
+- the four E-A69 certificate-file hashes.
+
+`scripts/check_attestation.py` fixes those semantic roles and fails closed on
+path substitution, missing roles, false counts, schema downgrade, or payload
+drift. The reviewed Git commit remains the root of trust against coordinated
+replacement of both checker and attestation.
+
+## Evidence boundary
+
+The finite replays verify implementations and the archived polynomial
+identities on their exact frozen domains. The proof of universal proper-zero
+uniqueness is the intrinsic argument in Theorem 4.6. The package does not
+implement arbitrary/noisy input extraction and makes no all-zero,
+higher-dimensional, stability, novelty, or priority claim.

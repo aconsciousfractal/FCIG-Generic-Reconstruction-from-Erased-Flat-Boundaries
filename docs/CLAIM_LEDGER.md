@@ -1,124 +1,86 @@
-# Claim ledger
+# Public claim ledger
 
-## C1 — exact contact complex
+Claim levels follow the internal P43 registry: `CL5` is a proved theorem;
+`CL3` is a certified finite computational result. Public wording must stay
+inside `docs/PUBLIC_CLAIM_BOUNDARY.md`.
 
-**Status:** proved in manuscript Proposition 2.1.
-**Registry:** P43-C025, level CL5 (internal theorem).
+## C1 - exact reflected-cap contacts
 
-For every angle vector in the stated open range, each cap meets the core in
-its hinge facet and two distinct caps meet only in the corresponding core-face
-intersection. Unit facet normals are part of the model.
+**Registry:** P43-C025, `CL5`.
 
-## C2 — intrinsic proper-zero recovery
+For every rotation angle in `(-pi,pi)`, two reflected-cap cells intersect
+exactly in the corresponding common facet intersection. The proof is the
+Voronoi identity in Proposition 2.1.
 
-**Status:** proved in manuscript Proposition 3.1.
-**Registry:** P43-C032, level CL5 (internal theorem).
+## C2 - intrinsic proper-zero initialization
 
-The bare raw union determines the merged flat component, nonflat caps, visible
-hinges, centre, and fully reflected sites for the nonflat hinges. The component
-rule is adjacency-star centre except in the two-component case, where intrinsic
-volume distinguishes the merged component.
+**Registry:** P43-C032, `CL5`.
 
-## C3 — conditional exact reconstruction and uniqueness
+In the exact proper-zero model, the raw set determines the merged flat
+component, the centre, every nonflat cap, and its visible hinge facet. This is
+the initialization used by the universal propagation theorem.
 
-**Status:** proved in manuscript Theorem 5.6.
-**Registry:** P43-C088, level CL5 (internal theorem).
+## C3 - universal proper-zero reconstruction
 
-The authoritative graph is the intrinsic noncoplanar crease graph of maximal
-exposed planar sheet germs. If no core vertex passes the bisector-neighbour
-test, the passing graph vertices are exactly the hidden reflected apexes. The
-core and every compatible datum are unique.
+**Registry:** P43-C093, `CL5`.
 
-## C4 — fixed-realization genericity
+Every exact three-dimensional proper-zero datum has exactly one compatible
+decomposition. Equivalently, congruent proper-zero raw unions determine
+congruent complete data. The proof is Theorem 4.6 and has four load-bearing
+stages: oriented frontier-ray exposure, reflected-site recovery,
+site-anchored strict-component recovery, and simultaneous finite propagation
+through connected facet adjacency.
 
-**Status:** proved in manuscript Theorem 6.1.
-**Registry:** P43-C088 (same claim, genericity clause), level CL5.
+No genericity hypothesis and no facet-count bound occur in C3. The required
+domain is exactly the compatible-decomposition model in Definition 4.1: a
+full-dimensional three-polytope core containing the recovered centre in its
+interior, all rotation angles in `(-pi,pi)`, and at least one flat and one
+nonflat facet.
 
-For each fixed realized three-polytope and fixed visible mask, centres at which
-a core vertex passes are contained in a finite union of proper spheres and
-quadrics, hence form a measure-zero set. No closedness or varying-realization
-measure statement is included.
+## C4 - auxiliary signature reconstruction
 
-## C5 — reference algorithm and finite replay
+**Registry:** P43-C088, `CL5`.
 
-**Status:** exact implementation evidence.
-**Registry:** P43-C087, level CL3 (certified finite result), for the replay; P43-C092, level CL5, for the cost bound.
+For a fixed realized core and visible mask, the intrinsic boundary-germ
+signature reconstructs whenever no core vertex passes its bisector-neighbour
+test. The excluded centres lie in a finite union of proper spheres and
+quadrics. This exceptional set limits the shortcut only; it is not an
+exceptional set for C3.
 
-E-A60 is the observable skeleton replay. E-A58 implements only conceptual
-steps 4 to 6 with the two-condition certifier: flat-component equality and
-survival of every recovered visible hinge facet. Each condition is provably
-necessary (E-A61 and E-A63 witnesses); completeness of the pair is not
-claimed. The conservative reference bound is O(N^2 log N + k^4) exact field
-operations — the halfspace kernel enumerates plane triples and validates each
-candidate corner against every halfspace. (An earlier revision stated k^3,
-omitting the per-candidate scan; corrected here.) The finite candidate-set
-cross-check is regression evidence, not a general theorem.
+## C5 - hypothetical competing-decomposition structure
 
-## C6 — application boundary
+**Registry:** P43-C089 through P43-C091, `CL5`.
 
-**Status:** verified comparison, not an application theorem.
-**Registry:** boundary statement under the S108 source lock; no theorem claim is registered or made.
+If two compatible decompositions existed, their differing sites would avoid
+visible hinges and number at least five on each side. The eight-point
+spherical-configuration nonexistence step is computer-assisted by four exact
+cofactor identities, re-verified by E-A69. These implications are retained as
+independent cross-checks even though C3 excludes their antecedent in the
+proper-zero model.
 
-The result currently supplies an exact inverse theorem, a certifying reference
-algorithm and a 16,744-row adversarial corpus for its promised reflected-cap
-class. Laguerre moments, ultrasonic NDT, EBSD microstructure reconstruction and
-lattice Brillouin models are adjacent bridge targets. A direct application would
-first require a generative reduction to reflected-cap data and a stability or
-interval-certificate theorem.
+## C6 - reference complexity
 
-## C7 — hinge-anchored uniqueness
+**Registry:** P43-C092, `CL5`.
 
-**Status:** proved in manuscript Theorem 7.2.
-**Registry:** P43-C089, level CL5 (internal theorem).
+The auxiliary signature reference implementation has conservative exact
+operation bound `O(N^2 log N + k^4)` in the notation of the manuscript. No
+sharper worst-case bound is claimed for the independent propagation engine.
 
-If every core vertex that passes the bisector-neighbour test lies on at least
-one visible hinge facet, the compatible decomposition is unique. Theorem 5.6
-is the special case in which no core vertex passes. A site of one compatible
-decomposition absent from the other is a passing core vertex of the other
-lying on no visible hinge facet.
+## C7 - certified finite evidence
 
-## C8 — no exchange quadruple
+**Registry:** P43-C087 and the E-A58/E-A60/E-A61/E-A63/E-A69/E-A71/E-A72
+experiment records, `CL3` where applicable.
 
-**Status:** proved in manuscript Theorem 7.6; computer-assisted with
-independently verified certificates.
-**Registry:** P43-C090, level CL5 (internal theorem, computer-assisted).
+The shipped exact records establish their displayed counts and mutation kills
+on the frozen domains. They corroborate implementations and certificates; they
+do not replace C3's proof or establish unrestricted input handling.
 
-There is no configuration of distinct unit vectors d_1..d_4 and distinct unit
-vectors e_1..e_4 in three-space with e_l . d_i = 1/2 for all l != i. The
-machine contribution is four certificate identities l * s_1 s_2 = sum q_i g_i,
-archived under certificates/ with SHA-256 pins carried by the E-A69 receipt
-and re-verified by exact expansion; the remaining steps (pattern reduction to
-one cubic, positivity on the closed square) are printed in full and are
-hand-checkable.
+## Claims not present
 
-## C9 — five sites per side, and the four-hidden-facet corollary
-
-**Status:** proved in manuscript Theorem 7.8 and Corollary 7.9.
-**Registry:** P43-C091, level CL5 (internal theorem).
-
-Two distinct compatible decompositions of one proper-zero raw union differ in
-at least five reflected sites on each side. Hence a proper-zero datum with at
-most four hidden facets has a unique compatible decomposition, with no
-hypothesis on its centre. The route is an exchange graph with an equilateral
-edge relation, a two-common-neighbours lemma (two distinct bisector planes
-meet a sphere in at most two points), an incidence count, and C8 for the
-forced K_{4,4}-minus-perfect-matching case. No planarity or star-shapedness
-argument is used.
-
-## Explicit exclusions
-
-- uniqueness or injectivity at exceptional centres with five or more hidden
-  facets;
-- dimensions above three;
-- arbitrary implicit, noisy, or floating-point input extraction;
-- an end-to-end implementation of steps 1 to 3;
-- completeness of the two certifier conditions;
+- all-zero reconstruction or uniqueness;
+- dimension greater than three;
+- floating-point, noisy, point-cloud, mesh, or implicit-set reconstruction;
+- a complete end-to-end input extractor;
+- completeness of the auxiliary certifier;
+- a general equal-circumradius characterization beyond the printed theorem;
 - novelty, priority, or firstness.
-
-## Registry correspondence
-
-Levels follow the project claim ladder: CL5 = internal theorem, public if
-proof and dependencies are present (they ship in this package); CL3 =
-certified finite result, public with its certificate scope. The internal
-`public_ready` flags remain false by registry invariant until the release
-act itself; the levels above are what license the wording used here.

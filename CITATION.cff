@@ -1,12 +1,12 @@
 cff-version: 1.2.0
 message: "If you use this package, please cite the paper below."
-title: "Generic Exact Reconstruction of Reflected-Cap Data from an Erased Flat Boundary"
+title: "Exact Reconstruction of Reflected-Cap Data from an Erased Flat Boundary"
 type: software
 authors:
   - family-names: Babanskyy
     given-names: Oleksiy
     orcid: "https://orcid.org/0009-0001-6176-6208"
-version: "1.1.0"
+version: "2.0.0"
 repository-code: "https://github.com/aconsciousfractal/FCIG-Generic-Reconstruction-from-Erased-Flat-Boundaries"
 license: MIT
 keywords:
@@ -17,14 +17,14 @@ keywords:
   - computational-geometry
   - reproducibility
 abstract: >-
-  A source-free intrinsic boundary-germ reconstruction theorem for
-  three-dimensional proper-zero reflected-cap data, a fixed-realization
-  measure-zero exceptional-centre result, unconditional uniqueness for data
-  with at most four hidden facets via a certified exchange bound, and exact
-  rational replay artifacts including verified polynomial certificates.
+  A universal exact reconstruction theorem for three-dimensional proper-zero
+  reflected-cap raw unions, proved by oriented frontier-ridge propagation and
+  site-anchored strict-component recovery. The companion package includes an
+  auxiliary intrinsic signature algorithm, exact polynomial certificates,
+  and independent local and global exact-rational falsification audits.
 preferred-citation:
   type: article
-  title: "Generic Exact Reconstruction of Reflected-Cap Data from an Erased Flat Boundary"
+  title: "Exact Reconstruction of Reflected-Cap Data from an Erased Flat Boundary"
   authors:
     - family-names: Babanskyy
       given-names: Oleksiy
