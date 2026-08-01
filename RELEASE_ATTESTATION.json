@@ -2,7 +2,7 @@
   "schema": "P43-S130-RELEASE-ATTESTATION-v6",
   "status": "VERIFIED_LOCAL_CANDIDATE",
   "audit_date": "2026-08-01",
-  "source_base_commit": "7ca62ca188fc3c6ad4ce337326bff8f6154ebb98",
+  "source_base_commit": "0e8411f2c9ddbaa6a6288a4307118e6dd2e771b9",
   "artifacts": {
     "source_manifest": {
       "path": "MANIFEST_SHA256.txt",
@@ -43,7 +43,7 @@
   },
   "gates": {
     "private_regression_662_tests": true,
-    "public_focused_9_tests": true,
+    "public_focused_12_tests": true,
     "public_replay_normal": true,
     "public_replay_optimized": true,
     "receipts_byte_identical": true,
