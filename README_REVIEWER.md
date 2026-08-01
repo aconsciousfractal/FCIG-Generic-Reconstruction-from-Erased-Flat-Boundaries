@@ -78,7 +78,11 @@ shortcut is regression evidence only, not a general equivalence theorem.
    an executable gate here.
 4. Run <code>python scripts/check_attestation.py</code> to anchor the manifest,
    the PDF, the regenerated receipt and the certificate files against
-   <code>RELEASE_ATTESTATION.json</code>.
+   <code>RELEASE_ATTESTATION.json</code>.  The gate fixes those artifact roles,
+   requires the exact four certificate names and seven checks, and validates
+   the real manifest-entry and PDF-page counts.  The reviewed Git commit is
+   the root of trust against a coordinated rewrite of both checker and
+   attestation; this gate detects degradation inside that trusted commit.
 
 ## Claims deliberately absent
 

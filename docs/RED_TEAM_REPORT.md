@@ -1,11 +1,12 @@
 # Red-team report
 
 Scope: the P43 public companion package and its manuscript.  Maintained by
-the P43 project through four adversarial waves (internal S105--S107 release
+the P43 project through five adversarial waves (internal S105--S107 release
 audit; external manuscript audit with internal adjudication, 2026-07-31;
 external release audit with internal adjudication, 2026-07-31, on the tree
 whose parent is the S108 candidate; independent pre-publication audit and
-closeout, 2026-08-01).  Enumeration and mutation checks quoted
+closeout, 2026-08-01; post-commit attestation-semantics red team and
+adjudication, 2026-08-01).  Enumeration and mutation checks quoted
 below were executed during the audits; the enumeration scripts are audit
 tooling and are not part of this package.
 
@@ -86,6 +87,21 @@ comparators missing from the source lock, the publisher title
 and an omitted mpmath notice.  The comparison set, bibliography, CFF metadata,
 dependency notices and exact open-problem wording were corrected before this
 tree was re-locked.
+
+## Fifth wave: post-commit attestation semantics
+
+An independent read-only red team of the re-locked commit found that the
+attestation checker verified whichever artifact roles and certificate set the
+JSON supplied.  Deleting the certificate map still produced a three-check
+PASS, while replacing the PDF role with the manifest and changing its declared
+page count still produced a seven-check PASS.  The path-traversal hardening and
+the mathematical gates were not affected.  The checker now fixes the schema,
+three canonical artifact paths and four certificate names; requires exactly
+seven checks; validates the real 54-entry manifest and 16-page PDF; and binds
+all five exact payloads to the aggregate receipt.  Regression tests kill both
+degradation attacks.  The documentation also states the unavoidable trust
+boundary: the reviewed Git commit, not an in-tree checker by itself, protects
+against a coordinated rewrite of checker and attestation.
 
 ## Adversarial controls
 

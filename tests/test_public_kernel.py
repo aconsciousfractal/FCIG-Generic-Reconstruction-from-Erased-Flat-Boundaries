@@ -5,7 +5,9 @@ from __future__ import annotations
 import json
 import sys
 import unittest
+from copy import deepcopy
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "scripts"
@@ -18,6 +20,7 @@ import p43_s102_e_a58_reference_reconstruction as ALG
 import p43_s106_e_a60_intrinsic_germ_skeleton as GERM
 import p43_s109_e_a61_exceptional_centre_witness as EXC
 import p43_s111_e_a63_volume_branch_witness as REV
+import check_attestation as ATT
 
 
 class ObservableSkeleton(unittest.TestCase):
@@ -150,6 +153,61 @@ class CertifierNecessity(unittest.TestCase):
         self.assertTrue(record["hinge_facets_survive"])
         self.assertFalse(record["flat_component_matches"])
         self.assertFalse(record["repaired_certifier_accepts"])
+
+
+class AttestationSemantics(unittest.TestCase):
+    @staticmethod
+    def valid_shape_fixture():
+        return {
+            "schema": ATT.EXPECTED_SCHEMA,
+            "artifacts": {
+                "source_manifest": {
+                    "path": ATT.EXPECTED_ARTIFACT_PATHS["source_manifest"],
+                    "entries": ATT.EXPECTED_MANIFEST_ENTRIES,
+                },
+                "paper_pdf": {
+                    "path": ATT.EXPECTED_ARTIFACT_PATHS["paper_pdf"],
+                    "pages": ATT.EXPECTED_PDF_PAGES,
+                },
+                "aggregate_receipt": {
+                    "path": ATT.EXPECTED_ARTIFACT_PATHS["aggregate_receipt"],
+                },
+                "exact_payloads": {
+                    key: "0" * 64 for key in ATT.EXPECTED_PAYLOAD_KEYS
+                },
+                "theorem_7_6_certificates": {
+                    name: "0" * 64 for name in ATT.EXPECTED_CERTIFICATE_NAMES
+                },
+            },
+        }
+
+    def test_missing_certificate_map_is_rejected(self):
+        tampered = deepcopy(self.valid_shape_fixture())
+        tampered["artifacts"].pop("theorem_7_6_certificates")
+        with self.assertRaises(RuntimeError):
+            ATT.validate_attestation_shape(tampered)
+
+    def test_artifact_role_substitution_and_false_counts_are_rejected(self):
+        tampered = deepcopy(self.valid_shape_fixture())
+        tampered["artifacts"]["paper_pdf"]["path"] = "MANIFEST_SHA256.txt"
+        tampered["artifacts"]["paper_pdf"]["pages"] = 999999
+        with self.assertRaises(RuntimeError):
+            ATT.validate_attestation_shape(tampered)
+
+    def test_declared_manifest_and_pdf_counts_are_real(self):
+        ATT.validate_attestation_shape(self.valid_shape_fixture())
+        with TemporaryDirectory(prefix="p43_attestation_test_") as temp:
+            temp_root = Path(temp)
+            manifest = temp_root / "manifest.txt"
+            manifest.write_text(
+                "# synthetic closed manifest\n"
+                + "".join(f"{'0' * 64}  file-{i}\n" for i in range(54)),
+                encoding="utf-8",
+            )
+            paper = temp_root / "paper.pdf"
+            paper.write_bytes(b"%PDF-1.7\n" + b"/Type /Page\n" * 16)
+            self.assertEqual(ATT.manifest_entry_count(manifest), 54)
+            self.assertEqual(ATT.pdf_page_count(paper), 16)
 
 
 if __name__ == "__main__":

@@ -1,12 +1,12 @@
 {
-  "schema": "P43-S129-RELEASE-ATTESTATION-v5",
+  "schema": "P43-S130-RELEASE-ATTESTATION-v6",
   "status": "VERIFIED_LOCAL_CANDIDATE",
   "audit_date": "2026-08-01",
-  "source_base_commit": "52295f34198f9188d0070cf40121a8c9f9de511b",
+  "source_base_commit": "7ca62ca188fc3c6ad4ce337326bff8f6154ebb98",
   "artifacts": {
     "source_manifest": {
       "path": "MANIFEST_SHA256.txt",
-      "sha256": "10CE52B0295607FE9660E2CC879B70D5CF0D4761E22626E520E4BFCD574236FC",
+      "sha256": "56B3E1479AFA8435955A927B1514F65A3EC91ADD8AB75A1F73A32612B245FB7F",
       "entries": 54
     },
     "paper_pdf": {
@@ -17,7 +17,7 @@
     },
     "aggregate_receipt": {
       "path": "results/public_package_verification.json",
-      "sha256": "4AE8EF1C085760E9CC9F12D9B5253AC7186B8AF4654A5FB72A178C7463075DBA",
+      "sha256": "8F7E1CB47C12375DF9E2D4FFDB0FE41DFC616B1D04616CF133D62C162F6159EC",
       "bytes": 1915
     },
     "exact_payloads": {
@@ -59,7 +59,7 @@
     "private_path_secret_placeholder_scan_clean": true,
     "git_history_carries_only_the_noreply_identity": true,
     "claim_source_and_prior_art_boundaries_present": true,
-    "release_red_team_adjudicated": false,
+    "release_red_team_adjudicated": true,
     "python_3_10_and_3_14_remote_ci": false
   },
   "publication_actions_at_audit_time": {
@@ -72,7 +72,8 @@
     "The source manifest excludes this attestation, the title-named PDF and the regenerated aggregate receipt to avoid circular hashes.",
     "This attestation is written before the release commit and therefore cannot contain that commit's hash; source_base_commit names the parent, and the release commit is its immediate child, recorded in the project ledgers and in any eventual tag.",
     "This candidate incorporates the independent S128 prepublication audit: it adds and accurately scopes the closest supplied-tessellation comparators, corrects Aurenhammer's official title, omits a premature CFF release date, declares both pinned direct dependencies and their BSD-3-Clause notices, and narrows the remaining open problem to the actual unresolved passing-vertex regime.",
-    "Release hardening in this candidate rejects unsafe attested paths, strengthens the E-A69 critical-ideal check to the explicit leading-exponent pattern certifying vector-space dimension four, and adds Python 3.10/3.14 compatibility smoke jobs without claiming that remote CI has already run.",
+    "Release hardening in this candidate rejects unsafe attested paths, fixes the three artifact roles and four certificate names, validates the real manifest/PDF counts and all five payload bindings, requires exactly seven checks, strengthens the E-A69 critical-ideal check to the explicit leading-exponent pattern certifying vector-space dimension four, and adds Python 3.10/3.14 compatibility smoke jobs without claiming that remote CI has already run.",
+    "The Git commit is the root of trust against a coordinated rewrite of this checker and its attestation; check_attestation.py detects degradation or role substitution of the attestation inside a trusted commit, rather than making an untrusted commit self-authenticating.",
     "Known benign identifier: the frozen S50 census receipt contains the internal claim label C047 as inert provenance; the payload is hash-frozen and is retained unchanged.",
     "Replay scripts overwrite frozen receipts when run outside the documented gates; see the warning in REPRODUCE.md.",
     "Normal and optimized replays passed in the candidate tree and in the isolated 54-file manifest-only tree, all producing the same receipt bytes; fresh E-A69 tamper and E-A63 certifier mutations were rejected as required.",

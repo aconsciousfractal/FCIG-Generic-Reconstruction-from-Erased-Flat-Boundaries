@@ -31,7 +31,10 @@ not the complete input-extraction pipeline.
 - all 16 pages rendered, new-material pages visually inspected;
 - source, corrected partial-data prior art, application claims, and open-problem boundaries explicit;
 - privacy/placeholder/superseded-wording scan clean;
-- non-circular release attestation binds manifest, PDF, and aggregate receipt.
+- non-circular release attestation binds the canonical manifest, PDF,
+  aggregate receipt and exact four certificate files; the gate enforces all
+  seven roles and the real 54-file/16-page counts.  The reviewed Git commit is
+  the root of trust against coordinated checker-plus-attestation replacement.
 
 ## Deferred research
 
