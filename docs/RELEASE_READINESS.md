@@ -1,6 +1,6 @@
 # Release-candidate readiness record
 
-Audit date: 2026-07-31  
+Audit date: 2026-08-01
 Repository: https://github.com/aconsciousfractal/FCIG-Generic-Reconstruction-from-Erased-Flat-Boundaries
 
 ## Candidate scope
@@ -18,8 +18,8 @@ not the complete input-extraction pipeline.
 
 ## Required local gates
 
-- dependency boundary (standard library plus SymPy for certificate
-  verification) and GitHub Actions workflow present;
+- dependency boundary (standard library plus SymPy and its mpmath backend for
+  certificate verification) and GitHub Actions workflow present;
 - focused source-kind, subdivision, witness, reconstruction, tamper, and
   certifier-necessity tests;
 - complete E-A60, E-A58, E-A61, E-A63 and E-A69 verify-existing replays;

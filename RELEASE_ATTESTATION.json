@@ -1,23 +1,23 @@
 {
-  "schema": "P43-S127-RELEASE-ATTESTATION-v4",
+  "schema": "P43-S129-RELEASE-ATTESTATION-v5",
   "status": "VERIFIED_LOCAL_CANDIDATE",
-  "audit_date": "2026-07-31",
-  "source_base_commit": "dc608e5b1d42301c05a07dc7a07d97184842e1b4",
+  "audit_date": "2026-08-01",
+  "source_base_commit": "52295f34198f9188d0070cf40121a8c9f9de511b",
   "artifacts": {
     "source_manifest": {
       "path": "MANIFEST_SHA256.txt",
-      "sha256": "4B7264AE1C6E1F446A2B845FF885BE1C7535491AA7A7B9338C03DBE7FE222F78",
+      "sha256": "10CE52B0295607FE9660E2CC879B70D5CF0D4761E22626E520E4BFCD574236FC",
       "entries": 54
     },
     "paper_pdf": {
       "path": "paper/Generic_Exact_Reconstruction_of_Reflected_Cap_Data_from_an_Erased_Flat_Boundary.pdf",
-      "sha256": "3A3E7964D0E06B1EA651658D69C73E253BD7C7D293AAEE6CF93EF6B18746E37B",
+      "sha256": "ACD385B4172B4617884F7AD76927F24F3D927CF46EF18924EBABB9FACBFB54A9",
       "pages": 16,
-      "bytes": 461732
+      "bytes": 464673
     },
     "aggregate_receipt": {
       "path": "results/public_package_verification.json",
-      "sha256": "86538C2478209A4EA69B3D2AC2C25678BECD0E61E03D84AB79778BC128A20254",
+      "sha256": "4AE8EF1C085760E9CC9F12D9B5253AC7186B8AF4654A5FB72A178C7463075DBA",
       "bytes": 1915
     },
     "exact_payloads": {
@@ -59,7 +59,8 @@
     "private_path_secret_placeholder_scan_clean": true,
     "git_history_carries_only_the_noreply_identity": true,
     "claim_source_and_prior_art_boundaries_present": true,
-    "release_red_team_adjudicated": true
+    "release_red_team_adjudicated": false,
+    "python_3_10_and_3_14_remote_ci": false
   },
   "publication_actions_at_audit_time": {
     "committed": false,
@@ -70,10 +71,11 @@
   "notes": [
     "The source manifest excludes this attestation, the title-named PDF and the regenerated aggregate receipt to avoid circular hashes.",
     "This attestation is written before the release commit and therefore cannot contain that commit's hash; source_base_commit names the parent, and the release commit is its immediate child, recorded in the project ledgers and in any eventual tag.",
-    "This candidate repairs every blocker and high of the external release audit: the certificate gate now hard-fails under python -O (regression-tested by tampering a cofactor on a copy), the public source lock is realigned to the v3 payload, the four unread-primary comparator citations are weakened to subject-matter level, the backing claims are registered and levelled (C025/C032/C088-C091 at CL5, C087 at CL3, C092 at CL5), the certifier-necessity claim is unit-tested in both directions, the git history carries only the noreply identity, and check_attestation.py anchors the manifest, PDF, receipt and certificates.",
+    "This candidate incorporates the independent S128 prepublication audit: it adds and accurately scopes the closest supplied-tessellation comparators, corrects Aurenhammer's official title, omits a premature CFF release date, declares both pinned direct dependencies and their BSD-3-Clause notices, and narrows the remaining open problem to the actual unresolved passing-vertex regime.",
+    "Release hardening in this candidate rejects unsafe attested paths, strengthens the E-A69 critical-ideal check to the explicit leading-exponent pattern certifying vector-space dimension four, and adds Python 3.10/3.14 compatibility smoke jobs without claiming that remote CI has already run.",
     "Known benign identifier: the frozen S50 census receipt contains the internal claim label C047 as inert provenance; the payload is hash-frozen and is retained unchanged.",
     "Replay scripts overwrite frozen receipts when run outside the documented gates; see the warning in REPRODUCE.md.",
-    "Normal and optimized replays passed in the candidate tree and in the isolated 54-file manifest-only tree, all three producing the same receipt bytes.",
+    "Normal and optimized replays passed in the candidate tree and in the isolated 54-file manifest-only tree, all producing the same receipt bytes; fresh E-A69 tamper and E-A63 certifier mutations were rejected as required.",
     "The present task authorizes a scoped local commit only. No remote, tag, GitHub Release, DOI, arXiv submission or journal submission is created."
   ]
 }

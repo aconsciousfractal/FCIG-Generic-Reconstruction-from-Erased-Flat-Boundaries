@@ -207,7 +207,14 @@ crit = sp.solve([Fu, Fv], [a, b], dict=True)
 crit_real = [p for p in crit if all(val.is_real for val in p.values())]
 check("critical system solved completely (4 real points)", len(crit) == 4 and len(crit_real) == 4)
 gb_crit = sp.groebner([Fu, Fv], a, b, order="lex")
-check("critical ideal is zero-dimensional with vdim 4 (list is complete)", gb_crit.is_zero_dimensional and len(sp.Poly(gb_crit.exprs[-1], b).all_roots()) <= 4)
+leading_exponents = {
+    tuple(poly.LM(order=gb_crit.order).exponents) for poly in gb_crit.polys
+}
+check(
+    "critical ideal is zero-dimensional with vdim 4 (list is complete)",
+    gb_crit.is_zero_dimensional
+    and leading_exponents == {(2, 0), (1, 1), (0, 3)},
+)
 crit_vals = []
 interior_ok = True
 for p in crit_real:

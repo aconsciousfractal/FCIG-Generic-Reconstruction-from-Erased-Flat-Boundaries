@@ -15,6 +15,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+ROOT_REAL = ROOT.resolve(strict=True)
 ATTESTATION = ROOT / "RELEASE_ATTESTATION.json"
 
 
@@ -31,6 +32,28 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest().upper()
 
 
+def safe_attested_path(relative: object) -> Path:
+    """Resolve a repository-relative regular file without following symlinks."""
+    require(isinstance(relative, str) and relative, "invalid attested path")
+    require("\\" not in relative, f"nonportable attested path: {relative}")
+    candidate = Path(relative)
+    require(
+        not candidate.is_absolute() and ".." not in candidate.parts,
+        f"unsafe attested path: {relative}",
+    )
+    cursor = ROOT
+    for part in candidate.parts:
+        cursor = cursor / part
+        require(not cursor.is_symlink(), f"symlink in attested path: {relative}")
+    require(cursor.is_file(), f"attested file missing: {relative}")
+    resolved = cursor.resolve(strict=True)
+    require(
+        resolved.is_relative_to(ROOT_REAL),
+        f"attested path escapes repository: {relative}",
+    )
+    return resolved
+
+
 def main() -> None:
     require(ATTESTATION.is_file(), "missing RELEASE_ATTESTATION.json")
     attestation = json.loads(ATTESTATION.read_text(encoding="utf-8"))
@@ -38,8 +61,7 @@ def main() -> None:
     checked = 0
     for key in ("source_manifest", "paper_pdf", "aggregate_receipt"):
         entry = artifacts[key]
-        path = ROOT / entry["path"]
-        require(path.is_file(), f"attested file missing: {entry['path']}")
+        path = safe_attested_path(entry["path"])
         actual = sha256_file(path)
         require(
             actual == str(entry["sha256"]).upper(),
@@ -54,8 +76,11 @@ def main() -> None:
         checked += 1
     certificates = artifacts.get("theorem_7_6_certificates", {})
     for name, pinned in certificates.items():
-        path = ROOT / "certificates" / name
-        require(path.is_file(), f"attested certificate missing: {name}")
+        require(
+            isinstance(name, str) and Path(name).name == name,
+            f"unsafe certificate name: {name}",
+        )
+        path = safe_attested_path(f"certificates/{name}")
         actual = sha256_file(path)
         require(
             actual == str(pinned).upper(),

@@ -13,7 +13,10 @@ Primary-source checking corrected one overbroad comparison: inverse tessellation
 problems do not always receive boundary edges. Labelled Laguerre cells can be
 recovered from volumes and centroids, and a simplified ultrasonic NDT model fits
 an oriented planar Voronoi diagram from travel times. Those observables are not
-the reflected-cap raw union used here. Brillouin zones share the local
+the reflected-cap raw union used here. Other inverse Voronoi and Laguerre methods
+start from a supplied planar tessellation, weighted cell partition, or spherical
+tessellation, even when they propagate generators by reflection; those source
+boundaries have already been erased in the present model. Brillouin zones share the local
 perpendicular-bisector construction, but diffraction extinctions do not erase
 zone faces. EBSD, NDT and lattice models are research bridges, not current
 deployments; prescribed-crease origami hardness does not transfer to this inverse
@@ -88,10 +91,11 @@ python scripts/check_attestation.py
 python scripts/verify_manifest_only.py
 ~~~
 
-The package uses exact rational arithmetic throughout; the only third-party
-dependency is SymPy, used to re-verify the certificate identities by exact
-expansion (`pip install -r requirements.txt`). The complete replay is
-intentionally substantial; runtime is hardware-dependent.
+The package uses exact rational arithmetic throughout. Its pinned third-party
+dependencies are SymPy, used to re-verify the certificate identities by exact
+expansion, and mpmath, SymPy's arithmetic backend (`pip install -r
+requirements.txt`). The complete replay is intentionally substantial; runtime
+is hardware-dependent.
 
 ## Layout
 

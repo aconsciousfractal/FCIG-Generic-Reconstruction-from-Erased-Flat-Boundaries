@@ -27,6 +27,17 @@ they do not erase that mathematical face. The cited rigid-origami hardness resul
 decides foldability of a prescribed crease pattern and gives no reduction for
 inverse erased-boundary reconstruction.
 
+## S128 close-comparator correction
+
+A pre-publication search found four supplied-tessellation comparators omitted
+from the S108 table: Suzuki--Iri's planar approximation/inversion problem,
+Duan et al.'s generally nonunique weighted-generator inversion from a complete
+Laguerre tessellation, Chaidee--Sugihara's spherical Laguerre recognition
+problem, and Hernandez-Suarez's local linear recovery followed by reflection
+propagation on a complete planar Voronoi tessellation.  They are now recorded
+explicitly.  None receives the erased-source raw union used here: each retains
+the diagram, partition, or tessellation boundaries as input.
+
 ## Mathematical source boundary
 
 The paper is self-contained for its reconstruction, uniqueness, genericity,
@@ -44,14 +55,18 @@ input models, not black-box proof dependencies.
 | Source | Locator used | Role |
 |---|---|---|
 | Ash--Bolker, 1985 | https://doi.org/10.1007/BF00181470 and author PDF | forward reflection construction; supplied tessellation |
-| Aurenhammer, 1987 | https://doi.org/10.1016/S0747-7171(87)80003-2 | supplied polytopal cell complex |
+| Aurenhammer, 1987 | https://doi.org/10.1016/S0747-7171(87)80003-2 | supplied polytopical cell complex |
 | Hartvigsen, 1992 | https://doi.org/10.1287/ijoc.4.4.369 | supplied polyhedral tessellation; LP recognition |
 | Schoenberg--Ferguson--Li, 2003 | https://doi.org/10.1093/comjnl/46.1.76 | inversion from supplied cell-boundary segments |
+| Suzuki--Iri, 1986 | https://doi.org/10.15807/jorsj.29.69 | supplied planar tessellation; approximation and generator restoration |
 | Biedl--Held--Huber, 2013 | https://doi.org/10.1109/ISVD.2013.11 | supplied embedded straight-line graph with rays |
 | Borgwardt--Frongillo, 2017 | https://arxiv.org/abs/1711.06207 | power-diagram detection from a supplied complex |
 | Eder et al., 2023 | https://doi.org/10.1016/j.comgeo.2022.101935 | supplied planar partition or bisector graph |
 | Alonso Ferrero, 2011 | https://arxiv.org/abs/1105.4246 | generator recognition with Voronoi edges given |
 | Aloupis et al., 2013 | https://arxiv.org/abs/1308.5550 | inverse fitting while retaining original input edges |
+| Duan et al., 2014 | https://doi.org/10.1093/comjnl/bxu029 | weighted-generator inversion from a supplied Laguerre tessellation; general nonuniqueness |
+| Chaidee--Sugihara, 2017 | https://arxiv.org/abs/1705.03911 | recognition from a supplied spherical tessellation |
+| Hernandez-Suarez, 2025 | https://arxiv.org/abs/2506.19076 | supplied planar tessellation; local solve and reflection propagation |
 | Bourne--Pearce--Roper, 2025 | https://doi.org/10.1051/m2an/2025004 | labelled Laguerre cells from volumes and centroids |
 | Bourne et al., 2021 | https://doi.org/10.1002/mma.6977 | oriented planar Voronoi fitting from ultrasonic travel times |
 | Simon, solid-state notes | https://www-thphys.physics.ox.ac.uk/people/SteveSimon/condmat2011/LectureNotes.pdf | Brillouin zone as reciprocal-lattice Voronoi cell |

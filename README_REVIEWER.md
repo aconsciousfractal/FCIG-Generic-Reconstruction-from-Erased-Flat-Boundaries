@@ -8,6 +8,11 @@ unions; systematic diffraction absences do not delete Brillouin-zone bisectors;
 and NP-hard foldability of a prescribed crease pattern is not inverse crease
 recovery. The public package claims no industrial deployment.
 
+Also distinguish supplied-tessellation inversion from erased-source recovery:
+Suzuki--Iri, Duan et al., Chaidee--Sugihara and Hernandez-Suarez retain a
+planar, weighted, or spherical diagram as input.  P43 does not observe those
+source boundaries after the flat caps merge with the core.
+
 ## Fast audit route
 
 1. Read the title-named PDF under <code>paper/</code>.

@@ -37,7 +37,7 @@
 \address{Independent researcher}
 \email{aconsciousfractal@users.noreply.github.com}
 \urladdr{https://orcid.org/0009-0001-6176-6208}
-\date{July 31, 2026}
+\date{August 1, 2026}
 
 \raggedbottom
 
@@ -915,7 +915,7 @@ is exactly the forward reflection construction used in Section~\ref{sec:model}
 and is cited as such.
 
 Subsequent recognition algorithms also begin with substantially visible
-boundary data.  Aurenhammer takes a supplied polytopal cell
+boundary data.  Aurenhammer takes a supplied polytopical cell
 complex~\cite{Aurenhammer1987}; Hartvigsen takes a tessellation of Euclidean
 space into polyhedra and uses linear programming~\cite{Hartvigsen1992}; and
 Schoenberg, Ferguson, and Li recover generators from segments demarcating cell
@@ -928,6 +928,19 @@ start from a supplied complex, partition, or geometric graph
 \cite{BorgwardtFrongillo2017,EderEtAl2023}.  The generalized inverse Voronoi
 problem studied by Aloupis et al. permits added edges while retaining the
 original input edges~\cite{AloupisEtAl2013}.
+
+Several further inverse-tessellation methods reinforce this distinction.
+Suzuki and Iri approximate a supplied planar tessellation by a Voronoi diagram,
+with exact generator restoration included as a special case
+\cite{SuzukiIri1986}.  Duan et al. recover weighted generators from a supplied
+Laguerre tessellation and show that those generators are generally nonunique
+\cite{DuanEtAl2014}.  Chaidee and Sugihara recognise spherical Laguerre
+Voronoi diagrams from a supplied spherical tessellation
+\cite{ChaideeSugihara2017}.  Most recently, Hernandez-Suarez reconstructs the
+generators of a supplied planar Voronoi tessellation from one interior cell and
+its neighbours, then propagates them by successive reflections
+\cite{HernandezSuarez2025}.  In every case the diagram, partition, or
+tessellation boundaries remain part of the input.
 
 Not every inverse tessellation problem receives boundary edges.  Bourne,
 Pearce, and Roper prove that labelled Laguerre cells are uniquely determined

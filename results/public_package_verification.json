@@ -18,7 +18,7 @@
     "wrong_and_certified": 0,
     "wrong_answers": 0
   },
-  "manifest_sha256": "4B7264AE1C6E1F446A2B845FF885BE1C7535491AA7A7B9338C03DBE7FE222F78",
+  "manifest_sha256": "10CE52B0295607FE9660E2CC879B70D5CF0D4761E22626E520E4BFCD574236FC",
   "schema": "P43-PUBLIC-PACKAGE-VERIFICATION-v2",
   "status": "PASS",
   "theorem_boundary": {

@@ -3,9 +3,9 @@
 ## Requirements
 
 - Python 3.10 or newer;
-- SymPy (see <code>requirements.txt</code>), used only by the certificate
-  verification E-A69 for exact polynomial expansion; everything else is
-  standard-library;
+- SymPy and its mpmath arithmetic backend (see <code>requirements.txt</code>),
+  used only by the certificate verification E-A69 for exact polynomial
+  expansion; everything else is standard-library;
 - to build the paper: a LaTeX installation with <code>amsart</code>,
   <code>lmodern</code>, <code>microtype</code>, <code>mathtools</code>,
   <code>enumitem</code>, <code>xcolor</code>, <code>hyperref</code>, and BibTeX.

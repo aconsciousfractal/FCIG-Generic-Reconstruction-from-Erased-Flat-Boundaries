@@ -1,10 +1,11 @@
 # Red-team report
 
 Scope: the P43 public companion package and its manuscript.  Maintained by
-the P43 project through three adversarial waves (internal S105--S107 release
+the P43 project through four adversarial waves (internal S105--S107 release
 audit; external manuscript audit with internal adjudication, 2026-07-31;
 external release audit with internal adjudication, 2026-07-31, on the tree
-whose parent is the S108 candidate).  Enumeration and mutation checks quoted
+whose parent is the S108 candidate; independent pre-publication audit and
+closeout, 2026-08-01).  Enumeration and mutation checks quoted
 below were executed during the audits; the enumeration scripts are audit
 tooling and are not part of this package.
 
@@ -74,6 +75,18 @@ graph classes independently, and confirmed the earlier layout and
 | NDT/EBSD described as direct applications | high | reduced to bridge targets requiring generative and stability theorems |
 | prescribed-crease origami hardness transferred to inverse recovery | high | transfer rejected absent a common decision problem and reduction |
 
+## Fourth wave: independent pre-publication closeout
+
+The S128 audit independently repeated the normal, optimized and isolated
+replays, killed the certifier and certificate mutations, rebuilt the PDF
+byte-for-byte and inspected all sixteen pages.  It also found release-surface
+defects not affecting the theorem: four close supplied-tessellation
+comparators missing from the source lock, the publisher title
+``polytopical'' shortened incorrectly to ``polytopal'', a pre-release CFF date,
+and an omitted mpmath notice.  The comparison set, bibliography, CFF metadata,
+dependency notices and exact open-problem wording were corrected before this
+tree was re-locked.
+
 ## Adversarial controls
 
 - deletion of source-kind fields leaves the skeleton unchanged;
@@ -86,7 +99,8 @@ graph classes independently, and confirmed the earlier layout and
 
 ## Open research outside release scope
 
-- decide uniqueness or construct an exact ambiguity when a core vertex passes;
+- decide uniqueness or construct an exact ambiguity when a passing core vertex
+  avoids every visible hinge and at least five hidden facets are present;
 - extend the intrinsic-stratum argument above dimension three;
 - prove or refute the historical plane-count shortcut beyond the corpus;
 - build an end-to-end exact extractor from a more primitive raw-set input;
