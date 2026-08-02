@@ -1153,6 +1153,21 @@ start from a supplied complex, partition, or geometric graph
 problem studied by Aloupis et al. permits added edges while retaining the
 original input edges~\cite{AloupisEtAl2013}.
 
+Several closer inversion routes still assume that the tessellation itself is
+supplied.  Suzuki and Iri fit a planar Voronoi diagram to a given planar
+tessellation; their formulation includes generator restoration when that
+input already is a Voronoi diagram~\cite{SuzukiIri1986}.  Duan et al. recover
+weighted generators from a complete Laguerre tessellation and show that this
+inverse problem is generally nonunique~\cite{DuanEtAl2014}.  On the sphere,
+Chaidee and Sugihara recognize a supplied spherical Laguerre tessellation via
+a centrally projected polyhedron, again with nonunique generator
+sets~\cite{ChaideeSugihara2017}.  Most closely in propagation style,
+Hernandez-Suarez begins with a complete planar Voronoi tessellation, solves for
+one interior cell and its neighbours, and obtains the remaining sites by
+successive geometric reflections~\cite{HernandezSuarez2025}.  In every case
+the cell boundaries, partition, or tessellation adjacency remain available;
+they have not been erased into the unlabelled raw union considered here.
+
 Not every inverse tessellation problem receives boundary edges.  Bourne,
 Pearce, and Roper prove that labelled Laguerre cells are uniquely determined
 by their volumes and centroids and recover them by convex
@@ -1212,6 +1227,7 @@ mathematical proof establishes novelty or priority.  The finite evidence also
 does not establish unrestricted-domain behaviour.
 \end{itemize}
 
+\enlargethispage{6\baselineskip}
 \begingroup
 \small
 \bibliographystyle{plain}

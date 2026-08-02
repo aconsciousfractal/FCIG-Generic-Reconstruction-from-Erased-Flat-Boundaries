@@ -24,7 +24,7 @@
     "wrong_and_certified": 0,
     "wrong_answers": 0
   },
-  "manifest_sha256": "D5A6734D45D162AFC8BA20F35AD05FC2E023C7A95A838F3C9FBFF50BC80B0789",
+  "manifest_sha256": "4B3FFBBB4F774E27FC1909A6A58C8E552875EE79D656D7289169A9E11A0A4F4E",
   "schema": "P43-PUBLIC-PACKAGE-VERIFICATION-v3",
   "status": "PASS",
   "theorem_boundary": {
