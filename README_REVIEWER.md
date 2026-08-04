@@ -20,7 +20,8 @@ proved intrinsically in the manuscript.
    python scripts/check_attestation.py
    ```
 
-4. Confirm that both aggregate runs end in `PASS_P43_PUBLIC_PACKAGE` and
+4. Confirm that both aggregate runs end in
+   `PASS_GENERIC_RECONSTRUCTION_PUBLIC_PACKAGE` and
    generate byte-identical `results/public_package_verification.json`.
 
 ## Thirty-minute proof route
@@ -75,12 +76,12 @@ main propagation proof.
 3. Confirm that exact polynomial expansion gives zero for all four identities
    and that both standing positive controls pass.
 4. Run `python scripts/check_attestation.py` to bind the four files to the
-   release candidate.
+   public release.
 
 ## Artifact-isolation route
 
 Run `python scripts/verify_manifest_only.py`. It constructs an isolated tree
-from exactly the 60 source-manifest entries, reruns normal and optimized
+from exactly the source-manifest entries, reruns normal and optimized
 verification, and requires identical receipts. The title-named PDF,
 attestation, source manifest itself, and regenerated aggregate receipt are
 separately bound to avoid circular hashing.

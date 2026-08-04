@@ -1,4 +1,4 @@
-"""Focused public controls for the P43 observable skeleton and flat kernel."""
+"""Focused public controls for the observable skeleton and flat kernel."""
 
 from __future__ import annotations
 

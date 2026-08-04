@@ -1,14 +1,14 @@
 {
-  "schema": "P43-S136-RELEASE-ATTESTATION-v7",
-  "status": "VERIFIED_LOCAL_POST_RED_TEAM_CORRECTION_FREEZE",
-  "audit_date": "2026-08-02",
-  "source_base_commit": "5ae8c3015fc0ade8ec256d4d62bb75c7a016ef6c",
+  "schema": "GENERIC-RECONSTRUCTION-RELEASE-ATTESTATION-v1",
+  "status": "VERIFIED_PUBLIC_PACKAGE",
+  "release_version": "2.0.0",
+  "verification_date": "2026-08-04",
   "artifacts": {
     "source_manifest": {
       "path": "MANIFEST_SHA256.txt",
-      "sha256": "4B3FFBBB4F774E27FC1909A6A58C8E552875EE79D656D7289169A9E11A0A4F4E",
-      "entries": 60,
-      "bytes": 6300
+      "sha256": "DE37F67739A4A571949A91022EACE33FE57761A9A1FEC3829243BC6A7288171E",
+      "entries": 58,
+      "bytes": 6137
     },
     "paper_pdf": {
       "path": "paper/Exact_Reconstruction_of_Reflected-Cap_Data_from_an_Erased_Flat_Boundary.pdf",
@@ -18,8 +18,8 @@
     },
     "aggregate_receipt": {
       "path": "results/public_package_verification.json",
-      "sha256": "ADCA9077CBE6B51BE733A939C278591B25EB6707E0547FE29BAD59E78AA26049",
-      "bytes": 2293
+      "sha256": "E46ACC4C7E71E6F00C279E3460DBA135C9AB5DABF9BEF05ED484799463893065",
+      "bytes": 2299
     },
     "exact_payloads": {
       "intrinsic_germ_skeleton_e_a60": "D18C07176BAF7B729A550E9B9B8B9D9E04BB58A0C52D295243108417C9BE785A",
@@ -44,40 +44,26 @@
     "tex": "MiKTeX-pdfTeX 4.23 (MiKTeX 25.12)",
     "pdf_renderer": "Poppler 26.05.0"
   },
-  "gates": {
-    "public_focused_19_tests_normal": true,
-    "public_focused_19_tests_optimized": true,
+  "verification": {
+    "focused_19_tests": true,
     "seven_exact_audits_replayed_normal": true,
     "seven_exact_audits_replayed_optimized": true,
     "normal_and_optimized_receipts_byte_identical": true,
-    "manifest_closed_tree_60_files": true,
+    "manifest_closed_tree_58_files": true,
     "manifest_only_isolated_replay_normal_and_optimized": true,
     "certificate_files_hash_checked_against_e69_payload": true,
     "fail_closed_and_mutation_controls_pass": true,
     "attestation_anchor_check_shipped_and_wired": true,
+    "latex_builds_byte_identical": true,
     "latex_build_no_layout_or_reference_warnings": true,
     "pdf_rendered_and_visually_inspected_20_pages": true,
-    "paper_has_no_printed_date_below_author": true,
-    "private_path_secret_placeholder_and_email_scans_clean": true,
-    "git_history_carries_only_the_noreply_identity": true,
-    "claim_source_and_prior_art_boundaries_present": true,
-    "python_3_10_and_3_14_remote_ci": false
-  },
-  "publication_actions_at_audit_time": {
-    "committed": false,
-    "pushed": false,
-    "remote_exists": true,
-    "source_base_commit_pushed": true,
-    "tagged": false,
-    "released": false
+    "public_reader_surface_clean": true
   },
   "notes": [
     "The source manifest excludes this attestation, the title-named PDF, and the regenerated aggregate receipt to avoid circular hashes.",
-    "This attestation is written before the release commit and therefore cannot contain that commit's hash. The source_base_commit names the parent of the source freeze; the actual release commit and remote state are checked independently after commit and push.",
     "The universal theorem applies exactly to the three-dimensional proper-zero reflected-cap model stated in the paper. All-zero data, higher dimensions, arbitrary or noisy input extraction, numerical stability, novelty, and priority remain outside the claim.",
     "The main proof is intrinsic. E-A71 and E-A72 are independent exact-rational falsification audits of the oriented local and global propagation route; finite replay is not presented as the proof.",
-    "The corrected 60-file source tree passed complete normal and optimized aggregate replay. Both modes produced receipt SHA-256 ADCA9077CBE6B51BE733A939C278591B25EB6707E0547FE29BAD59E78AA26049.",
-    "The manifest-only normal and optimized replay passed on source base 5ae8c3015fc0ade8ec256d4d62bb75c7a016ef6c. The corrected tree changes only paper/main.tex, paper/references.bib, the excluded title-named PDF, manifest, receipt, and this attestation; every executable and frozen-evidence byte is identical. Therefore the isolated no-hidden-dependency conclusion is inherited without rerunning the two expensive corpus-wide isolated modes.",
-    "At attestation time the public remote existed and contained source base 5ae8c3015fc0ade8ec256d4d62bb75c7a016ef6c. The corrected successor had not yet been committed or pushed. No tag, GitHub Release, DOI, arXiv submission, or journal submission had been created."
+    "Normal, optimized, and isolated manifest-only replay produced byte-identical aggregate receipts; the final EOL-portable manifest is bound by receipt SHA-256 E46ACC4C7E71E6F00C279E3460DBA135C9AB5DABF9BEF05ED484799463893065.",
+    "E-A labels and archival filenames are stable technical locators for the frozen evidence, not claim levels or literature citations."
   ]
 }

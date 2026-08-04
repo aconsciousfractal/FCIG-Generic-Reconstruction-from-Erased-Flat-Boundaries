@@ -1,4 +1,4 @@
-# Reproducing the P43 companion package
+# Reproducing the companion package
 
 ## Requirements
 
@@ -8,7 +8,7 @@
   `mathtools`, `enumitem`, `xcolor`, `hyperref`, and BibTeX.
 
 All geometry and certification predicates are exact. There is no randomness
-and no floating-point geometric decision in the release gate.
+and no floating-point geometric decision in the package verification.
 
 ## Install
 
@@ -32,12 +32,12 @@ python scripts/verify_manifest_only.py
 Expected terminal markers are:
 
 ```text
-PASS_MANIFEST_60_FILES_CLOSED_TREE
+PASS_MANIFEST_58_FILES_CLOSED_TREE
 Ran 19 tests ... OK
-PASS_P43_PUBLIC_PACKAGE
-PASS_P43_PUBLIC_PACKAGE
+PASS_GENERIC_RECONSTRUCTION_PUBLIC_PACKAGE
+PASS_GENERIC_RECONSTRUCTION_PUBLIC_PACKAGE
 PASS_ATTESTATION_ANCHORED checks=7
-PASS_MANIFEST_ONLY_REPLAY files=60 ...
+PASS_MANIFEST_ONLY_REPLAY files=58 ...
 ```
 
 `verify_all.py` runs the focused unit suite and rebuilds the seven cited frozen
@@ -52,8 +52,7 @@ produce identical bytes.
 
 `verify_manifest_only.py` copies exactly the source-manifest files to an
 isolated temporary directory and repeats both aggregate modes. This is the
-closed-world check against a hidden dependency on the private workspace or an
-unmanifested local file.
+closed-world check against a hidden dependency on an undeclared local file.
 
 ## Important receipt warning
 
@@ -92,7 +91,7 @@ the title-named PDF, the regenerated aggregate receipt, and
 
 `RELEASE_ATTESTATION.json` then binds:
 
-- the source-manifest hash and 60-entry count;
+- the source-manifest hash and exact entry count;
 - the exact title-named 20-page PDF hash and byte count;
 - the aggregate receipt hash and byte count;
 - all seven canonical experiment payloads;

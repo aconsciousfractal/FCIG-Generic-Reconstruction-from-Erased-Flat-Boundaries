@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed one-command verifier for the P43 public package."""
+"""Fail-closed one-command verifier for the public companion package."""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "scripts"
 RESULTS = ROOT / "results"
 OUTPUT = RESULTS / "public_package_verification.json"
-SCHEMA = "P43-PUBLIC-PACKAGE-VERIFICATION-v3"
+SCHEMA = "GENERIC-RECONSTRUCTION-PUBLIC-PACKAGE-v1"
 E60_PAYLOAD = "D18C07176BAF7B729A550E9B9B8B9D9E04BB58A0C52D295243108417C9BE785A"
 E58_PAYLOAD = "3C58C0B88081380C7D22993A6FEE3B4EC9FE1A8C3D0CDC107BE9D40C33BA4ACC"
 E61_PAYLOAD = "76956805B0BA304142CB08D833FA1179876A9F2154A76CE6C5A232BEF9E3F7F1"
@@ -279,7 +279,7 @@ def main() -> None:
     print(e71_stdout.splitlines()[0])
     print(e72_stdout.splitlines()[0])
     print(f"RECEIPT_SHA256={sha256_file(OUTPUT)}")
-    print("PASS_P43_PUBLIC_PACKAGE")
+    print("PASS_GENERIC_RECONSTRUCTION_PUBLIC_PACKAGE")
 
 
 if __name__ == "__main__":

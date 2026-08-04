@@ -18,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ROOT_REAL = ROOT.resolve(strict=True)
 ATTESTATION = ROOT / "RELEASE_ATTESTATION.json"
-EXPECTED_SCHEMA = "P43-S136-RELEASE-ATTESTATION-v7"
+EXPECTED_SCHEMA = "GENERIC-RECONSTRUCTION-RELEASE-ATTESTATION-v1"
 EXPECTED_ARTIFACT_PATHS = {
     "source_manifest": "MANIFEST_SHA256.txt",
     "paper_pdf": (
@@ -42,7 +42,7 @@ EXPECTED_PAYLOAD_KEYS = {
     "oriented_local_ridge_audit_e_a71": "E_A71_payload",
     "independent_global_propagation_e_a72": "E_A72_payload",
 }
-EXPECTED_MANIFEST_ENTRIES = 60
+EXPECTED_MANIFEST_ENTRIES = 58
 EXPECTED_PDF_PAGES = 20
 EXPECTED_CHECKS = 7
 

@@ -6,6 +6,7 @@ Companion package for the paper
 > Oleksiy Babanskyy.
 
 PDF: [`paper/Exact_Reconstruction_of_Reflected-Cap_Data_from_an_Erased_Flat_Boundary.pdf`](paper/Exact_Reconstruction_of_Reflected-Cap_Data_from_an_Erased_Flat_Boundary.pdf).
+Archived public release: [`v2.0.0`](https://github.com/aconsciousfractal/FCIG-Generic-Reconstruction-from-Erased-Flat-Boundaries/releases/tag/v2.0.0).
 
 The paper studies a three-dimensional convex polytope whose facet reflections
 are independently rotated. In the **proper-zero** regime at least one cap is
@@ -78,8 +79,8 @@ python scripts/verify_manifest_only.py
 
 Normal and optimized aggregate runs must produce byte-identical receipts. The
 last command copies only source-manifest files into an isolated temporary tree
-and repeats both modes, detecting private-workspace or unmanifested
-dependencies. See [`REPRODUCE.md`](REPRODUCE.md) for the complete contract.
+and repeats both modes, detecting undeclared local dependencies. See
+[`REPRODUCE.md`](REPRODUCE.md) for the complete contract.
 
 ## Claim boundary
 
@@ -108,7 +109,7 @@ scripts/      exact geometry, replay, integrity, and isolated-replay tools
 certificates/ four E-A69 cofactors plus provenance/search drivers
 results/      frozen E-A58/E-A60/E-A61/E-A63/E-A69/E-A71/E-A72 records
 tests/        source-free, certification, propagation, mutation, and trust gates
-docs/         claim, source, prior-art, red-team, artifact, and release records
+docs/         claim, source, prior-art, artifact, and public-scope records
 ```
 
 Original repository content is MIT licensed. `LICENSE_SCOPE.md` and

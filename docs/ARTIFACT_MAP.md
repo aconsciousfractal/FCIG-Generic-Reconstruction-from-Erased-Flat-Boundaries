@@ -20,7 +20,7 @@ are relative to the repository root.
 | E-A71 oriented local-ridge audit | `scripts/p43_s131_e_a71_ridge_germ_propagation_audit.py`, matching JSON under `results/` |
 | E-A72 independent global propagation | `scripts/p43_s133_e_a72_independent_global_propagation.py`, matching JSON under `results/` |
 | Focused regressions | `tests/test_public_kernel.py`, `tests/test_universal_propagation.py` |
-| Claim/source/review boundaries | `docs/CLAIM_LEDGER.md`, `docs/SOURCE_LOCK.md`, `docs/PUBLIC_CLAIM_BOUNDARY.md`, `docs/RED_TEAM_REPORT.md` |
+| Claim/source boundaries | `docs/CLAIM_LEDGER.md`, `docs/SOURCE_LOCK.md`, `docs/PUBLIC_CLAIM_BOUNDARY.md` |
 
 The E-A identifiers are local experiment locators, not literature citations.
 The JSON records pin the canonical mathematical payloads; the source manifest
@@ -29,5 +29,5 @@ aggregate receipt, and four E-A69 certificate files.
 
 The compiled PDF, release attestation, source manifest itself, regenerated
 aggregate receipt, and LaTeX auxiliary files are excluded from the source
-manifest to avoid circular hashing. Their exact release-candidate hashes are
+manifest to avoid circular hashing. Their exact public-release hashes are
 recorded in `RELEASE_ATTESTATION.json`.

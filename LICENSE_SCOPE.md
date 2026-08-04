@@ -14,5 +14,5 @@ Copyright (c) 2026 Oleksiy Babanskyy.
 
 The mathematical literature is incorporated by citation, not by copying
 third-party source or data. The MIT grant covers only the original code,
-prose, and P43-generated exact receipts. See <code>THIRD_PARTY_NOTICES.md</code>
+prose, and project-generated exact receipts. See <code>THIRD_PARTY_NOTICES.md</code>
 and <code>docs/SOURCE_LOCK.md</code>.

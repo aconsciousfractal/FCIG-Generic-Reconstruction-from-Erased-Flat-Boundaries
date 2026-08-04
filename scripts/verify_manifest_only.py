@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Replay the P43 public gate from only source-manifest files."""
+"""Replay the public package from only source-manifest files."""
 
 from __future__ import annotations
 
@@ -71,7 +71,7 @@ def main() -> None:
         require(sha256_file(source) == expected.upper(), relative)
         entries.append((expected.upper(), relative))
 
-    with tempfile.TemporaryDirectory(prefix="p43_manifest_replay_") as raw:
+    with tempfile.TemporaryDirectory(prefix="generic_reconstruction_replay_") as raw:
         isolated = Path(raw) / "package"
         isolated.mkdir()
         shutil.copy2(MANIFEST, isolated / MANIFEST.name)

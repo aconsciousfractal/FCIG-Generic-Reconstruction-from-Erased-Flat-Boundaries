@@ -13,7 +13,7 @@ printed in the manuscript and hand-checkable. The comparator dismissals in
 the related-work section (Alexandrov, Blind--Mani/Kalai, Gardner) cite
 classical works by their registered metadata; none is a proof dependency.
 
-## S108 correction
+## Input-model boundary
 
 The earlier supplied-boundary summary was too broad. Two primary comparators use
 partial or indirect observables: labelled Laguerre-cell volumes and centroids,
@@ -27,10 +27,10 @@ they do not erase that mathematical face. The cited rigid-origami hardness resul
 decides foldability of a prescribed crease pattern and gives no reduction for
 inverse erased-boundary reconstruction.
 
-## S128 close-comparator correction
+## Close-comparator coverage
 
-A pre-publication search found four supplied-tessellation comparators omitted
-from the S108 table: Suzuki--Iri's planar approximation/inversion problem,
+Four additional supplied-tessellation comparators are included here:
+Suzuki--Iri's planar approximation/inversion problem,
 Duan et al.'s generally nonunique weighted-generator inversion from a complete
 Laguerre tessellation, Chaidee--Sugihara's spherical Laguerre recognition
 problem, and Hernandez-Suarez's local linear recovery followed by reflection
@@ -82,18 +82,12 @@ No third-party PDF is distributed in this repository.
 
 - The seven six-vertex combinatorial types are pinned by the included S50 census file and its hard-coded SHA-256 check in the rational catalogue builder.
 
-- E-A60 schema: <code>P43-E-A60-INTRINSIC-GERM-SKELETON-v2</code>.
 - E-A60 canonical payload: <code>D18C07176BAF7B729A550E9B9B8B9D9E04BB58A0C52D295243108417C9BE785A</code>.
-- E-A58 schema: <code>P43-E-A58-REFERENCE-RECONSTRUCTION-v3</code> (the
-  two-condition certifier; the superseded v2 payload was
-  <code>49A3FDC23406557354FEC8DDA51B4C2BB5CA9D43E11D2793C95034C0BA61FA5C</code>).
 - E-A58 canonical payload: <code>3C58C0B88081380C7D22993A6FEE3B4EC9FE1A8C3D0CDC107BE9D40C33BA4ACC</code>.
 - E-A61 canonical payload: <code>76956805B0BA304142CB08D833FA1179876A9F2154A76CE6C5A232BEF9E3F7F1</code>.
 - E-A63 canonical payload: <code>50B26633575C81C67AD3A9857DC5BE1227B512E21CC98168EECEC37B360DB1A8</code>.
 - E-A69 canonical payload: <code>5DC4C5800572C64F07C7A815CE7BEFFB930FEF03E04CC71679FB9501606F1D92</code>.
-- E-A71 schema: <code>P43-E-A71-RIDGE-GERM-PROPAGATION-v1</code>.
 - E-A71 canonical payload: <code>3EA0CA24EB09B31099F9503B0DCF84C1D7D02EB9894C73F0C299E08CF4732BC3</code>.
-- E-A72 schema: <code>P43-E-A72-INDEPENDENT-GLOBAL-PROPAGATION-v1</code>.
 - E-A72 canonical payload: <code>46F44A8E7444B395AF987C2BA5EA9A0BF1DFBD69E6BA782525FA71822D42D4AA</code>.
 - The manifest pins the exact scripts, tests, prose, bibliography, certificate
   files, and frozen JSON receipts used by the release.

@@ -7,6 +7,7 @@ authors:
     given-names: Oleksiy
     orcid: "https://orcid.org/0009-0001-6176-6208"
 version: "2.0.0"
+date-released: "2026-08-04"
 repository-code: "https://github.com/aconsciousfractal/FCIG-Generic-Reconstruction-from-Erased-Flat-Boundaries"
 license: MIT
 keywords:

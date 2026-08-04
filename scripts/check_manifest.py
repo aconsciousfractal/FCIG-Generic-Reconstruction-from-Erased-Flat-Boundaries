@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed SHA-256 and closed-tree checker for the P43 package."""
+"""Fail-closed SHA-256, reader-surface, and closed-tree package checker."""
 
 from __future__ import annotations
 
@@ -27,7 +27,24 @@ BUILD_SUFFIXES = {
     ".aux", ".bbl", ".blg", ".log", ".out", ".toc", ".fls",
     ".fdb_latexmk", ".synctex.gz",
 }
-BUILD_DIRECTORIES = {"__pycache__", ".pytest_cache", ".git"}
+BUILD_DIRECTORIES = {"__pycache__", ".pytest_cache", ".git", "tmp"}
+RETIRED_READER_PATHS = {
+    "docs/RELEASE_READINESS.md",
+    "docs/RED_TEAM_REPORT.md",
+}
+RETIRED_READER_MARKERS = (
+    "internal P43 registry",
+    "P43-C",
+    "private workspace",
+    "release candidate",
+    "docs/RELEASE_READINESS.md",
+    "docs/RED_TEAM_REPORT.md",
+    "internal adjudication",
+    "S108",
+    "S128",
+    "S135",
+    "S136",
+)
 
 
 def require(condition: bool, message: str) -> None:
@@ -75,8 +92,8 @@ def is_build_artifact(relative: str) -> bool:
     )
 
 
-def closed_tree_check(seen: set[str]) -> None:
-    actual: set[str] = set()
+def source_inventory() -> list[str]:
+    actual: list[str] = []
     for directory, directories, files in os.walk(ROOT, followlinks=False):
         base = Path(directory)
         kept = []
@@ -99,7 +116,38 @@ def closed_tree_check(seen: set[str]) -> None:
             )
             if relative in EXCLUDED or is_build_artifact(relative):
                 continue
-            actual.add(relative)
+            actual.append(relative)
+    return sorted(actual)
+
+
+def write_manifest() -> None:
+    lines = [
+        "# Generic Reconstruction public source manifest; SHA-256 uppercase; path relative to repository root.",
+    ]
+    lines.extend(
+        f"{sha256_file(ROOT / relative)}  {relative}"
+        for relative in source_inventory()
+        if relative != MANIFEST.name
+    )
+    MANIFEST.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
+
+
+def check_reader_surface() -> None:
+    for relative in RETIRED_READER_PATHS:
+        require(not (ROOT / relative).exists(), f"retired reader path present: {relative}")
+    readers = sorted(ROOT.glob("*.md")) + sorted(ROOT.glob("*.cff"))
+    readers += sorted((ROOT / "docs").glob("*.md"))
+    readers += [ROOT / "paper" / "main.tex", ROOT / "paper" / "references.bib"]
+    offenders: list[str] = []
+    for path in readers:
+        text = path.read_text(encoding="utf-8")
+        if any(marker in text for marker in RETIRED_READER_MARKERS):
+            offenders.append(path.relative_to(ROOT).as_posix())
+    require(not offenders, "retired reader-surface residue: " + ", ".join(offenders))
+
+
+def closed_tree_check(seen: set[str]) -> None:
+    actual = set(source_inventory())
     unmanifested = sorted(actual - seen)
     require(
         not unmanifested,
@@ -110,7 +158,11 @@ def closed_tree_check(seen: set[str]) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--closed-tree", action="store_true")
+    parser.add_argument("--write-manifest", action="store_true")
     args = parser.parse_args()
+    if args.write_manifest:
+        write_manifest()
+        print("MANIFEST_WRITTEN")
     require(MANIFEST.is_file(), "missing MANIFEST_SHA256.txt")
     checked = 0
     seen: set[str] = set()
@@ -131,6 +183,7 @@ def main() -> None:
         )
         checked += 1
     require(checked > 0, "empty manifest")
+    check_reader_surface()
     if args.closed_tree:
         closed_tree_check(seen)
     suffix = "_CLOSED_TREE" if args.closed_tree else ""

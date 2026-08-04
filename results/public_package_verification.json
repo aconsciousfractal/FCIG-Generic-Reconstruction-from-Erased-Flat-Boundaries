@@ -24,8 +24,8 @@
     "wrong_and_certified": 0,
     "wrong_answers": 0
   },
-  "manifest_sha256": "4B3FFBBB4F774E27FC1909A6A58C8E552875EE79D656D7289169A9E11A0A4F4E",
-  "schema": "P43-PUBLIC-PACKAGE-VERIFICATION-v3",
+  "manifest_sha256": "DE37F67739A4A571949A91022EACE33FE57761A9A1FEC3829243BC6A7288171E",
+  "schema": "GENERIC-RECONSTRUCTION-PUBLIC-PACKAGE-v1",
   "status": "PASS",
   "theorem_boundary": {
     "all_zero_data": "OUT_OF_SCOPE",
